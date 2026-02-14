@@ -1,0 +1,12 @@
+/* VisionFocus ブランドカラー */
+:root {
+	--vf-primary: #14B8A6;
+	--vf-success: #06B6D4;
+	--vf-danger: #F43F5E;
+	--vf-premium: #8B5CF6;
+}
+
+/* カスタムスタイル */
+.hero {
+	text-align: center;
+}
