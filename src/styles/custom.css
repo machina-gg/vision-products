@@ -6,6 +6,68 @@
 	--vf-premium: #8B5CF6;
 }
 
+/* Starlight テーマカスタマイズ: VisionFocus ブランドカラーを適用 */
+:root {
+	/* アクセントカラー（リンク、ハイライト） */
+	--sl-color-accent-low: #ccfbf1;
+	--sl-color-accent: #14B8A6;
+	--sl-color-accent-high: #0d9488;
+
+	/* グレースケール（背景、ボーダー） */
+	--sl-color-gray-1: #f8fafc;
+	--sl-color-gray-2: #e2e8f0;
+	--sl-color-gray-3: #cbd5e1;
+	--sl-color-gray-4: #94a3b8;
+	--sl-color-gray-5: #64748b;
+	--sl-color-gray-6: #475569;
+}
+
+/* ダークモード対応 */
+[data-theme='dark']:root {
+	/* ダークモード用アクセントカラー */
+	--sl-color-accent-low: #134e4a;
+	--sl-color-accent: #14B8A6;
+	--sl-color-accent-high: #5eead4;
+
+	/* ダークモード用グレースケール */
+	--sl-color-gray-1: #1e293b;
+	--sl-color-gray-2: #334155;
+	--sl-color-gray-3: #475569;
+	--sl-color-gray-4: #64748b;
+	--sl-color-gray-5: #94a3b8;
+	--sl-color-gray-6: #cbd5e1;
+}
+
+/* リンクスタイル調整 */
+a {
+	color: var(--sl-color-accent);
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* カードスタイル調整 */
+.sl-card {
+	border-color: var(--sl-color-accent-low);
+}
+
+.sl-card:hover {
+	border-color: var(--sl-color-accent);
+}
+
+/* ボタンスタイル調整 */
+.sl-button {
+	background-color: var(--sl-color-accent);
+	border-color: var(--sl-color-accent);
+}
+
+.sl-button:hover {
+	background-color: var(--sl-color-accent-high);
+	border-color: var(--sl-color-accent-high);
+}
+
 /* カスタムスタイル */
 .hero {
 	text-align: center;
