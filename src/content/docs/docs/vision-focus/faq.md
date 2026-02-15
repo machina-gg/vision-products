@@ -52,15 +52,13 @@ Once you exceed the daily limit, the site will be blocked for the rest of the da
 
 ### Does the YouTube-specific blocker work on embedded videos?
 
-The YouTube blocker blocks:
-- YouTube.com website
-- Embedded YouTube videos on other websites
+The YouTube blocker blocks access to youtube.com and all its subdomains. It does not block embedded YouTube videos on other websites.
 
-This prevents you from accessing distracting content even when embedded elsewhere.
+If you need to prevent access to YouTube content entirely, you may need to block specific sites that host embedded videos as well.
 
 ### Can I temporarily disable blocking?
 
-Not in the current version. This is intentional to prevent impulsive unblocking. If you need to access a blocked site, you must remove it from your blocklist.
+Yes, you can unblock websites when needed. On the block page, click the "Unblock" button and confirm in the dialog. However, every unblock is tracked and counted to help you stay accountable. VisionFocus shows you how many times you've unblocked each site.
 
 ### How many websites can I block?
 
@@ -107,7 +105,7 @@ Not in the current version. Vision statements are text-only for now.
 
 ### What's included in Premium?
 
-Premium ($5/month) includes:
+Premium ($1.99/month or $24/year - 33% off) includes:
 - **Unlimited** website blocking (Free: 10 websites)
 - Advanced timer options
 - Multiple vision statements
