@@ -39,14 +39,14 @@ Once you exceed your daily limit, the website will be blocked for the rest of th
 
 ## YouTube-Specific Blocking
 
-VisionFocus includes a dedicated YouTube blocking feature with special options:
+VisionFocus includes a dedicated YouTube blocking feature:
 
 1. Open VisionFocus
-2. Navigate to the "YouTube" or "Block" tab
-3. Enable YouTube blocking
-4. Configure YouTube-specific settings (if available)
+2. Navigate to the "Block" tab
+3. Add `youtube.com` to your blocklist
+4. VisionFocus will block access to the YouTube website
 
-This feature recognizes all YouTube URLs and subdomains automatically.
+This feature blocks youtube.com and all its subdomains. Note that it blocks the YouTube website itself, not embedded videos on other sites.
 
 ## The Block Page
 
@@ -64,11 +64,11 @@ This page serves as a reminder of your goals and helps you stay accountable.
 If you need to temporarily access a blocked website:
 
 1. Visit the blocked website
-2. On the block page, look for the "Unblock" option
-3. Confirm that you want to unblock the site
+2. On the block page, click the "Unblock" button
+3. Confirm that you want to unblock the site in the dialog
 
 :::caution
-Every time you unblock a website, it's recorded in your statistics. Frequent unblocking defeats the purpose of website blocking. Consider adjusting your blocklist or time limits instead.
+While you can unblock websites when needed, every unblock is tracked and counted. VisionFocus shows you how many times you've unblocked each site to help you stay accountable. Frequent unblocking may indicate you need to adjust your blocklist or time limits.
 :::
 
 ## Tips for Effective Blocking
