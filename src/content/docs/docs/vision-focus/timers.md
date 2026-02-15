@@ -26,9 +26,9 @@ Once started, the timer will count down and notify you when your focus session i
 
 Choose a duration that matches your task complexity and personal focus capacity.
 
-## The Pomodoro Technique
+## Using VisionFocus with the Pomodoro Technique
 
-The Pomodoro Technique is a time management method that uses timers to break work into focused intervals. VisionFocus is perfect for implementing this technique.
+The Pomodoro Technique is a time management method that breaks work into focused intervals. You can use VisionFocus's timer to practice this technique.
 
 ### Classic Pomodoro Cycle
 
@@ -37,14 +37,15 @@ The Pomodoro Technique is a time management method that uses timers to break wor
 3. **Repeat**: Complete 4 work phases
 4. **Long Break**: Take a 15-30 minute break after 4 cycles
 
-### Using VisionFocus for Pomodoro
+### Implementing Pomodoro with VisionFocus
 
 1. Set your timer to 25 minutes
 2. Click "Start Timer" and focus on your task
-3. When the notification appears, take your break
-4. Reset the timer for your next session
+3. When the notification appears, manually start a 5-minute break timer
+4. After your break, reset the timer for your next work session
+5. Track your completed cycles manually
 
-**Pro Tip**: During work phases, use VisionFocus's blocking feature to eliminate distractions. During breaks, allow access to relaxing sites.
+**Pro Tip**: Combine VisionFocus's blocking feature during work phases to eliminate distractions. You can adjust your blocklist during breaks if needed.
 
 ## Timer Notifications
 
@@ -61,7 +62,6 @@ VisionFocus keeps you informed about your focus sessions through notifications.
 1. Open VisionFocus settings
 2. Navigate to "Notifications"
 3. Toggle notification types on/off
-4. Customize notification sounds (Premium)
 
 **Note**: Make sure browser notifications are enabled for VisionFocus in your Chrome settings.
 
@@ -92,27 +92,9 @@ For maximum effectiveness:
 
 1. Create a blocklist of distracting sites
 2. Start your focus timer
-3. VisionFocus will block distractions automatically during your session
+3. Your blocked sites remain blocked during your session
 
 This creates a distraction-free environment tailored to your work sessions.
-
-### Timer Presets (Premium)
-
-Premium users can save custom timer presets:
-
-- **Morning Focus**: 45-minute deep work session
-- **Afternoon Sprint**: 25-minute quick task timer
-- **Evening Review**: 15-minute wrap-up session
-
-Create presets for different types of work to quickly start focused sessions.
-
-### Timer Automation (Premium)
-
-Premium features include:
-
-- **Auto-start breaks**: Automatically begin break timers
-- **Daily schedules**: Set recurring focus sessions
-- **Integration with blocklists**: Automatic blocking during work phases
 
 ## Troubleshooting
 
@@ -140,7 +122,6 @@ Now that you've mastered timers, explore these related features:
 
 - [Blocking Websites](/docs/vision-focus/blocking-websites/) - Create distraction-free focus sessions
 - [Vision Statements](/docs/vision-focus/vision-statements/) - Stay motivated during focus sessions
-- [Premium Features](/docs/vision-focus/premium/) - Unlock advanced timer capabilities
 
 ## Need Help?
 
