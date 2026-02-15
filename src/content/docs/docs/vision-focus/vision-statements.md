@@ -83,24 +83,16 @@ Aim for 1-3 sentences. You should be able to read and absorb it in under 10 seco
 
 ## Multiple Vision Statements (Premium)
 
-Premium subscribers can create and manage multiple vision statements for different contexts:
+Premium subscribers can create and manage multiple vision statements for different contexts.
 
-### Creating Multiple Visions
+### Managing Multiple Visions
 
-1. Open VisionFocus
-2. Navigate to the "Vision" tab
-3. Click "Add New Vision"
-4. Enter your vision statement
-5. Optionally add a label (e.g., "Work Focus," "Personal Goals")
-6. Click "Save Vision"
+VisionFocus Premium allows you to:
+- Create multiple vision presets for different situations (work, study, personal)
+- Switch between visions based on your current focus
+- Schedule specific visions for different times of day or days of the week
 
-### Switching Between Visions
-
-1. Go to the "Vision" tab
-2. Select the vision you want to activate from the list
-3. Click "Set as Active"
-
-The active vision will be displayed on blocked pages.
+Navigate to the "Vision" tab to access vision preset management and scheduling features.
 
 ### Example Use Cases
 
