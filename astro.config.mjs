@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,23 @@ export default defineConfig({
 			description: 'Official products and documentation for machina.gg',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/machina-gg' }
+			],
+			head: [
+				// OGP 画像設定（TODO: Replace with actual brand image）
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image',
+						content: 'https://machina-gg.github.io/vision-products/og-image.png',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:image',
+						content: 'https://machina-gg.github.io/vision-products/og-image.png',
+					},
+				},
 			],
 			sidebar: [
 				{
@@ -36,5 +54,6 @@ export default defineConfig({
 				'./src/styles/custom.css',
 			],
 		}),
+		sitemap(),
 	],
 });
