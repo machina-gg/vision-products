@@ -15,7 +15,10 @@ const PRODUCT_LABELS: Record<string, string> = {
   'vision-focus': 'VisionFocus',
 };
 
-const formattedDate = publishedAt.toLocaleDateString('ja-JP', {
+// 日付フォーマットをロケールに応じて切替
+const locale = Astro.currentLocale ?? 'ja';
+const dateLocale = locale === 'en' ? 'en-US' : 'ja-JP';
+const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',

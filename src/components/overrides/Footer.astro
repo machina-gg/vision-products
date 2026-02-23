@@ -1,5 +1,35 @@
 ---
 const currentYear = new Date().getFullYear();
+
+// ロケール判定とテキスト翻訳辞書
+const locale = Astro.currentLocale ?? 'ja';
+const prefix = locale === 'en' ? '/en' : '';
+
+const t = {
+  ja: {
+    tagline: '集中力・生産性・デジタルウェルビーイングのためのアプリとツールを作っています。',
+    gettingStarted: 'はじめかた',
+    blockingWebsites: 'ウェブサイトブロック',
+    timers: 'タイマー機能',
+    privacy: 'プライバシーポリシー',
+    terms: '利用規約',
+  },
+  en: {
+    tagline: 'Building apps and tools for focus, productivity, and digital wellbeing.',
+    gettingStarted: 'Getting Started',
+    blockingWebsites: 'Blocking Websites',
+    timers: 'Timer Features',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+  },
+}[locale] ?? {
+  tagline: '集中力・生産性・デジタルウェルビーイングのためのアプリとツールを作っています。',
+  gettingStarted: 'はじめかた',
+  blockingWebsites: 'ウェブサイトブロック',
+  timers: 'タイマー機能',
+  privacy: 'プライバシーポリシー',
+  terms: '利用規約',
+};
 ---
 
 <footer class="site-footer">
@@ -7,9 +37,9 @@ const currentYear = new Date().getFullYear();
     <div class="site-footer-top">
       <!-- Brand -->
       <div class="site-footer-brand">
-        <a href="/" class="site-footer-logo">Vision Products</a>
+        <a href={`${prefix}/`} class="site-footer-logo">Vision Products</a>
         <p class="site-footer-tagline">
-          集中力・生産性・デジタルウェルビーイングのためのアプリとツールを作っています。
+          {t.tagline}
         </p>
         <div class="site-footer-social">
           <a
@@ -31,25 +61,25 @@ const currentYear = new Date().getFullYear();
         <div class="site-footer-col">
           <h3 class="site-footer-col-title">Products</h3>
           <ul class="site-footer-col-links">
-            <li><a href="/vision-focus/">VisionFocus</a></li>
+            <li><a href={`${prefix}/vision-focus/`}>VisionFocus</a></li>
           </ul>
         </div>
 
         <div class="site-footer-col">
           <h3 class="site-footer-col-title">VisionFocus</h3>
           <ul class="site-footer-col-links">
-            <li><a href="/docs/vision-focus/getting-started/">はじめかた</a></li>
-            <li><a href="/docs/vision-focus/blocking-websites/">ウェブサイトブロック</a></li>
-            <li><a href="/docs/vision-focus/timers/">タイマー機能</a></li>
-            <li><a href="/docs/vision-focus/faq/">FAQ</a></li>
+            <li><a href={`${prefix}/docs/vision-focus/getting-started/`}>{t.gettingStarted}</a></li>
+            <li><a href={`${prefix}/docs/vision-focus/blocking-websites/`}>{t.blockingWebsites}</a></li>
+            <li><a href={`${prefix}/docs/vision-focus/timers/`}>{t.timers}</a></li>
+            <li><a href={`${prefix}/docs/vision-focus/faq/`}>FAQ</a></li>
           </ul>
         </div>
 
         <div class="site-footer-col">
           <h3 class="site-footer-col-title">Legal</h3>
           <ul class="site-footer-col-links">
-            <li><a href="/legal/privacy/">プライバシーポリシー</a></li>
-            <li><a href="/legal/terms/">利用規約</a></li>
+            <li><a href={`${prefix}/legal/privacy/`}>{t.privacy}</a></li>
+            <li><a href={`${prefix}/legal/terms/`}>{t.terms}</a></li>
           </ul>
         </div>
       </div>

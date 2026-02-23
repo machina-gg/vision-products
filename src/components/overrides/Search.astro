@@ -1,27 +1,76 @@
 ---
 const pathname = Astro.url.pathname;
 
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+const isEn = locale === 'en';
+const prefix = isEn ? '/en' : '';
+
 const isVisionFocusLP =
   pathname === '/vision-focus/' ||
-  pathname === '/vision-focus';
+  pathname === '/vision-focus' ||
+  pathname === '/en/vision-focus/' ||
+  pathname === '/en/vision-focus';
 
-const isArticlesSection = pathname.startsWith('/articles');
-const isDocsSection = pathname.startsWith('/docs/');
+const isArticlesSection = pathname.startsWith('/articles') || pathname.startsWith('/en/articles');
+const isDocsSection = pathname.startsWith('/docs/') || pathname.startsWith('/en/docs/');
+
+/* 翻訳辞書 */
+const t = {
+  ja: {
+    menuOpen: 'メニューを開く',
+    menuClose: 'メニューを閉じる',
+    navMenu: 'ナビゲーションメニュー',
+    navLabelLP: 'VisionFocus navigation',
+    navLabelSite: 'Site navigation',
+    articles: 'Articles',
+    docs: 'Docs',
+    features: 'Features',
+    pricing: 'Pricing',
+    installFree: 'Install Free',
+    chromeStoreTitle: 'Chrome Web Store（外部サイト）',
+  },
+  en: {
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    navMenu: 'Navigation menu',
+    navLabelLP: 'VisionFocus navigation',
+    navLabelSite: 'Site navigation',
+    articles: 'Articles',
+    docs: 'Docs',
+    features: 'Features',
+    pricing: 'Pricing',
+    installFree: 'Install Free',
+    chromeStoreTitle: 'Chrome Web Store (external site)',
+  },
+}[locale] ?? {
+  menuOpen: 'メニューを開く',
+  menuClose: 'メニューを閉じる',
+  navMenu: 'ナビゲーションメニュー',
+  navLabelLP: 'VisionFocus navigation',
+  navLabelSite: 'Site navigation',
+  articles: 'Articles',
+  docs: 'Docs',
+  features: 'Features',
+  pricing: 'Pricing',
+  installFree: 'Install Free',
+  chromeStoreTitle: 'Chrome Web Store（外部サイト）',
+};
 
 /* ページ種別ごとのナビリンク定義 */
 const lpLinks = [
-  { label: 'Features', href: '/vision-focus/#features' },
-  { label: 'Pricing', href: '/vision-focus/#pricing' },
-  { label: 'Docs', href: '/docs/vision-focus/getting-started/' },
+  { label: t.features, href: `${prefix}/vision-focus/#features` },
+  { label: t.pricing, href: `${prefix}/vision-focus/#pricing` },
+  { label: t.docs, href: `${prefix}/docs/vision-focus/getting-started/` },
 ];
 
 const siteLinks = [
-  { label: 'Articles', href: '/articles/', isActive: isArticlesSection },
-  { label: 'Docs', href: '/docs/vision-focus/getting-started/', isActive: isDocsSection },
+  { label: t.articles, href: `${prefix}/articles/`, isActive: isArticlesSection },
+  { label: t.docs, href: `${prefix}/docs/vision-focus/getting-started/`, isActive: isDocsSection },
 ];
 
 const navLinks = isVisionFocusLP ? lpLinks : siteLinks;
-const navLabel = isVisionFocusLP ? 'VisionFocus navigation' : 'Site navigation';
+const navLabel = isVisionFocusLP ? t.navLabelLP : t.navLabelSite;
 ---
 
 <!-- デスクトップ用インラインナビ -->
@@ -39,9 +88,9 @@ const navLabel = isVisionFocusLP ? 'VisionFocus navigation' : 'Site navigation';
     class="header-nav-cta"
     target="_blank"
     rel="noopener noreferrer"
-    title="Chrome Web Store（外部サイト）"
+    title={t.chromeStoreTitle}
   >
-    Install Free
+    {t.installFree}
     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
       <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -49,12 +98,12 @@ const navLabel = isVisionFocusLP ? 'VisionFocus navigation' : 'Site navigation';
 </nav>
 
 <!-- モバイル用ハンバーガーメニュー -->
-<mobile-menu>
+<mobile-menu data-label-open={t.menuOpen} data-label-close={t.menuClose}>
   <button
     class="hamburger-btn"
     type="button"
     aria-expanded="false"
-    aria-label="メニューを開く"
+    aria-label={t.menuOpen}
     aria-controls="mobile-menu-panel"
   >
     <!-- ハンバーガーアイコン（3本線） -->
@@ -67,7 +116,7 @@ const navLabel = isVisionFocusLP ? 'VisionFocus navigation' : 'Site navigation';
     </svg>
   </button>
 
-  <div id="mobile-menu-panel" class="mobile-menu-panel" role="dialog" aria-label="ナビゲーションメニュー">
+  <div id="mobile-menu-panel" class="mobile-menu-panel" role="dialog" aria-label={t.navMenu}>
     <nav class="mobile-menu-nav" aria-label={navLabel}>
       {navLinks.map((link) => (
         <a
@@ -161,7 +210,8 @@ const navLabel = isVisionFocusLP ? 'VisionFocus navigation' : 'Site navigation';
     private open(): void {
       this.isOpen = true;
       this.btn.setAttribute('aria-expanded', 'true');
-      this.btn.setAttribute('aria-label', 'メニューを閉じる');
+      /* data 属性からロケール別ラベルを取得 */
+      this.btn.setAttribute('aria-label', this.dataset.labelClose ?? 'Close menu');
       this.panel.classList.add('is-open');
       this.syncThemeButtons();
     }
@@ -169,7 +219,8 @@ const navLabel = isVisionFocusLP ? 'VisionFocus navigation' : 'Site navigation';
     private close(): void {
       this.isOpen = false;
       this.btn.setAttribute('aria-expanded', 'false');
-      this.btn.setAttribute('aria-label', 'メニューを開く');
+      /* data 属性からロケール別ラベルを取得 */
+      this.btn.setAttribute('aria-label', this.dataset.labelOpen ?? 'Open menu');
       this.panel.classList.remove('is-open');
     }
 

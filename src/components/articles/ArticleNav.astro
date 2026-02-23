@@ -9,10 +9,25 @@ interface Props {
 
 const { currentDate } = Astro.props;
 
-// 全記事を publishedAt 降順で取得（新しい順）
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+
+// 翻訳辞書
+const t = {
+  ja: { olderArticle: '前の記事', newerArticle: '次の記事', navLabel: '前後の記事' },
+  en: { olderArticle: 'Older', newerArticle: 'Newer', navLabel: 'Article navigation' },
+}[locale] ?? { olderArticle: '前の記事', newerArticle: '次の記事', navLabel: '前後の記事' };
+
+// 全記事を publishedAt 降順で取得（現在のロケールの記事のみ）
 const allDocs = await getCollection('docs');
 const articles = allDocs
-  .filter((doc) => doc.data.publishedAt != null)
+  .filter((doc) => {
+    if (doc.data.publishedAt == null) return false;
+    // root locale(ja): id が 'en/' で始まらないもの
+    // en locale: id が 'en/' で始まるもの
+    if (locale === 'en') return doc.id.startsWith('en/');
+    return !doc.id.startsWith('en/');
+  })
   .map((doc) => ({
     title: doc.data.title,
     href: `/${doc.id}/`,
@@ -31,7 +46,7 @@ const olderArticle = currentIndex < articles.length - 1 ? articles[currentIndex 
 ---
 
 {(olderArticle || newerArticle) && (
-  <nav class="article-nav" aria-label="前後の記事">
+  <nav class="article-nav" aria-label={t.navLabel}>
     <div class="article-nav-inner">
       {olderArticle ? (
         <a href={olderArticle.href} class="article-nav-link article-nav-prev">
@@ -39,7 +54,7 @@ const olderArticle = currentIndex < articles.length - 1 ? articles[currentIndex 
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            前の記事
+            {t.olderArticle}
           </span>
           <span class="article-nav-title">{olderArticle.title}</span>
         </a>
@@ -50,7 +65,7 @@ const olderArticle = currentIndex < articles.length - 1 ? articles[currentIndex 
       {newerArticle ? (
         <a href={newerArticle.href} class="article-nav-link article-nav-next">
           <span class="article-nav-dir">
-            次の記事
+            {t.newerArticle}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
