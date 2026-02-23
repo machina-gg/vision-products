@@ -29,11 +29,15 @@
 
 ## Tech Stack
 
-- **Framework**: [Astro](https://astro.build) v5
-- **Theme**: [Starlight](https://starlight.astro.build) v0.37
-- **Package Manager**: pnpm
-- **Hosting**: GitHub Pages
-- **CI/CD**: GitHub Actions
+| カテゴリ | 技術 |
+|----------|------|
+| Framework | [Astro](https://astro.build) v5 |
+| Theme | [Starlight](https://starlight.astro.build) v0.37 |
+| Language | TypeScript |
+| Content | Astro Content Collections (Markdown/MDX) |
+| Package Manager | pnpm |
+| Hosting | GitHub Pages |
+| CI/CD | GitHub Actions |
 
 ## Project Structure
 
@@ -41,26 +45,38 @@
 .
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # GitHub Pages deployment
-├── public/                     # Static assets
+│       └── deploy.yml              # GitHub Pages deployment
+├── public/                         # Static assets
 ├── src/
-│   ├── assets/                 # Images and media
+│   ├── assets/                     # Images and media
+│   ├── components/                 # Custom Astro components
+│   │   ├── hub/                    # Hub top components
+│   │   ├── lp/                     # Landing page components
+│   │   ├── articles/               # Article list/card components
+│   │   └── changelog/              # Release note components
 │   ├── content/
-│   │   └── docs/               # Markdown/MDX content
-│   │       ├── index.mdx       # Homepage (product hub)
-│   │       ├── {product-name}.mdx      # Product LP
-│   │       ├── legal/          # Legal documents (per product)
-│   │       └── docs/
-│   │           └── {product-name}/     # Product documentation
+│   │   └── docs/                   # Starlight content (all pages)
+│   │       ├── index.mdx           # Hub top (product list)
+│   │       ├── articles/           # Site-wide articles
+│   │       │   └── {slug}.mdx
+│   │       └── {product}/          # Per-product pages
+│   │           ├── index.mdx       # Product LP
+│   │           ├── articles/       # Product-filtered article list
+│   │           ├── docs/           # Help / documentation
+│   │           ├── changelog.mdx   # Release notes
+│   │           └── legal/          # Privacy policy & terms
 │   ├── styles/
-│   │   └── custom.css          # Custom styles
-│   └── content.config.ts
-├── docs/                       # Project documentation
-│   ├── PRD.md                  # 要件定義
-│   └── INPUT.md                # ヒアリングシート
-├── reports/                    # Research reports
-│   └── COMPETITIVE_ANALYSIS.md
-├── astro.config.mjs            # Astro configuration
+│   │   └── custom.css              # Global styles / CSS variable overrides
+│   └── content.config.ts           # Content Collections schema
+├── docs/                           # Project documentation
+│   ├── PRD.md                      # 要件定義
+│   ├── DESIGN.md                   # 設計書
+│   ├── SCREEN.md                   # 画面設計
+│   ├── COMPONENT.md                # コンポーネント設計
+│   └── INPUT.md                    # ヒアリングシート
+├── reports/
+│   └── COMPETITIVE_ANALYSIS.md     # 競合調査レポート
+├── astro.config.mjs                # Astro configuration
 ├── package.json
 └── tsconfig.json
 ```
@@ -110,11 +126,23 @@ The site automatically deploys to GitHub Pages when changes are pushed to the `m
 
 ## Adding a New Product
 
-1. Create a product LP: `src/content/docs/{product-name}.mdx`
-2. Create documentation directory: `src/content/docs/docs/{product-name}/`
-3. Create legal pages: `src/content/docs/legal/{product-name}/`
-4. Update sidebar configuration in `astro.config.mjs`
-5. Add product card to homepage `src/content/docs/index.mdx`
+1. Create `src/content/docs/{product-name}/index.mdx` — Product LP
+2. Create `src/content/docs/{product-name}/docs/` — Help docs
+3. Create `src/content/docs/{product-name}/changelog.mdx` — Release notes
+4. Create `src/content/docs/{product-name}/legal/` — Privacy policy & terms
+5. Create `src/content/docs/{product-name}/articles/index.mdx` — Article filter page
+6. Update sidebar in `astro.config.mjs`
+7. Add product card to `src/content/docs/index.mdx`
+
+## Documents
+
+| ドキュメント | 内容 |
+|-------------|------|
+| [docs/PRD.md](./docs/PRD.md) | 要件定義 |
+| [docs/DESIGN.md](./docs/DESIGN.md) | 技術スタック・ディレクトリ構成・設計方針 |
+| [docs/SCREEN.md](./docs/SCREEN.md) | 画面一覧・画面遷移図 |
+| [docs/COMPONENT.md](./docs/COMPONENT.md) | コンポーネント一覧・Props定義 |
+| [reports/COMPETITIVE_ANALYSIS.md](./reports/COMPETITIVE_ANALYSIS.md) | 競合調査レポート |
 
 ## Links
 
