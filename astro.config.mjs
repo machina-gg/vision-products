@@ -5,12 +5,17 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://machina-gg.github.io',
-	base: '/vision-products',
+	site: 'https://vision-products.app',
 	integrations: [
 		starlight({
-			title: 'machina.gg',
-			description: 'Official products and documentation for machina.gg',
+			title: 'Vision Products',
+			description: 'Apps and tools built for focus, productivity, and digital wellbeing.',
+			components: {
+				SiteTitle: './src/components/overrides/SiteTitle.astro',
+				PageTitle: './src/components/overrides/PageTitle.astro',
+				Search: './src/components/overrides/Search.astro',
+				Footer: './src/components/overrides/Footer.astro',
+			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/machina-gg' }
 			],
@@ -20,14 +25,14 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						property: 'og:image',
-						content: 'https://machina-gg.github.io/vision-products/og-image.png',
+						content: 'https://vision-products.app/og-image.png',
 					},
 				},
 				{
 					tag: 'meta',
 					attrs: {
 						name: 'twitter:image',
-						content: 'https://machina-gg.github.io/vision-products/og-image.png',
+						content: 'https://vision-products.app/og-image.png',
 					},
 				},
 			],
@@ -45,8 +50,8 @@ export default defineConfig({
 				{
 					label: 'Legal',
 					items: [
-						{ label: 'Privacy Policy', slug: 'legal/privacy' },
-						{ label: 'Terms of Service', slug: 'legal/terms' },
+						{ label: 'プライバシーポリシー', slug: 'legal/privacy' },
+						{ label: '利用規約', slug: 'legal/terms' },
 					],
 				},
 			],

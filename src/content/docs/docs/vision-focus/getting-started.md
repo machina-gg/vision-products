@@ -1,69 +1,69 @@
 ---
-title: Getting Started
-description: Getting started with VisionFocus Chrome Extension
+title: はじめかた
+description: VisionFocus Chrome 拡張機能のはじめかた
 ---
 
-# Getting Started with VisionFocus
+# VisionFocus をはじめよう
 
-Welcome to VisionFocus! This guide will help you get started with blocking distractions, setting timers, and achieving your daily vision.
+VisionFocus へようこそ！このガイドでは、サイトブロック・タイマー・デイリービジョンの設定方法を解説します。
 
-## Installation
+## インストール
 
-1. Visit the Chrome Web Store (link coming soon)
-2. Click "Add to Chrome"
-3. Grant the necessary permissions
-4. VisionFocus icon will appear in your Chrome toolbar
+1. Chrome ウェブストアにアクセス（近日公開予定）
+2. 「Chrome に追加」をクリック
+3. 必要な権限を許可
+4. Chrome ツールバーに VisionFocus アイコンが表示されます
 
-## First Steps
+## 最初のステップ
 
-### 1. Block Your First Website
+### 1. サイトをブロックする
 
-1. Click the VisionFocus icon in your toolbar
-2. Navigate to the "Block" tab
-3. Enter a website URL (e.g., `youtube.com`)
-4. Click "Add to Blocklist"
+1. ツールバーの VisionFocus アイコンをクリック
+2. 「ブロック」タブを開く
+3. ブロックしたい URL を入力（例：`youtube.com`）
+4. 「ブロックリストに追加」をクリック
 
-The website will now be blocked when you try to visit it.
+これだけで、そのサイトへのアクセスがブロックされます。
 
-### 2. Set a Focus Timer
+### 2. 集中タイマーをセットする
 
-1. Open VisionFocus
-2. Go to the "Timer" tab
-3. Set your desired focus duration
-4. Click "Start Timer"
+1. VisionFocus を開く
+2. 「タイマー」タブを開く
+3. 集中したい時間を設定
+4. 「タイマー開始」をクリック
 
-You'll be reminded to take breaks at the end of each timer session.
+タイマーが終わると、休憩を促す通知が届きます。
 
-### 3. Create Your Daily Vision
+### 3. デイリービジョンを作る
 
-1. Open VisionFocus
-2. Navigate to the "Vision" tab
-3. Write your daily goal or vision statement
-4. Your vision will be displayed on blocked pages to keep you motivated
+1. VisionFocus を開く
+2. 「ビジョン」タブを開く
+3. 今日の目標やビジョンステートメントを入力
+4. ブロックページにビジョンが表示され、モチベーションを維持できます
 
-## Free vs Premium
+## 無料 vs プレミアム
 
-### Free Features
+### 無料機能
 
-- Block up to 10 websites
-- Basic timer functionality
-- One daily vision statement
+- 最大 10 サイトをブロック
+- 基本タイマー機能
+- デイリービジョン（1件）
 
-### Premium Features ($5/month)
+### プレミアム機能（$1.99/月）
 
-- **Unlimited** website blocking
-- Advanced timer options
-- Multiple vision statements
-- Custom themes
-- Priority support
+- **無制限**のサイトブロック
+- 高度なタイマーオプション
+- 複数のビジョンステートメント
+- カスタムテーマ
+- 優先サポート
 
-## Next Steps
+## 次のステップ
 
-- [Blocking Websites](/docs/vision-focus/blocking-websites/) - Advanced blocking techniques
-- [Using Timers](/docs/vision-focus/timers/) - Maximize your focus sessions
-- [Vision Statements](/docs/vision-focus/vision-statements/) - Write powerful daily visions
+- [ウェブサイトブロック](/docs/vision-focus/blocking-websites/) — 応用的なブロック設定
+- [タイマー機能](/docs/vision-focus/timers/) — 集中セッションを最大化する
+- [ビジョンステートメント](/docs/vision-focus/vision-statements/) — 強力なデイリービジョンの書き方
 
-## Need Help?
+## お困りですか？
 
-- Check our [FAQ](/docs/vision-focus/faq/)
-- Report issues on [GitHub](https://github.com/machina-gg/vision-focus/issues)
+- [FAQ](/docs/vision-focus/faq/) を確認する
+- [GitHub](https://github.com/machina-gg/vision-focus/issues) で問題を報告する

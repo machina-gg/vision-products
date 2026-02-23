@@ -1,100 +1,101 @@
 ---
-title: Privacy Policy
-description: Privacy Policy for VisionFocus Chrome Extension
+title: プライバシーポリシー
+description: VisionFocus Chrome 拡張機能のプライバシーポリシー
 ---
 
-# Privacy Policy
+# プライバシーポリシー
 
-**Last Updated: February 15, 2026**
+**最終更新日：2026年2月15日**
 
-This Privacy Policy describes how VisionFocus ("we", "our", or "us") handles your information when you use our Chrome extension.
+このプライバシーポリシーでは、VisionFocus（「当社」）が Chrome 拡張機能のご利用時に情報をどのように取り扱うかを説明します。
 
-## Information We Collect
+## 収集する情報
 
-VisionFocus is designed with privacy as a core principle. We collect minimal information necessary to provide the service:
+VisionFocus はプライバシーを中心に設計されています。サービス提供に必要最小限の情報のみを扱います。
 
-### Local Data Storage
+### ローカルデータの保存
 
-All of your settings, blocked websites, timers, and vision statements are stored **locally on your device** using Chrome's `chrome.storage.local` API. This data includes:
+ブロックサイト・タイマー設定・ビジョンステートメントなど、すべての設定は Chrome の `chrome.storage.local` API を使用して**お使いのデバイス上にのみ**保存されます。含まれる情報：
 
-- Blocked website URLs
-- Timer settings and preferences
-- Daily vision statements
-- Extension configuration settings
+- ブロックしたウェブサイトの URL
+- タイマー設定とユーザー設定
+- デイリービジョンステートメント
+- 拡張機能の設定
 
-**This data never leaves your device** and is not transmitted to any external servers.
+**これらのデータが端末の外部に送信されることは一切ありません。**
 
-### Payment Information
+### お支払い情報
 
-If you purchase VisionFocus Premium:
+VisionFocus Premium をご購入の場合：
 
-- Payment processing is handled by **Stripe** through ExtensionPay
-- We do not store or have access to your credit card information
-- Stripe's privacy policy governs how your payment data is handled: [https://stripe.com/privacy](https://stripe.com/privacy)
-- We only receive a confirmation that your payment was successful
+- 決済は ExtensionPay を通じて **Stripe** が処理します
+- クレジットカード情報は当社では保存・閲覧しません
+- カード情報の取り扱いは Stripe のプライバシーポリシーに従います：[https://stripe.com/privacy](https://stripe.com/privacy)
+- 当社は決済完了の通知のみ受け取ります
 
-### Usage Analytics
+### 利用分析
 
-VisionFocus **does not use** any analytics services such as Google Analytics or similar tracking tools. We do not collect usage statistics, browsing behavior, or any telemetry data.
+VisionFocus は Google Analytics などの分析サービスを**一切使用しません**。利用統計・閲覧行動・テレメトリデータは収集していません。
 
-## How We Use Your Information
+## 情報の利用目的
 
-Since all data is stored locally:
+すべてのデータがローカル保存されるため：
 
-- We cannot access your blocked websites list
-- We cannot see your vision statements
-- We cannot track your browsing behavior
-- We do not share any data with third parties (because we don't collect any)
+- お客様のブロックリストへのアクセスは不可
+- ビジョンステートメントの閲覧は不可
+- 閲覧行動のトラッキングは不可
+- 第三者への情報共有なし（収集していないため）
 
-## Data Security
+## データセキュリティ
 
-Your data is protected by Chrome's built-in security mechanisms:
+お客様のデータは Chrome の組み込みセキュリティ機構で保護されます：
 
-- All local storage is sandboxed within Chrome's extension system
-- No data transmission means no risk of interception
-- Your data is as secure as your Chrome browser profile
+- ローカルストレージは Chrome の拡張機能システム内でサンドボックス化
+- データ送信なし＝傍受リスクなし
+- データの安全性は Chrome ブラウザプロファイルと同等
 
-## Third-Party Services
+## 第三者サービス
 
-### ExtensionPay (Stripe)
+### ExtensionPay（Stripe）
 
-For Premium subscriptions, we use ExtensionPay, which integrates with Stripe for payment processing. When you make a payment:
+Premium サブスクリプションには ExtensionPay を使用しており、Stripe と連携して決済を処理します。お支払い時：
 
-- Stripe collects and processes your payment information
-- ExtensionPay verifies your subscription status
-- We receive only a confirmation of successful payment
+- Stripe がお支払い情報を収集・処理します
+- ExtensionPay がサブスクリプション状況を確認します
+- 当社は決済完了の通知のみ受け取ります
 
-Please review:
-- Stripe's Privacy Policy: [https://stripe.com/privacy](https://stripe.com/privacy)
-- ExtensionPay's Privacy Policy: [https://extensionpay.com/privacy](https://extensionpay.com/privacy)
+詳細は以下をご確認ください：
 
-## Your Rights
+- Stripe プライバシーポリシー：[https://stripe.com/privacy](https://stripe.com/privacy)
+- ExtensionPay プライバシーポリシー：[https://extensionpay.com/privacy](https://extensionpay.com/privacy)
 
-Since all data is stored locally on your device, you have complete control:
+## お客様の権利
 
-- **Access**: All your data is visible in the extension settings
-- **Deletion**: Uninstalling the extension removes all local data
-- **Export**: You can manually copy your settings at any time
-- **Modification**: You can edit or delete any stored data through the extension interface
+すべてのデータはデバイス上に保存されているため、お客様が完全な管理権を持ちます：
 
-## Children's Privacy
+- **アクセス**：すべてのデータは拡張機能の設定から確認可能
+- **削除**：拡張機能をアンインストールすればローカルデータも削除される
+- **エクスポート**：いつでも手動で設定をコピー可能
+- **変更**：拡張機能のインターフェースからいつでも編集・削除可能
 
-VisionFocus is not directed to children under 13. We do not knowingly collect personal information from children under 13.
+## 年齢制限
 
-## Changes to This Policy
+VisionFocus は 13 歳未満のお子様を対象としていません。13 歳未満のお子様から個人情報を意図的に収集することはありません。
 
-We may update this Privacy Policy from time to time. We will notify users of any material changes by:
+## ポリシーの変更
 
-- Updating the "Last Updated" date
-- Displaying a notice in the extension (for significant changes)
+このプライバシーポリシーは随時更新される場合があります。重要な変更がある場合は以下の方法でお知らせします：
 
-## Contact Us
+- 「最終更新日」の更新
+- 拡張機能内での通知表示（重大な変更の場合）
 
-If you have questions about this Privacy Policy:
+## お問い合わせ
 
-- GitHub Issues: [https://github.com/machina-gg/vision-focus/issues](https://github.com/machina-gg/vision-focus/issues)
-- Email: privacy@machina.gg
+このプライバシーポリシーについてのご質問は：
 
-## Summary
+- GitHub Issues：[https://github.com/machina-gg/vision-focus/issues](https://github.com/machina-gg/vision-focus/issues)
+- メール：privacy@machina.gg
 
-**In short**: VisionFocus stores all your data locally on your device. We don't collect, transmit, or share your personal information. Payment processing is handled securely by Stripe. Your privacy is our priority.
+## まとめ
+
+VisionFocus はすべてのデータをデバイス上にのみ保存します。個人情報の収集・送信・共有は行いません。決済処理は Stripe が安全に処理します。プライバシー保護を最優先にしています。

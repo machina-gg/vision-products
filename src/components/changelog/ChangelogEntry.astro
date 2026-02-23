@@ -1,0 +1,58 @@
+---
+interface Props {
+  version: string;
+  date: Date;
+}
+
+const { version, date } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<div class="changelog-entry">
+  <div class="changelog-entry-header">
+    <span class="changelog-entry-version">v{version}</span>
+    <time class="changelog-entry-date" datetime={date.toISOString()}>
+      {formattedDate}
+    </time>
+  </div>
+  <div class="changelog-entry-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .changelog-entry {
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    border-left: 3px solid var(--sl-color-accent);
+    margin-bottom: 2.5rem;
+  }
+
+  .changelog-entry-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .changelog-entry-version {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--sl-color-accent);
+  }
+
+  .changelog-entry-date {
+    font-size: 0.875rem;
+    color: var(--vp-text-muted);
+  }
+
+  .changelog-entry-content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--sl-color-text);
+  }
+</style>

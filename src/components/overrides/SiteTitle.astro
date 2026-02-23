@@ -1,0 +1,37 @@
+---
+const pathname = Astro.url.pathname;
+const isVisionFocus = pathname.includes('/vision-focus');
+---
+
+{isVisionFocus ? (
+  <a href="/vision-focus/" class="site-title site-title--product">
+    VisionFocus
+  </a>
+) : (
+  <a href="/" class="site-title site-title--hub">
+    Vision Products
+  </a>
+)}
+
+<style>
+  .site-title {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .site-title--product {
+    background: linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .site-title--hub {
+    color: var(--sl-color-white);
+  }
+</style>

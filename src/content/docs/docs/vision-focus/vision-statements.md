@@ -1,130 +1,130 @@
 ---
-title: Vision Statements
-description: Create and manage your daily vision statements in VisionFocus
+title: ビジョンステートメント
+description: VisionFocus でデイリービジョンステートメントを作成・管理する方法
 ---
 
-# Vision Statements
+# ビジョンステートメント
 
-Vision statements are powerful motivational tools that help you stay focused on your goals. VisionFocus displays your vision whenever you try to visit a blocked website, reminding you why you're choosing to focus.
+ビジョンステートメントは、目標への集中力を保つための強力なツールです。ブロックされたサイトにアクセスしようとするたびに表示されるため、「なぜ集中しているのか」を常に思い出せます。
 
-## What is a Vision Statement?
+## ビジョンステートメントとは？
 
-A vision statement is a short, personal message that describes:
+ビジョンステートメントとは、以下のような短い個人的なメッセージです：
 
-- Your daily goal or intention
-- What you want to accomplish today
-- Why you're choosing to avoid distractions
-- Your motivation for staying focused
+- 今日の目標や意図
+- 今日達成したいこと
+- なぜ誘惑を断ち切るのか
+- 集中し続ける動機
 
-When a website is blocked, your vision statement appears front and center, helping you reconnect with your purpose.
+サイトがブロックされると、ビジョンステートメントが大きく表示され、自分の目的を再確認できます。
 
-## Creating Your First Vision
+## 最初のビジョンを作る
 
-1. Click the VisionFocus icon in your Chrome toolbar
-2. Navigate to the "Vision" tab
-3. Type your vision statement in the text field
-4. Click "Save Vision"
+1. Chrome ツールバーの VisionFocus アイコンをクリック
+2. 「ビジョン」タブを開く
+3. テキストフィールドにビジョンステートメントを入力
+4. 「ビジョンを保存」をクリック
 
-Your vision is now active and will be displayed on all blocked pages.
+これで完了です。すべてのブロックページにあなたのビジョンが表示されます。
 
-### Example Vision Statements
+### ビジョンステートメントの例
 
-Here are some examples to inspire you:
+参考にしてください：
 
-- "Today I will complete my product roadmap and prepare for tomorrow's meeting."
-- "I'm building my dream business one focused hour at a time."
-- "My family deserves my full attention when I get home."
-- "I choose deep work over shallow distractions."
+- 「今日はプロダクトロードマップを完成させ、明日のミーティングに備える。」
+- 「毎日の集中した1時間が、夢のビジネスを築く。」
+- 「帰宅後は家族に全力で向き合う。」
+- 「浅い誘惑よりも、深い集中を選ぶ。」
 
-## Editing Your Vision
+## ビジョンを編集する
 
-You can update your vision statement at any time:
+いつでも更新できます：
 
-1. Open VisionFocus
-2. Go to the "Vision" tab
-3. Edit the text in the vision field
-4. Click "Save Vision"
+1. VisionFocus を開く
+2. 「ビジョン」タブを開く
+3. ビジョンフィールドのテキストを編集
+4. 「ビジョンを保存」をクリック
 
-The updated vision will immediately appear on blocked pages.
+更新したビジョンはすぐにブロックページに反映されます。
 
-## Vision Display on Blocked Pages
+## ブロックページでの表示
 
-When you try to visit a blocked website, you'll see:
+ブロックされたサイトにアクセスしようとすると、以下が表示されます：
 
-1. **Your vision statement** - Displayed prominently at the top
-2. **The blocked URL** - So you know what triggered the block
-3. **Options to continue** - Buttons to go back or override (if enabled)
+1. **ビジョンステートメント** — 上部に大きく表示
+2. **ブロックされた URL** — どのサイトがトリガーになったかを確認
+3. **継続するオプション** — 戻るボタンや解除ボタン（設定により）
 
-This moment of reflection helps you make conscious choices about your time and attention.
+この「立ち止まる瞬間」が、時間と注意力を意識的に使う助けになります。
 
-## Writing Effective Vision Statements
+## 効果的なビジョンの書き方
 
-### Keep It Personal
+### 一人称で書く
 
-Write in first person ("I will..." or "I am...") to make it feel more personal and actionable.
+「私は〜する」「私は〜だ」と一人称で書くと、より個人的でアクションにつながりやすくなります。
 
-### Be Specific
+### 具体的に書く
 
-Instead of "be more productive," try "complete 3 client proposals by 5pm."
+「もっと生産的になる」ではなく、「今日17時までにクライアント提案書を3件完成させる」のように具体的に。
 
-### Focus on Why
+### 「なぜ」を意識する
 
-Connect to your deeper motivation: "I'm saving for my daughter's education" is more powerful than "I need to work."
+より深い動機とつなげると強力です。「仕事しなければ」より「子どもの教育費を貯めている」の方がリマインドとして機能します。
 
-### Use Present or Future Tense
+### 現在形または未来形で書く
 
-Frame your vision as happening now or soon:
-- "I am focused and productive"
-- "I will finish this project today"
+今または近い未来に起きていることとして表現しましょう：
+- 「私は集中していて生産的だ」
+- 「今日このプロジェクトを終わらせる」
 
-### Keep It Concise
+### 簡潔に書く
 
-Aim for 1-3 sentences. You should be able to read and absorb it in under 10 seconds.
+1〜3文が理想です。10秒以内に読んで理解できる長さにしましょう。
 
-## Multiple Vision Statements (Premium)
+## 複数のビジョンステートメント（プレミアム）
 
-Premium subscribers can create and manage multiple vision statements for different contexts.
+プレミアム会員は、シチュエーションに合わせた複数のビジョンを作成・管理できます。
 
-### Managing Multiple Visions
+### 複数ビジョンの管理
 
-VisionFocus Premium allows you to:
-- Create multiple vision presets for different situations (work, study, personal)
-- Switch between visions based on your current focus
-- Schedule specific visions for different times of day or days of the week
+VisionFocus プレミアムでできること：
+- 仕事・学習・プライベートなど、場面別のビジョンプリセットを作成
+- 今の状況に合わせてビジョンを切り替え
+- 時間帯や曜日によって自動的にビジョンをスケジュール
 
-Navigate to the "Vision" tab to access vision preset management and scheduling features.
+「ビジョン」タブからプリセット管理とスケジュール機能にアクセスできます。
 
-### Example Use Cases
+### 活用例
 
-- **Work Vision**: "I'm delivering my best work for my clients today"
-- **Personal Vision**: "I'm investing in my health and relationships"
-- **Study Vision**: "I'm building the skills that will change my life"
-- **Evening Vision**: "I'm present with my family and recharging for tomorrow"
+- **仕事ビジョン**：「今日もクライアントに最高の仕事を届ける」
+- **プライベートビジョン**：「健康と人間関係に投資する」
+- **学習ビジョン**：「人生を変えるスキルを積み上げている」
+- **夕方ビジョン**：「家族と向き合い、明日のために英気を養う」
 
-## Tips for Maximum Impact
+## 最大限に活かすコツ
 
-### Update Daily
+### 毎日更新する
 
-Refresh your vision each morning to match your current priorities and energy.
+毎朝、今日の優先事項とエネルギーに合わせてビジョンをリフレッシュしましょう。
 
-### Test It Out
+### 実際に試してみる
 
-Try blocking a site and viewing your vision. Does it resonate? Does it motivate you? Adjust if needed.
+サイトをブロックしてビジョンを確認してみてください。心に響きますか？モチベーションが上がりますか？必要なら調整しましょう。
 
-### Combine with Timers
+### タイマーと組み合わせる
 
-Use vision statements alongside [focus timers](/docs/vision-focus/timers/) for even more powerful productivity sessions.
+[集中タイマー](/docs/vision-focus/timers/)と組み合わせると、さらに強力な集中セッションになります。
 
-### Review and Refine
+### 振り返りと改善
 
-At the end of each week, review your visions. Which ones helped you most? Which need updating?
+週の終わりにビジョンを振り返りましょう。どれが最も効果的でしたか？更新が必要なものはどれですか？
 
-## Next Steps
+## 次のステップ
 
-- [Blocking Websites](/docs/vision-focus/blocking-websites/) - Set up your blocklist to work with your vision
-- [Using Timers](/docs/vision-focus/timers/) - Combine visions with focused time blocks
-- [FAQ](/docs/vision-focus/faq/) - Common questions about vision statements
+- [ウェブサイトブロック](/docs/vision-focus/blocking-websites/) — ビジョンと連動したブロックリストを設定
+- [タイマー機能](/docs/vision-focus/timers/) — ビジョンと集中タイムブロックを組み合わせる
+- [FAQ](/docs/vision-focus/faq/) — ビジョンステートメントについてよくある質問
 
-## Need Help?
+## お困りですか？
 
-If you have questions about vision statements or suggestions for new features, please [open an issue on GitHub](https://github.com/machina-gg/vision-focus/issues).
+ビジョンステートメントについてご質問や新機能のご要望は、[GitHub で Issue を作成](https://github.com/machina-gg/vision-focus/issues)してください。

@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  product?: string;
+  limit?: number;
+}
+
+const { product, limit } = Astro.props;
+
+const allDocs = await getCollection('docs');
+
+const articles = allDocs
+  .filter((doc) => doc.data.publishedAt != null)
+  .map((doc) => ({
+    title: doc.data.title,
+    description: doc.data.description ?? '',
+    href: `/${doc.id}/`,
+    publishedAt: doc.data.publishedAt as Date,
+    products: doc.data.products ?? [],
+  }))
+  .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+const filtered = product
+  ? articles.filter((a) => a.products.includes(product))
+  : articles;
+
+const displayed = limit ? filtered.slice(0, limit) : filtered;
+---
+
+{displayed.length > 0 ? (
+  <div class="article-list">
+    {displayed.map((article) => (
+      <ArticleCard
+        title={article.title}
+        description={article.description}
+        href={article.href}
+        publishedAt={article.publishedAt}
+        products={article.products}
+      />
+    ))}
+  </div>
+) : (
+  <p class="article-list-empty">記事はまだありません。</p>
+)}
+
+<style>
+  .article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .article-list-empty {
+    color: var(--vp-text-muted);
+    font-size: 0.875rem;
+    padding: 2rem 0;
+    text-align: center;
+  }
+</style>

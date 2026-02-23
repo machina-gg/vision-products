@@ -1,0 +1,47 @@
+---
+import ProductNav from '../shared/ProductNav.astro';
+
+const pathname = Astro.url.pathname;
+
+const isVisionFocus = pathname.includes('/vision-focus');
+
+// LP ページ（docs/ legal/ changelog/ 以外の /vision-focus ページ）
+const isProductLP =
+  isVisionFocus &&
+  !pathname.includes('/docs/') &&
+  !pathname.includes('/legal/') &&
+  !pathname.includes('/changelog');
+
+// 個別記事ページ（/articles/ 以下、ただし index は除く）
+const isIndividualArticle =
+  pathname.startsWith('/articles/') &&
+  pathname !== '/articles/' &&
+  pathname !== '/articles';
+
+const visionFocusLinks = [
+  { label: 'Overview', href: '/vision-focus/' },
+  { label: 'Docs',     href: '/docs/vision-focus/getting-started/' },
+  { label: 'Privacy',  href: '/legal/privacy/' },
+  { label: 'Install',  href: 'https://chrome.google.com/webstore', isExternal: true, isPrimary: true },
+];
+---
+
+{(isProductLP || isIndividualArticle) ? (
+  <span id="_top" class="skip-anchor" aria-hidden="true"></span>
+) : isVisionFocus ? (
+  <Fragment>
+    <h1 id="_top"><slot /></h1>
+    <ProductNav productName="VisionFocus" links={visionFocusLinks} />
+  </Fragment>
+) : (
+  <h1 id="_top"><slot /></h1>
+)}
+
+<style>
+  .skip-anchor {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+</style>

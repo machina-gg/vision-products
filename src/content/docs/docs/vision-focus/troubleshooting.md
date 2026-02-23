@@ -1,237 +1,235 @@
 ---
-title: Troubleshooting
-description: Common issues and solutions for VisionFocus Chrome Extension
+title: トラブルシューティング
+description: VisionFocus Chrome 拡張機能のよくある問題と解決策
 ---
 
-# Troubleshooting VisionFocus
+# トラブルシューティング
 
-This guide helps you resolve common issues with VisionFocus. If you don't find your issue here, please [report it on GitHub](https://github.com/machina-gg/vision-focus/issues).
+VisionFocus でよくある問題の解決方法をまとめました。ここで解決しない場合は [GitHub で報告](https://github.com/machina-gg/vision-focus/issues)してください。
 
-## Extension Not Working
+## 拡張機能が動かない
 
-### Extension doesn't appear after installation
+### インストール後にアイコンが表示されない
 
-**Problem:** VisionFocus icon is not visible in the Chrome toolbar after installation.
+**症状：** インストール後に Chrome ツールバーに VisionFocus アイコンが表示されない。
 
-**Solutions:**
+**解決策：**
 
-1. Check if the extension is enabled:
-   - Open `chrome://extensions/`
-   - Find "VisionFocus" in the list
-   - Ensure the toggle switch is ON (blue)
+1. 拡張機能が有効か確認：
+   - `chrome://extensions/` を開く
+   - 一覧から「VisionFocus」を探す
+   - トグルスイッチがオン（青色）になっているか確認
 
-2. Pin the extension to toolbar:
-   - Click the puzzle icon in Chrome toolbar
-   - Find "VisionFocus" and click the pin icon
+2. ツールバーにピン留めする：
+   - Chrome ツールバーのパズルアイコンをクリック
+   - 「VisionFocus」のピンアイコンをクリック
 
-3. Restart Chrome:
-   - Close all Chrome windows completely
-   - Reopen Chrome and check again
+3. Chrome を再起動：
+   - すべての Chrome ウィンドウを完全に閉じる
+   - Chrome を再度開いて確認
 
-### Extension icon is grayed out
+### アイコンがグレーアウトしている
 
-**Problem:** VisionFocus icon appears but is grayed out or inactive.
+**症状：** VisionFocus アイコンは表示されているが、グレーアウトまたは非アクティブ状態。
 
-**Solutions:**
+**解決策：**
 
-1. Refresh the current page (press `F5` or `Cmd+R`)
-2. Check if you're on a restricted page (Chrome Web Store, chrome://, or other system pages cannot be controlled by extensions)
-3. Reinstall the extension if the issue persists
+1. 現在のページを更新（`F5` または `Cmd+R`）
+2. 制限されたページを開いていないか確認（Chrome ウェブストア、`chrome://` などのシステムページは拡張機能から制御できません）
+3. 問題が続く場合は拡張機能を再インストール
 
-## Blocking Issues
+## ブロックの問題
 
-### Websites are not being blocked
+### サイトがブロックされない
 
-**Problem:** Sites you added to the blocklist still load normally.
+**症状：** ブロックリストに追加したサイトが普通に開く。
 
-**Solutions:**
+**解決策：**
 
-1. Verify the URL format:
-   - Use domain only: `youtube.com` (not `https://youtube.com`)
-   - For subdomains: `www.youtube.com` blocks only www, while `youtube.com` blocks all subdomains
+1. URL の形式を確認：
+   - ドメインのみを入力：`youtube.com`（`https://youtube.com` は不要）
+   - サブドメイン：`www.youtube.com` は www のみ、`youtube.com` はすべてのサブドメインをブロック
 
-2. Check if blocking is enabled:
-   - Open VisionFocus
-   - Navigate to "Block" tab
-   - Ensure the blocklist is not paused or disabled
+2. ブロックが有効か確認：
+   - VisionFocus を開く
+   - 「ブロック」タブを開く
+   - ブロックリストが一時停止・無効化されていないか確認
 
-3. Clear browser cache:
-   - Open `chrome://settings/clearBrowserData`
-   - Select "Cached images and files"
-   - Click "Clear data"
+3. ブラウザキャッシュを削除：
+   - `chrome://settings/clearBrowserData` を開く
+   - 「キャッシュされた画像とファイル」を選択
+   - 「データを削除」をクリック
 
-4. Refresh the blocked website after adding it to the blocklist
+4. ブロックリストに追加後、対象サイトのページを更新する
 
-### YouTube blocking not working
+### YouTube のブロックが機能しない
 
-**Problem:** YouTube continues to work despite being on the blocklist.
+**症状：** ブロックリストに追加しているのに YouTube が開く。
 
-**Solutions:**
+**解決策：**
 
-1. Add these variations to your blocklist:
+1. 以下のバリエーションをすべてブロックリストに追加：
    - `youtube.com`
    - `www.youtube.com`
    - `m.youtube.com`
 
-2. Block YouTube embedded videos by adding:
-   - `youtube-nocookie.com`
+2. 埋め込み動画もブロックしたい場合：
+   - `youtube-nocookie.com` を追加
 
-3. Restart Chrome after adding all variations
+3. すべて追加後に Chrome を再起動
 
-### Block page doesn't show vision statement
+### ブロックページにビジョンが表示されない
 
-**Problem:** Blocked pages show blank screen or default message instead of your vision.
+**症状：** ブロックページが空白またはデフォルトのメッセージになっている。
 
-**Solutions:**
+**解決策：**
 
-1. Verify your vision is saved:
-   - Open VisionFocus
-   - Go to "Vision" tab
-   - Check if your vision text is present
+1. ビジョンが保存されているか確認：
+   - VisionFocus を開く
+   - 「ビジョン」タブを開く
+   - ビジョンテキストがあるか確認
 
-2. Ensure vision display is enabled in settings
-3. Reload the blocked page
+2. 設定でビジョン表示が有効になっているか確認
+3. ブロックされたページをリロード
 
-## Timer Problems
+## タイマーの問題
 
-### Timer stops when tab is in background
+### バックグラウンドでタイマーが止まる
 
-**Problem:** Focus timer pauses or stops when switching tabs.
+**症状：** タブを切り替えると集中タイマーが一時停止または停止する。
 
-**Solutions:**
+**解決策：**
 
-1. Keep VisionFocus popup window open during timer sessions
-2. Pin the tab with VisionFocus open
-3. This is a known Chrome limitation - we're working on a fix in the next update
+1. タイマーセッション中は VisionFocus のポップアップウィンドウを開いたままにする
+2. VisionFocus を開いているタブをピン留めする
+3. これは Chrome の既知の制限です。次のアップデートで修正予定
 
-### Timer notifications not appearing
+### タイマー終了の通知が届かない
 
-**Problem:** No notification when timer completes.
+**症状：** タイマーが完了しても通知が来ない。
 
-**Solutions:**
+**解決策：**
 
-1. Enable Chrome notifications:
-   - Go to `chrome://settings/content/notifications`
-   - Ensure notifications are allowed
-   - Add VisionFocus to allowed sites
+1. Chrome の通知を有効にする：
+   - `chrome://settings/content/notifications` を開く
+   - 通知が許可されているか確認
+   - VisionFocus を許可サイトに追加
 
-2. Check system notification settings:
-   - **macOS:** System Settings → Notifications → Google Chrome → Allow notifications
-   - **Windows:** Settings → System → Notifications → Google Chrome → On
+2. システムの通知設定を確認：
+   - **macOS：** システム設定 → 通知 → Google Chrome → 通知を許可
+   - **Windows：** 設定 → システム → 通知 → Google Chrome → オン
 
-### Timer resets unexpectedly
+### タイマーが予期せずリセットされる
 
-**Problem:** Timer goes back to zero without completing.
+**症状：** 完了前にタイマーがゼロに戻る。
 
-**Solutions:**
+**解決策：**
 
-1. Avoid closing the VisionFocus popup while timer is running
-2. Don't disable or restart the extension during a session
-3. Check if Chrome is set to clear data on exit (this will reset the timer)
+1. タイマー実行中に VisionFocus ポップアップを閉じない
+2. セッション中に拡張機能を無効化・再起動しない
+3. Chrome が終了時にデータを削除する設定になっていないか確認（タイマーがリセットされる原因になります）
 
-## Data Loss Issues
+## データ消失の問題
 
-### Settings or blocklist disappeared
+### 設定やブロックリストが消えた
 
-**Problem:** Your configuration was reset after Chrome update or extension reinstall.
+**症状：** Chrome アップデートや拡張機能の再インストール後に設定がリセットされた。
 
-**Solutions:**
+**解決策：**
 
-1. Check if data sync is enabled (Premium feature):
-   - Open VisionFocus
-   - Go to Settings
-   - Enable "Sync across devices"
+1. データ同期が有効か確認（プレミアム機能）：
+   - VisionFocus を開く
+   - 設定を開く
+   - 「デバイス間で同期」を有効にする
 
-2. Export your settings regularly (Free feature coming soon):
-   - We're adding backup/restore in the next version
+2. 設定を定期的にエクスポートする（無料機能、近日公開予定）：
+   - 次バージョンでバックアップ/リストア機能を追加予定
 
-3. If data was lost due to extension reinstall:
-   - Unfortunately, local data cannot be recovered
-   - We recommend using Premium for cloud sync
+3. 再インストールによるデータ消失の場合：
+   - 残念ながら、ローカルデータは復元できません
+   - バックアップのためプレミアムのクラウド同期の利用をおすすめします
 
-## Premium Features Issues
+## プレミアム機能の問題
 
-### Premium features not activating
+### プレミアム機能が有効にならない
 
-**Problem:** Purchased Premium but features are still locked.
+**症状：** プレミアムを購入したが機能がロックされたまま。
 
-**Solutions:**
+**解決策：**
 
-1. Verify purchase:
-   - Open VisionFocus
-   - Go to Settings → Premium
-   - Check if "Premium Active" is displayed
+1. 購入を確認：
+   - VisionFocus を開く
+   - 設定 → プレミアム を開く
+   - 「プレミアム有効」が表示されているか確認
 
-2. Refresh Premium status:
-   - Click "Restore Purchase" button in Premium settings
-   - Wait 10-15 seconds for verification
+2. プレミアムステータスを更新：
+   - プレミアム設定の「購入を復元」をクリック
+   - 10〜15秒待って認証を完了
 
-3. Sign in again:
-   - Log out from VisionFocus
-   - Log back in with the account used for purchase
+3. 再ログイン：
+   - VisionFocus からログアウト
+   - 購入時に使用したアカウントで再ログイン
 
-4. Check email for purchase confirmation
-5. If issue persists, contact support with your purchase receipt
+4. 購入確認メールを確認
+5. 解決しない場合は購入領収書とともにサポートに連絡
 
-### Premium sync not working
+### プレミアムの同期が動かない
 
-**Problem:** Settings don't sync across devices despite having Premium.
+**症状：** プレミアムなのに複数デバイス間で設定が同期されない。
 
-**Solutions:**
+**解決策：**
 
-1. Ensure you're logged in with the same account on all devices
-2. Force sync:
-   - Open Settings → Premium
-   - Click "Sync Now"
+1. すべてのデバイスで同じアカウントにログインしているか確認
+2. 強制同期：
+   - 設定 → プレミアム を開く
+   - 「今すぐ同期」をクリック
 
-3. Check internet connection
-4. Allow up to 5 minutes for sync to complete
+3. インターネット接続を確認
+4. 同期完了まで最大5分かかる場合があります
 
-## Vision Display Issues
+## ビジョン表示の問題
 
-### Vision statement not displaying
+### ビジョンステートメントが保存されない
 
-**Problem:** Vision tab is empty or doesn't save text.
+**症状：** ビジョンタブが空白またはテキストが保存されない。
 
-**Solutions:**
+**解決策：**
 
-1. Check character limit:
-   - Free: 200 characters
-   - Premium: 1000 characters
+1. 文字数制限を確認：
+   - 無料：200文字
+   - プレミアム：1000文字
 
-2. Ensure you clicked "Save" after writing your vision
-3. Try clearing the vision and writing it again
-4. Check browser console for errors (press `F12` → Console tab)
+2. ビジョンを書いた後に「保存」をクリックしたか確認
+3. ビジョンを削除して書き直してみる
+4. ブラウザコンソールでエラーを確認（`F12` → コンソールタブ）
 
-## Performance Issues
+## パフォーマンスの問題
 
-### Extension slowing down Chrome
+### VisionFocus 導入後に Chrome が重くなった
 
-**Problem:** Chrome becomes slow after installing VisionFocus.
+**症状：** VisionFocus のインストール後に Chrome の動作が遅くなった。
 
-**Solutions:**
+**解決策：**
 
-1. Reduce number of blocked sites (Free users: stay under 10 for best performance)
-2. Disable unused features in Settings
-3. Update to the latest version of VisionFocus
-4. Check if other extensions are conflicting
+1. ブロックサイト数を減らす（無料ユーザーは10件以内が最適）
+2. 設定で使わない機能を無効にする
+3. VisionFocus を最新バージョンにアップデート
+4. 他の拡張機能と競合していないか確認
 
-## Still Having Issues?
+## それでも解決しない場合
 
-If none of these solutions work:
+1. **アップデートを確認**：VisionFocus が最新バージョンか確認
+2. **ブラウザのバージョン**：Chrome を最新バージョンにアップデート
+3. **競合の確認**：他の拡張機能を一時的に無効化して原因を特定
+4. **バグ報告**：[GitHub で Issue を作成](https://github.com/machina-gg/vision-focus/issues)する際は以下を記載：
+   - Chrome のバージョン
+   - VisionFocus のバージョン
+   - 再現手順
+   - 該当する場合はスクリーンショット
 
-1. **Check for updates:** Ensure you have the latest version of VisionFocus
-2. **Browser version:** Update Chrome to the latest version
-3. **Conflict check:** Temporarily disable other extensions to see if there's a conflict
-4. **Report the bug:** [Create an issue on GitHub](https://github.com/machina-gg/vision-focus/issues) with:
-   - Your Chrome version
-   - VisionFocus version
-   - Steps to reproduce the problem
-   - Screenshots if applicable
+## サポート窓口
 
-## Contact Support
+- **GitHub Issues：** [github.com/machina-gg/vision-focus/issues](https://github.com/machina-gg/vision-focus/issues)
+- **メール：** support@machina.gg（プレミアムユーザーは優先対応）
 
-- **GitHub Issues:** [github.com/machina-gg/vision-focus/issues](https://github.com/machina-gg/vision-focus/issues)
-- **Email:** support@machina.gg (Premium users get priority response)
-
-We typically respond within 24-48 hours.
+通常 24〜48 時間以内にご返答します。

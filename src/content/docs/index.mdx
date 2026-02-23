@@ -1,30 +1,34 @@
 ---
-title: machina.gg
-description: Building innovative products that enhance digital experiences.
+title: Vision Products
+description: Apps and tools built for focus, productivity, and digital wellbeing.
 template: splash
+prev: false
+next: false
 hero:
-  tagline: Building innovative products that enhance digital experiences
+  tagline: プロダクトを、世界へ届けよう。
+  text: 集中力・生産性・デジタルウェルビーイングのためのアプリとツールを作っています。
   actions:
-    - text: VisionFocus
+    - text: VisionFocus を見る
       link: /vision-focus/
       icon: right-arrow
       variant: primary
-    - text: View on GitHub
+    - text: GitHub
       link: https://github.com/machina-gg
       icon: github
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import ProductCard from '../../components/hub/ProductCard.astro';
 
-## Our Products
-
-<CardGrid stagger>
-	<Card title="VisionFocus" icon="star">
-		Chrome extension for focused browsing. Block distractions, protect your vision, and achieve your goals.
-	</Card>
-</CardGrid>
-
-## About machina.gg
-
-We create tools that help you focus on what matters. Our products are designed with privacy, simplicity, and effectiveness in mind.
+<div class="hub-section">
+  <p class="hub-section-title">Products</p>
+  <div class="hub-products-grid">
+    <ProductCard
+      name="VisionFocus"
+      description="集中力を高め、視力を守る Chrome 拡張機能。ウェブサイトブロック・タイマー・ビジョンステートメントで毎日の生産性を底上げします。"
+      href="/vision-focus/"
+      iconName="vision-focus"
+      badge="Chrome Extension"
+    />
+  </div>
+</div>

@@ -1,0 +1,15 @@
+---
+---
+
+<div class="feature-grid">
+  <slot />
+</div>
+
+<style>
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0 2rem;
+  }
+</style>
