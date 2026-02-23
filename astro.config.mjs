@@ -48,6 +48,12 @@ export default defineConfig({
 					autogenerate: { directory: 'docs/vision-focus' },
 				},
 				{
+					label: 'VisionFocus',
+					items: [
+						{ label: 'リリースノート', slug: 'vision-focus/changelog' },
+					],
+				},
+				{
 					label: 'Legal',
 					items: [
 						{ label: 'プライバシーポリシー', slug: 'legal/privacy' },
