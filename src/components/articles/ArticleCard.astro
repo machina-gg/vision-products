@@ -1,0 +1,92 @@
+---
+import TagBadge from './TagBadge.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  publishedAt: Date;
+  products: string[];
+}
+
+const { title, description, href, publishedAt, products } = Astro.props;
+
+const PRODUCT_LABELS: Record<string, string> = {
+  'vision-focus': 'VisionFocus',
+};
+
+const formattedDate = publishedAt.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<a href={href} class="article-card">
+  <div class="article-card-meta">
+    <time datetime={publishedAt.toISOString()}>{formattedDate}</time>
+    {products.length > 0 && (
+      <div class="article-card-tags">
+        {products.map((product) => (
+          <TagBadge product={product} label={PRODUCT_LABELS[product] ?? product} />
+        ))}
+      </div>
+    )}
+  </div>
+  <h3 class="article-card-title">{title}</h3>
+  <p class="article-card-description">{description}</p>
+</a>
+
+<style>
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border-radius: 0.75rem;
+    background: var(--sl-color-bg-nav);
+    color: var(--sl-color-text);
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .article-card:hover {
+    border-color: var(--sl-color-accent);
+    transform: translateY(-2px);
+    color: var(--sl-color-text);
+  }
+
+  .article-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .article-card-meta time {
+    font-size: 0.75rem;
+    color: var(--vp-text-muted);
+  }
+
+  .article-card-tags {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+  }
+
+  .article-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .article-card-description {
+    font-size: 0.875rem;
+    color: var(--vp-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
