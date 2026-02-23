@@ -1,19 +1,31 @@
-# vision-products
+# プロダクトハブサイト
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-Official products and documentation site for **machina.gg**.
+個人開発者が複数のプロダクトを一箇所にまとめて管理・公開できるプロダクトハブサイト。
 
 **Live Site**: [https://machina-gg.github.io/vision-products/](https://machina-gg.github.io/vision-products/)
 
 ## About
 
-This site hosts:
+自分が作ったプロダクトを増やすたびに、LP・ヘルプ・法的ページを別々のサービスで作り直す手間をなくすためのサイト。1 つのサイトに追加するだけで、統一されたリッチなデザインで各プロダクトのページ一式を公開できる。
 
-- Product pages for machina.gg products (VisionFocus, etc.)
-- Documentation and user guides
-- Legal pages (Privacy Policy, Terms of Service)
-- Blog and updates
+プロダクトごとに以下のページを提供：
+
+- **LP（ランディングページ）** — 機能紹介・スクリーンショット・ダウンロードリンク
+- **ヘルプ/ドキュメント** — 使い方ガイド・FAQ
+- **リリースノート** — バージョン更新履歴
+- **法的ページ** — プライバシーポリシー・利用規約（App Store 申請対応）
+
+## 背景・課題
+
+プロダクトを新しく作るたびに：
+
+- プロダクトサイト・ヘルプサイトを別々に用意するのが大変
+- デプロイ・ホスティング設定を毎回行う必要がある
+- 複数サイトに分散して管理が煩雑になる
+
+これらを解消するため、1 つのサイトで全プロダクトのページ・ドキュメントをまとめて管理する。
 
 ## Tech Stack
 
@@ -35,16 +47,19 @@ This site hosts:
 │   ├── assets/                 # Images and media
 │   ├── content/
 │   │   └── docs/               # Markdown/MDX content
-│   │       ├── index.mdx       # Homepage
-│   │       ├── vision-focus.mdx # VisionFocus product page
-│   │       ├── legal/          # Legal documents
-│   │       │   ├── privacy.md
-│   │       │   └── terms.md
+│   │       ├── index.mdx       # Homepage (product hub)
+│   │       ├── {product-name}.mdx      # Product LP
+│   │       ├── legal/          # Legal documents (per product)
 │   │       └── docs/
-│   │           └── vision-focus/ # VisionFocus documentation
+│   │           └── {product-name}/     # Product documentation
 │   ├── styles/
 │   │   └── custom.css          # Custom styles
 │   └── content.config.ts
+├── docs/                       # Project documentation
+│   ├── PRD.md                  # 要件定義
+│   └── INPUT.md                # ヒアリングシート
+├── reports/                    # Research reports
+│   └── COMPETITIVE_ANALYSIS.md
 ├── astro.config.mjs            # Astro configuration
 ├── package.json
 └── tsconfig.json
@@ -93,48 +108,19 @@ The site automatically deploys to GitHub Pages when changes are pushed to the `m
 3. Deploys to GitHub Pages
 4. Site is live at [https://machina-gg.github.io/vision-products/](https://machina-gg.github.io/vision-products/)
 
-## Content Management
+## Adding a New Product
 
-### Adding a New Page
-
-1. Create a new `.md` or `.mdx` file in `src/content/docs/`
-2. Add frontmatter:
-   ```yaml
-   ---
-   title: Page Title
-   description: Page description
-   ---
-   ```
-3. Write content in Markdown
-4. Update sidebar in `astro.config.mjs` if needed
-
-### Adding a New Product
-
-1. Create a product page: `src/content/docs/product-name.mdx`
-2. Create documentation directory: `src/content/docs/docs/product-name/`
-3. Update sidebar configuration in `astro.config.mjs`
-4. Add product card to homepage
-
-## Brand Colors (VisionFocus)
-
-CSS variables defined in `src/styles/custom.css`:
-
-- Primary: `#14B8A6` (Teal)
-- Success: `#06B6D4` (Cyan)
-- Danger: `#F43F5E` (Rose)
-- Premium: `#8B5CF6` (Purple)
-
-## Contributing
-
-This repository is managed by machina.gg. External contributions are not currently accepted.
-
-## License
-
-© 2026 machina.gg. All rights reserved.
+1. Create a product LP: `src/content/docs/{product-name}.mdx`
+2. Create documentation directory: `src/content/docs/docs/{product-name}/`
+3. Create legal pages: `src/content/docs/legal/{product-name}/`
+4. Update sidebar configuration in `astro.config.mjs`
+5. Add product card to homepage `src/content/docs/index.mdx`
 
 ## Links
 
 - GitHub: [machina-gg](https://github.com/machina-gg)
-- VisionFocus: [machina-gg/vision-focus](https://github.com/machina-gg/vision-focus)
 - Starlight Documentation: [starlight.astro.build](https://starlight.astro.build/)
 
+## License
+
+© 2026 machina.gg. All rights reserved.
