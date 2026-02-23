@@ -6,20 +6,25 @@ prev: false
 next: false
 ---
 
-import ProductNav from '../../components/shared/ProductNav.astro';
-import HeroSection from '../../components/lp/HeroSection.astro';
-import FeatureGrid from '../../components/lp/FeatureGrid.astro';
-import FeatureCard from '../../components/lp/FeatureCard.astro';
-import DownloadButtons from '../../components/lp/DownloadButtons.astro';
-import VisionFocusPricing from '../../components/lp/VisionFocusPricing.astro';
+import ProductNav from "../../components/shared/ProductNav.astro";
+import HeroSection from "../../components/lp/HeroSection.astro";
+import FeatureGrid from "../../components/lp/FeatureGrid.astro";
+import FeatureCard from "../../components/lp/FeatureCard.astro";
+import DownloadButtons from "../../components/lp/DownloadButtons.astro";
+import VisionFocusPricing from "../../components/lp/VisionFocusPricing.astro";
 
 <ProductNav
   productName="VisionFocus"
   links={[
-    { label: 'Overview',   href: '/vision-focus/' },
-    { label: 'Docs',       href: '/docs/vision-focus/getting-started/' },
-    { label: 'Privacy',    href: '/legal/privacy/' },
-    { label: 'Install',    href: 'https://chrome.google.com/webstore', isExternal: true, isPrimary: true },
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Docs", href: "/docs/vision-focus/getting-started/" },
+    {
+      label: "Install",
+      href: "https://chrome.google.com/webstore",
+      isExternal: true,
+      isPrimary: true,
+    },
   ]}
 />
 
@@ -28,10 +33,20 @@ import VisionFocusPricing from '../../components/lp/VisionFocusPricing.astro';
   subtitle="VisionFocus は、ウェブサイトブロック・タイマー・デイリービジョンステートメントを組み合わせた Chrome 拡張機能です。あなたの集中を守り、目を労り、毎日の目標を達成するための相棒。"
   eyebrow="Chrome Extension"
 >
-  <DownloadButtons links={[
-    { label: 'Chrome Web Store', href: 'https://chrome.google.com/webstore', type: 'chrome' },
-    { label: 'Docs を読む', href: '/docs/vision-focus/getting-started/', type: 'direct' },
-  ]} />
+  <DownloadButtons
+    links={[
+      {
+        label: "Chrome Web Store",
+        href: "https://chrome.google.com/webstore",
+        type: "chrome",
+      },
+      {
+        label: "Docs を読む",
+        href: "/docs/vision-focus/getting-started/",
+        type: "direct",
+      },
+    ]}
+  />
 </HeroSection>
 
 <section id="features" class="lp-section">
