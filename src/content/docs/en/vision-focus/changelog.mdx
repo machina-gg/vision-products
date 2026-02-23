@@ -1,0 +1,72 @@
+---
+title: Release Notes
+description: Version history and release notes for VisionFocus
+template: splash
+prev: false
+next: false
+---
+
+import ChangelogEntry from "../../../../components/changelog/ChangelogEntry.astro";
+
+<ChangelogEntry version="1.2.0" date={new Date('2026-02-10')}>
+
+#### Added
+
+- **Schedule Blocking**: Set blocking schedules by day of week and time of day
+- **Focus Session Stats**: View weekly and monthly focus time reports in the popup
+- **Vision Templates**: Added preset templates for daily vision input (goals, gratitude, thought of the day)
+
+#### Fixed
+
+- Fixed an issue where timer completion notifications sometimes appeared twice
+- Fixed an issue where vision text was hard to read on the block page in dark mode
+- Fixed an issue where the service worker could stop after long idle periods, disabling blocking
+
+</ChangelogEntry>
+
+<ChangelogEntry version="1.1.0" date={new Date('2025-12-01')}>
+
+#### Added
+
+- **20-20-20 Rule Reminder**: Eye break feature that notifies you to look 20 feet away for 20 seconds every 20 minutes
+- **Temporary Allow**: Feature to temporarily unblock a blocked site for a specified duration (5, 15, or 30 minutes)
+- **Custom Block Page**: Customize the background color and message of the block page
+
+#### Fixed
+
+- Fixed an issue where block rules using wildcards (`*.example.com`) did not work correctly
+- Fixed an issue where the remaining timer time reset if the browser was restarted during a timer session
+
+#### Removed
+
+- Removed legacy settings format (v0.x) migration processing (only updates from v1.0.0 and later are supported)
+
+</ChangelogEntry>
+
+<ChangelogEntry version="1.0.0" date={new Date('2025-09-15')}>
+
+#### Added
+
+- **Website Blocking**: Block sites registered in custom lists (free plan supports up to 10 sites)
+- **Focus Timer**: Pomodoro-style focus and break timer (25 min focus / 5 min break)
+- **Daily Vision Statement**: Display today's goals on the block page to maintain motivation
+- **Privacy-First Design**: All data stored locally with no transmission to external servers
+- **Premium Plan**: Unlimited blocking, advanced timer options, multiple vision statements ($1.99/mo)
+
+</ChangelogEntry>
+
+<ChangelogEntry version="0.9.0" date={new Date('2025-08-01')}>
+
+#### Added
+
+- Beta release
+- Basic website blocking functionality
+- Simple timer (countdown only)
+- Daily vision input field (1 entry)
+
+#### Fixed
+
+- Fixed an issue where the extension icon was not displayed in Chrome 127 and later
+- Fixed an issue where content script injection failed on some sites
+
+</ChangelogEntry>

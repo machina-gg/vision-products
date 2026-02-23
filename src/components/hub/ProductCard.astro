@@ -6,9 +6,11 @@ interface Props {
   icon?: string;
   iconName?: string;
   badge?: string;
+  /** CTA ラベル（省略時は「詳しく見る」） */
+  ctaLabel?: string;
 }
 
-const { name, description, href, icon, iconName, badge } = Astro.props;
+const { name, description, href, icon, iconName, badge, ctaLabel = "詳しく見る" } = Astro.props;
 
 type IconName = 'vision-focus';
 
@@ -46,7 +48,7 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
     <p class="product-card-description">{description}</p>
   </div>
   <span class="product-card-cta">
-    詳しく見る
+    {ctaLabel}
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
