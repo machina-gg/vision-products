@@ -1,10 +1,55 @@
 ---
-// Hardcoded VisionFocus pricing: Free vs Premium
+// VisionFocus 料金プランコンポーネント（日英 i18n 対応）
+const locale = Astro.currentLocale ?? "ja";
+const isEn = locale === "en";
+
+// 翻訳辞書
+const t = {
+  sectionTitle: isEn ? "Simple Pricing" : "シンプルな料金体系",
+  freePeriod: isEn ? "Free forever" : "永久無料",
+  freeTagline: isEn ? "For those who want to try it out" : "まずは試してみたい方へ",
+  freeCta: isEn ? "Get Started Free" : "無料で始める",
+  premiumBadge: isEn ? "Recommended" : "おすすめ",
+  premiumPeriod: isEn ? "/mo" : "/月",
+  premiumTagline: isEn ? "For those serious about focus" : "本気で集中したい方へ",
+  premiumCta: isEn ? "Start Premium" : "Premium を始める",
+  freeFeatures: isEn
+    ? [
+        "Website blocking (up to 10 sites)",
+        "Basic timer",
+        "Daily vision (1 entry)",
+      ]
+    : [
+        "ウェブサイトブロック（最大 10 サイト）",
+        "基本タイマー機能",
+        "デイリービジョン（1件）",
+      ],
+  freeOffFeatures: isEn
+    ? ["Custom themes", "Detailed reports", "Email support"]
+    : ["カスタムテーマ", "詳細レポート", "メールサポート"],
+  premiumFeatures: isEn
+    ? [
+        { text: "Website blocking (", strong: "unlimited", after: ")" },
+        { text: "Advanced timer options" },
+        { text: "Multiple visions & schedule" },
+        { text: "Full custom themes" },
+        { text: "Detailed reports & stats" },
+        { text: "Email support (within 24h)" },
+      ]
+    : [
+        { text: "ウェブサイトブロック（", strong: "無制限", after: "）" },
+        { text: "高度なタイマーオプション" },
+        { text: "複数ビジョン・スケジュール機能" },
+        { text: "フルカスタムテーマ" },
+        { text: "詳細レポート・統計" },
+        { text: "メールサポート（24h 以内）" },
+      ],
+};
 ---
 
 <section id="pricing" class="pricing-section">
   <p class="lp-section-heading">Pricing</p>
-  <h2 class="lp-section-title">シンプルな料金体系</h2>
+  <h2 class="lp-section-title">{t.sectionTitle}</h2>
 
   <div class="pricing-grid">
     <!-- Free tier -->
@@ -13,52 +58,32 @@
         <span class="pricing-tier-label">Free</span>
         <div class="pricing-price">
           <span class="pricing-amount">$0</span>
-          <span class="pricing-period">永久無料</span>
+          <span class="pricing-period">{t.freePeriod}</span>
         </div>
-        <p class="pricing-tagline">まずは試してみたい方へ</p>
+        <p class="pricing-tagline">{t.freeTagline}</p>
       </div>
 
       <ul class="pricing-features">
-        <li class="pricing-feature">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          ウェブサイトブロック（最大 10 サイト）
-        </li>
-        <li class="pricing-feature">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          基本タイマー機能
-        </li>
-        <li class="pricing-feature">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          デイリービジョン（1件）
-        </li>
-        <li class="pricing-feature pricing-feature--off">
-          <svg class="pricing-x" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M3 3l8 8M11 3L3 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          カスタムテーマ
-        </li>
-        <li class="pricing-feature pricing-feature--off">
-          <svg class="pricing-x" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M3 3l8 8M11 3L3 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          詳細レポート
-        </li>
-        <li class="pricing-feature pricing-feature--off">
-          <svg class="pricing-x" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M3 3l8 8M11 3L3 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          メールサポート
-        </li>
+        {t.freeFeatures.map((feature) => (
+          <li class="pricing-feature">
+            <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {feature}
+          </li>
+        ))}
+        {t.freeOffFeatures.map((feature) => (
+          <li class="pricing-feature pricing-feature--off">
+            <svg class="pricing-x" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 3l8 8M11 3L3 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            {feature}
+          </li>
+        ))}
       </ul>
 
       <a href="https://chrome.google.com/webstore" class="pricing-cta pricing-cta--free" target="_blank" rel="noopener noreferrer">
-        無料で始める
+        {t.freeCta}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -67,58 +92,33 @@
 
     <!-- Premium tier -->
     <div class="pricing-card pricing-card--premium">
-      <span class="pricing-recommended-badge">おすすめ</span>
+      <span class="pricing-recommended-badge">{t.premiumBadge}</span>
 
       <div class="pricing-card-header">
         <span class="pricing-tier-label pricing-tier-label--premium">Premium</span>
         <div class="pricing-price">
           <span class="pricing-amount">$1.99</span>
-          <span class="pricing-period">/月</span>
+          <span class="pricing-period">{t.premiumPeriod}</span>
         </div>
-        <p class="pricing-tagline">本気で集中したい方へ</p>
+        <p class="pricing-tagline">{t.premiumTagline}</p>
       </div>
 
       <ul class="pricing-features">
-        <li class="pricing-feature pricing-feature--premium">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          ウェブサイトブロック（<strong>無制限</strong>）
-        </li>
-        <li class="pricing-feature pricing-feature--premium">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          高度なタイマーオプション
-        </li>
-        <li class="pricing-feature pricing-feature--premium">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          複数ビジョン・スケジュール機能
-        </li>
-        <li class="pricing-feature pricing-feature--premium">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          フルカスタムテーマ
-        </li>
-        <li class="pricing-feature pricing-feature--premium">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          詳細レポート・統計
-        </li>
-        <li class="pricing-feature pricing-feature--premium">
-          <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          メールサポート（24h 以内）
-        </li>
+        {t.premiumFeatures.map((feature) => (
+          <li class="pricing-feature pricing-feature--premium">
+            <svg class="pricing-check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {feature.strong
+              ? <>{feature.text}<strong>{feature.strong}</strong>{feature.after ?? ""}</>
+              : feature.text
+            }
+          </li>
+        ))}
       </ul>
 
       <a href="https://chrome.google.com/webstore" class="pricing-cta pricing-cta--premium" target="_blank" rel="noopener noreferrer">
-        Premium を始める
+        {t.premiumCta}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
