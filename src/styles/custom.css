@@ -323,6 +323,22 @@ header.header {
 	margin: 0 auto;
 }
 
+.articles-back-link {
+	margin-top: 3rem;
+	text-align: center;
+}
+
+.articles-back-link a {
+	color: var(--sl-color-accent);
+	font-weight: 500;
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.articles-back-link a:hover {
+	opacity: 0.8;
+}
+
 /* ==============================
    フォーカス可視スタイル（アクセシビリティ）
    ============================== */
