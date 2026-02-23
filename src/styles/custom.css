@@ -2,9 +2,9 @@
    ブランドカラー変数
    ============================== */
 :root {
-	--vf-teal:   #14B8A6;
-	--vf-cyan:   #06B6D4;
-	--vf-purple: #8B5CF6;
+  --vf-teal: #14b8a6;
+  --vf-cyan: #06b6d4;
+  --vf-purple: #8b5cf6;
 }
 
 /* ==============================
@@ -14,30 +14,30 @@
 
 /* デフォルト = dark テーマ */
 :root {
-	--sl-color-accent-low:  #0d3d38;
-	--sl-color-accent:      #14B8A6;
-	--sl-color-accent-high: #5eead4;
+  --sl-color-accent-low: #0d3d38;
+  --sl-color-accent: #14b8a6;
+  --sl-color-accent-high: #5eead4;
 
-	/* 補助テキスト用カスタム変数（dark mode: gray-3 = 56% lightness = 読みやすい） */
-	--vp-text-muted: hsl(224, 6%, 60%);
+  /* 補助テキスト用カスタム変数（dark mode: gray-3 = 56% lightness = 読みやすい） */
+  --vp-text-muted: hsl(224, 6%, 60%);
 }
 
 /* light テーマ上書き */
-:root[data-theme='light'] {
-	--sl-color-accent-low:  #ccfbf1;
-	--sl-color-accent:      #0d9488;
-	--sl-color-accent-high: #134e4a;
+:root[data-theme="light"] {
+  --sl-color-accent-low: #ccfbf1;
+  --sl-color-accent: #0d9488;
+  --sl-color-accent-high: #134e4a;
 
-	/* 補助テキスト用（light mode: 中暗のグレー） */
-	--vp-text-muted: hsl(224, 8%, 38%);
+  /* 補助テキスト用（light mode: 中暗のグレー） */
+  --vp-text-muted: hsl(224, 8%, 38%);
 }
 
 /* ==============================
    グローバル基盤
    ============================== */
 body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ==============================
@@ -45,305 +45,331 @@ body {
    （Starlight が @layer starlight.core で padding: 1.5rem を設定するため !important 必須）
    ============================== */
 .content-panel:has(.skip-anchor) {
-	padding: 0 !important;
-	min-height: 0 !important;
-	margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
 }
 
 /* skip-anchor パネルの直後に続く panel の border-top も除去 */
 .content-panel:has(.skip-anchor) + .content-panel {
-	border-top: none !important;
+  border-top: none !important;
 }
 
 /* ==============================
    Starlight ヘッダー強化
    ============================== */
 header.header {
-	background: color-mix(in srgb, var(--sl-color-bg-nav) 80%, transparent) !important;
-	backdrop-filter: blur(20px) !important;
-	-webkit-backdrop-filter: blur(20px) !important;
-	border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--sl-color-bg-nav) 80%,
+    transparent
+  ) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--sl-color-accent) 15%, transparent) !important;
 }
 
 /* ==============================
    Splash ヒーロー強化
    ============================== */
 [data-has-hero] .hero {
-	position: relative;
-	isolation: isolate;
-	text-align: center;
+  position: relative;
+  isolation: isolate;
+  text-align: center;
 }
 
 [data-has-hero] .hero::before {
-	content: '';
-	position: absolute;
-	inset: -20% -10%;
-	background:
-		radial-gradient(ellipse 70% 50% at 15% 50%, rgba(20, 184, 166, 0.14) 0%, transparent 55%),
-		radial-gradient(ellipse 55% 40% at 85% 20%, rgba(139, 92, 246, 0.10) 0%, transparent 55%),
-		radial-gradient(ellipse 65% 55% at 50% 85%, rgba(6, 182, 212, 0.10) 0%, transparent 55%);
-	z-index: -1;
-	pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(
+      ellipse 70% 50% at 15% 50%,
+      rgba(20, 184, 166, 0.14) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 40% at 85% 20%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 65% 55% at 50% 85%,
+      rgba(6, 182, 212, 0.1) 0%,
+      transparent 55%
+    );
+  z-index: -1;
+  pointer-events: none;
 }
 
 [data-has-hero] .hero::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image:
-		linear-gradient(rgba(20, 184, 166, 0.04) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(20, 184, 166, 0.04) 1px, transparent 1px);
-	background-size: 48px 48px;
-	z-index: -1;
-	pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(20, 184, 166, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* タグライン: グラデーションテキスト */
 [data-has-hero] .hero .tagline {
-	font-size: clamp(1.75rem, 5vw, 3rem) !important;
-	font-weight: 800 !important;
-	letter-spacing: -0.03em;
-	line-height: 1.15 !important;
-	background: linear-gradient(135deg, var(--sl-color-white) 20%, #14B8A6 65%, #06B6D4 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+  font-size: clamp(1.75rem, 5vw, 3rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.15 !important;
+  background: linear-gradient(
+    135deg,
+    var(--sl-color-white) 20%,
+    #14b8a6 65%,
+    #06b6d4 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ヒーロー CTA ボタン */
 [data-has-hero] .hero .action.primary {
-	background: linear-gradient(135deg, #14B8A6, #0d9488) !important;
-	border-color: transparent !important;
-	color: white !important;
-	font-weight: 600 !important;
-	box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
-	transition: all 0.25s ease !important;
+  background: linear-gradient(135deg, #14b8a6, #0d9488) !important;
+  border-color: transparent !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
+  transition: all 0.25s ease !important;
 }
 
 [data-has-hero] .hero .action.primary:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 8px 28px rgba(20, 184, 166, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(20, 184, 166, 0.45) !important;
 }
 
 [data-has-hero] .hero .action.minimal {
-	backdrop-filter: blur(8px);
-	transition: all 0.2s ease !important;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease !important;
 }
 
 /* ==============================
    ハブページ - プロダクトグリッド
    ============================== */
 .hub-section {
-	margin: 0 0 4rem;
+  margin: 0 0 4rem;
 }
 
 .hub-section-title {
-	font-size: 0.8125rem;
-	font-weight: 600;
-	color: var(--sl-color-accent);
-	margin-bottom: 1.5rem;
-	text-align: center;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sl-color-accent);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .hub-products-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
 }
 
 /* ==============================
    LP ページ - セクション見出し
    ============================== */
 .lp-section-heading {
-	font-size: 0.8125rem;
-	font-weight: 600;
-	color: var(--sl-color-accent);
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	text-align: center;
-	margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sl-color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 0.75rem;
 }
 
 .lp-section-title {
-	font-size: clamp(1.375rem, 3vw, 1.875rem);
-	font-weight: 800;
-	color: var(--sl-color-white);
-	margin-bottom: 2rem;
-	text-align: center;
-	letter-spacing: -0.02em;
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+  font-weight: 800;
+  color: var(--sl-color-white);
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
 }
 
 /* ==============================
    Starlight ドキュメント強化
    ============================== */
 .sl-markdown-content h2 {
-	border-top: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
-	padding-top: 1.5rem;
+  border-top: 1px solid
+    color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
+  padding-top: 1.5rem;
 }
 
 .sl-markdown-content table {
-	border-collapse: collapse;
-	width: 100%;
-	border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
-	border-radius: 0.5rem;
-	overflow: hidden;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .sl-markdown-content th {
-	background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
-	color: var(--sl-color-white);
-	font-weight: 600;
-	padding: 0.75rem 1rem;
-	text-align: left;
-	font-size: 0.875rem;
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  color: var(--sl-color-white);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
 }
 
 .sl-markdown-content td {
-	padding: 0.625rem 1rem;
-	border-top: 1px solid color-mix(in srgb, var(--sl-color-hairline) 60%, transparent);
-	font-size: 0.875rem;
+  padding: 0.625rem 1rem;
+  border-top: 1px solid
+    color-mix(in srgb, var(--sl-color-hairline) 60%, transparent);
+  font-size: 0.875rem;
 }
 
 .expressive-code {
-	border-radius: 0.75rem !important;
-	border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent) !important;
-	overflow: hidden;
+  border-radius: 0.75rem !important;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent) !important;
+  overflow: hidden;
 }
 
 /* ==============================
    light モード用カード背景補正
    ============================== */
-:root[data-theme='light'] .product-card,
-:root[data-theme='light'] .feature-card,
-:root[data-theme='light'] .article-card {
-	background: var(--sl-color-bg-nav);
-	border-color: var(--sl-color-hairline-light);
+:root[data-theme="light"] .product-card,
+:root[data-theme="light"] .feature-card,
+:root[data-theme="light"] .article-card {
+  background: var(--sl-color-bg-nav);
+  border-color: var(--sl-color-hairline-light);
 }
 
 /* ==============================
    LP (splash) ページ — h2 ドキュメントスタイル打ち消し
    ============================== */
 [data-has-hero] .sl-markdown-content h2 {
-	border-top: none;
-	padding-top: 0;
-	margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 /* ==============================
    LP セクション共通
    ============================== */
 .lp-section {
-	margin: 5rem 0;
+  margin: 5rem 0;
 }
 
 /* ==============================
    個別記事ページ — コンテンツ本文
    ============================== */
 .article-body {
-	max-width: 42rem;
-	margin: 0 auto;
-	padding: 0 1.5rem 5rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
 }
 
 .article-body p,
 .article-body li {
-	line-height: 1.85;
-	color: var(--sl-color-text);
+  line-height: 1.85;
+  color: var(--sl-color-text);
 }
 
 .article-body h2 {
-	font-size: 1.25rem;
-	font-weight: 700;
-	color: var(--sl-color-white);
-	margin-top: 3rem;
-	margin-bottom: 1rem;
-	letter-spacing: -0.02em;
-	border-top: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, transparent);
-	padding-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  border-top: 1px solid
+    color-mix(in srgb, var(--sl-color-accent) 18%, transparent);
+  padding-top: 1.5rem;
 }
 
 .article-body h3 {
-	font-size: 1.0625rem;
-	font-weight: 700;
-	color: var(--sl-color-white);
-	margin-top: 2rem;
-	margin-bottom: 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .article-body strong {
-	color: var(--sl-color-white);
-	font-weight: 600;
+  color: var(--sl-color-white);
+  font-weight: 600;
 }
 
 .article-body ul,
 .article-body ol {
-	padding-left: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .article-body hr {
-	border: none;
-	border-top: 1px solid color-mix(in srgb, var(--sl-color-hairline) 60%, transparent);
-	margin: 3rem 0;
+  border: none;
+  border-top: 1px solid
+    color-mix(in srgb, var(--sl-color-hairline) 60%, transparent);
+  margin: 3rem 0;
 }
 
 .article-body em {
-	color: var(--vp-text-muted);
+  color: var(--vp-text-muted);
 }
 
 /* ==============================
    記事一覧ページ
    ============================== */
 .articles-page {
-	max-width: 56rem;
-	margin: 0 auto;
-	padding: 3rem 0 5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3rem 0 5rem;
 }
 
 .articles-header {
-	text-align: center;
-	margin-bottom: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .articles-title {
-	font-size: clamp(1.75rem, 4vw, 2.5rem);
-	font-weight: 800;
-	color: var(--sl-color-white);
-	letter-spacing: -0.03em;
-	line-height: 1.15;
-	margin: 0.5rem 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--sl-color-white);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0.5rem 0 1rem;
 }
 
 .articles-subtitle {
-	font-size: 1.0625rem;
-	color: var(--vp-text-muted);
-	line-height: 1.7;
-	max-width: 44ch;
-	margin: 0 auto;
+  font-size: 1.0625rem;
+  color: var(--vp-text-muted);
+  line-height: 1.7;
+  max-width: 44ch;
+  margin: 0 auto;
 }
 
 .articles-back-link {
-	margin-top: 3rem;
-	text-align: center;
+  margin-top: 3rem;
+  text-align: center;
 }
 
 .articles-back-link a {
-	color: var(--sl-color-accent);
-	font-weight: 500;
-	text-decoration: none;
-	transition: opacity 0.2s ease;
+  color: var(--sl-color-accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .articles-back-link a:hover {
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 /* ==============================
    フォーカス可視スタイル（アクセシビリティ）
    ============================== */
 :focus-visible {
-	outline: 2px solid var(--sl-color-accent);
-	outline-offset: 3px;
-	border-radius: 4px;
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }

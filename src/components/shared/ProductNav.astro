@@ -34,6 +34,11 @@ const { productName, links } = Astro.props;
 </nav>
 
 <style>
+  /* ページ内アンカーリンクのスムーズスクロール */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
   .product-nav {
     position: sticky;
     top: var(--sl-nav-height, 3.5rem);
