@@ -1,4 +1,6 @@
 ---
+import TagBadge from './TagBadge.astro';
+
 interface Props {
   title: string;
   publishedAt: Date;
@@ -35,7 +37,7 @@ const formattedDate = publishedAt.toLocaleDateString('ja-JP', {
     {products.length > 0 && (
       <div class="article-tags">
         {products.map((p) => (
-          <span class="article-tag">{PRODUCT_LABELS[p] ?? p}</span>
+          <TagBadge product={p} label={PRODUCT_LABELS[p] ?? p} href={`/${p}/articles/`} />
         ))}
       </div>
     )}
@@ -92,18 +94,5 @@ const formattedDate = publishedAt.toLocaleDateString('ja-JP', {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-  }
-
-  .article-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.175rem 0.6rem;
-    background: rgba(20, 184, 166, 0.1);
-    border: 1px solid rgba(20, 184, 166, 0.25);
-    border-radius: 9999px;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--sl-color-accent);
-    letter-spacing: 0.03em;
   }
 </style>

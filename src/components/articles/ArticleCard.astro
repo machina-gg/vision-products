@@ -28,7 +28,7 @@ const formattedDate = publishedAt.toLocaleDateString('ja-JP', {
     {products.length > 0 && (
       <div class="article-card-tags">
         {products.map((product) => (
-          <TagBadge product={product} label={PRODUCT_LABELS[product] ?? product} />
+          <TagBadge product={product} label={PRODUCT_LABELS[product] ?? product} href={`/${product}/articles/`} />
         ))}
       </div>
     )}
