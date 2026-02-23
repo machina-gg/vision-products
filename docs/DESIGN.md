@@ -148,17 +148,23 @@ Starlight の組み込み i18n を使用。
 
 ```
 src/content/docs/
-├── index.mdx          # 日本語（デフォルト）
-├── en/
-│   └── index.mdx      # 英語
-└── {product}/
-    ├── index.mdx       # 日本語
-    └── en/
-        └── index.mdx   # 英語（将来対応）
+├── index.mdx              # 日本語（デフォルト）
+├── {product}/
+│   ├── index.mdx          # 日本語 LP
+│   ├── docs/              # 日本語ヘルプ
+│   ├── changelog.mdx      # 日本語リリースノート
+│   └── legal/             # 日本語法的ページ
+└── en/
+    ├── index.mdx          # 英語
+    └── {product}/
+        ├── index.mdx      # 英語 LP
+        ├── docs/          # 英語ヘルプ
+        ├── changelog.mdx  # 英語リリースノート
+        └── legal/         # 英語法的ページ
 ```
 
-> MVP では日本語コンテンツのみ実装し、英語は将来対応とする。
-> ただし Starlight の i18n 設定は初期から有効にしておく。
+> 既存の VisionFocus コンテンツ（英語）は `en/` 配下に移動する。
+> 日本語コンテンツはルートに配置し、プロダクトごとに両言語を用意する。
 
 ---
 
