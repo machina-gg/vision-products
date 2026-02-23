@@ -1,15 +1,39 @@
 ---
 // 記事末尾の CTA バナー — VisionFocus への誘導
+
+// ロケール判定と翻訳辞書
+const locale = Astro.currentLocale ?? 'ja';
+const prefix = locale === 'en' ? '/en' : '';
+
+const t = {
+  ja: {
+    ariaLabel: 'VisionFocus を試す',
+    heading: '集中力を高める Chrome 拡張機能',
+    description: 'ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。',
+    button: 'VisionFocus を試してみる',
+  },
+  en: {
+    ariaLabel: 'Try VisionFocus',
+    heading: 'The Chrome Extension for Deep Focus',
+    description: 'Block distracting websites, use focus timers, and set vision statements to achieve deep focus.',
+    button: 'Try VisionFocus',
+  },
+}[locale] ?? {
+  ariaLabel: 'VisionFocus を試す',
+  heading: '集中力を高める Chrome 拡張機能',
+  description: 'ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。',
+  button: 'VisionFocus を試してみる',
+};
 ---
 
-<aside class="article-cta" aria-label="VisionFocus を試す">
+<aside class="article-cta" aria-label={t.ariaLabel}>
   <div class="article-cta-inner">
     <p class="article-cta-label">VisionFocus</p>
-    <p class="article-cta-heading">集中力を高める Chrome 拡張機能</p>
+    <p class="article-cta-heading">{t.heading}</p>
     <p class="article-cta-description">
-      ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。
+      {t.description}
     </p>
-    <a href="/vision-focus/" class="article-cta-button">VisionFocus を試してみる</a>
+    <a href={`${prefix}/vision-focus/`} class="article-cta-button">{t.button}</a>
   </div>
 </aside>
 

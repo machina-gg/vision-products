@@ -9,10 +9,25 @@ interface Props {
 
 const { product, limit } = Astro.props;
 
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+
+// 翻訳辞書
+const t = {
+  ja: { empty: '記事はまだありません。' },
+  en: { empty: 'No articles yet.' },
+}[locale] ?? { empty: '記事はまだありません。' };
+
 const allDocs = await getCollection('docs');
 
 const articles = allDocs
-  .filter((doc) => doc.data.publishedAt != null)
+  .filter((doc) => {
+    if (doc.data.publishedAt == null) return false;
+    // root locale(ja): id が 'en/' で始まらないもの
+    // en locale: id が 'en/' で始まるもの
+    if (locale === 'en') return doc.id.startsWith('en/');
+    return !doc.id.startsWith('en/');
+  })
   .map((doc) => ({
     title: doc.data.title,
     description: doc.data.description ?? '',
@@ -42,7 +57,7 @@ const displayed = limit ? filtered.slice(0, limit) : filtered;
     ))}
   </div>
 ) : (
-  <p class="article-list-empty">記事はまだありません。</p>
+  <p class="article-list-empty">{t.empty}</p>
 )}
 
 <style>
