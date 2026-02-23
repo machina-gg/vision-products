@@ -10,12 +10,17 @@ next: false
 ---
 
 import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
+import ArticleToc from "../../../components/articles/ArticleToc.astro";
+import ArticleCta from "../../../components/articles/ArticleCta.astro";
+import ArticleNav from "../../../components/articles/ArticleNav.astro";
 
 <ArticleHeader
   title="20-20-20ルールで目の疲れを防ぐ — スクリーンから目を守る科学的方法"
   publishedAt={new Date("2026-02-17")}
   products={["vision-focus"]}
 />
+
+<ArticleToc />
 
 <div class="article-body">
 
@@ -102,3 +107,6 @@ import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
 _VisionFocus の 20-20-20 タイマーは、[Chrome Web Store](https://chrome.google.com/webstore) から無料でインストールできます。_
 
 </div>
+
+<ArticleCta />
+<ArticleNav currentDate={new Date("2026-02-17")} />

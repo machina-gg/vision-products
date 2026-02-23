@@ -10,12 +10,17 @@ next: false
 ---
 
 import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
+import ArticleToc from "../../../components/articles/ArticleToc.astro";
+import ArticleCta from "../../../components/articles/ArticleCta.astro";
+import ArticleNav from "../../../components/articles/ArticleNav.astro";
 
 <ArticleHeader
   title="デジタルミニマリズム — スマートフォンとの健全な距離感を作る"
   publishedAt={new Date("2026-02-24")}
   products={["vision-focus"]}
 />
+
+<ArticleToc />
 
 <div class="article-body">
 
@@ -128,3 +133,6 @@ iOSのスクリーンタイム・Androidのデジタルウェルビーイング�
 まずは今夜、充電器を寝室の外に出してみましょう。たったそれだけで、翌朝の頭の中がいかに静かか、実感できるはずです。
 
 </div>
+
+<ArticleCta />
+<ArticleNav currentDate={new Date("2026-02-24")} />

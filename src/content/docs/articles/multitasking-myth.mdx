@@ -10,12 +10,17 @@ next: false
 ---
 
 import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
+import ArticleToc from "../../../components/articles/ArticleToc.astro";
+import ArticleCta from "../../../components/articles/ArticleCta.astro";
+import ArticleNav from "../../../components/articles/ArticleNav.astro";
 
 <ArticleHeader
   title="マルチタスクという神話 — 同時作業が生産性を40%下げる理由"
   publishedAt={new Date("2026-02-03")}
   products={["vision-focus"]}
 />
+
+<ArticleToc />
 
 <div class="article-body">
 
@@ -120,3 +125,6 @@ import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
 今日から1つだけ試してみてください。メールを閉じて、通知をオフにして、1時間だけ1つのタスクに集中する。その差を体感したとき、シングルタスクの威力を実感できるはずです。
 
 </div>
+
+<ArticleCta />
+<ArticleNav currentDate={new Date("2026-02-03")} />

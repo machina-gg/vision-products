@@ -10,12 +10,17 @@ next: false
 ---
 
 import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
+import ArticleToc from "../../../components/articles/ArticleToc.astro";
+import ArticleCta from "../../../components/articles/ArticleCta.astro";
+import ArticleNav from "../../../components/articles/ArticleNav.astro";
 
 <ArticleHeader
   title="ポモドーロテクニック完全ガイド — 25分で集中力を最大化する方法"
   publishedAt={new Date("2026-01-20")}
   products={["vision-focus"]}
 />
+
+<ArticleToc />
 
 <div class="article-body">
 
@@ -100,3 +105,6 @@ import ArticleHeader from "../../../components/articles/ArticleHeader.astro";
 「25分集中して5分休む」というシンプルなサイクルは、集中力を持続させながら、創造性と回復力も同時に高めます。まずは今日、タイマーをセットして最初の25分を試してみましょう。
 
 </div>
+
+<ArticleCta />
+<ArticleNav currentDate={new Date("2026-01-20")} />
