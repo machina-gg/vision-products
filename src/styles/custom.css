@@ -77,6 +77,7 @@ header.header {
   position: relative;
   isolation: isolate;
   text-align: center;
+  padding-bottom: 1rem !important;
 }
 
 [data-has-hero] .hero::before {
@@ -173,6 +174,12 @@ header.header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.25rem;
+}
+
+/* カード1枚の場合のセンター配置 */
+.hub-products-center {
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 /* ==============================
