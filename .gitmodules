@@ -1,4 +1,0 @@
-[submodule ".claude/trillion-game-startup"]
-	path = .claude/trillion-game-startup
-	url = https://github.com/machina-gg/trillion-game-startup.git
-	branch = develop
