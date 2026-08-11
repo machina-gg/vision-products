@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # pnpm のバージョンは package.json の packageManager から解決される
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+  issue-check:
+    name: Issue Check
+    # push では PR 本文が存在しないため PR のときだけ実行する
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check issue linking
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          # Closes #N, Fixes #N, Resolves #N のいずれかがあるか
+          if echo "$PR_BODY" | grep -qiE "(closes|fixes|resolves)\s+#[0-9]+"; then
+            echo "=== Issue 紐づけチェック OK ==="
+            exit 0
+          fi
+
+          # override:no-issue ラベルがあればスキップ
+          if echo "$PR_LABELS" | grep -q "override:no-issue"; then
+            echo ""
+            echo "::notice::override:no-issue ラベルにより Issue 紐づけチェックをスキップ"
+            exit 0
+          fi
+
+          echo ""
+          echo "::error::PR 本文に Issue 紐づけ（Closes #N）がありません。"
+          echo "PR 本文に 'Closes #N' を追加してください。"
+          echo "Issue がない場合は先に Issue を作成してください。"
+          echo "やむを得ない場合は PR に 'override:no-issue' ラベルを付けてください。"
+          exit 1
