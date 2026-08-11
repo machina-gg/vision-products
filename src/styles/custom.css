@@ -1,10 +1,68 @@
 /* ==============================
-   ブランドカラー変数
+   デザイントークン（SSOT）
+   ここだけを書き換えればブランド全体の見た目が変わる。
+   各コンポーネントの <style> からは var() で参照すること。
    ============================== */
 :root {
-  --vf-teal: #14b8a6;
+  /* --- ブランドカラー --- */
+  --vf-teal: #14b8a6; /* ブランドのベースカラー */
+  --vf-teal-strong: #0d9488; /* グラデーション終端・light テーマのアクセント */
+  --vf-teal-soft: #5eead4; /* hover 時の明るい teal */
   --vf-cyan: #06b6d4;
+  --vf-cyan-strong: #0891b2; /* light テーマ用の濃い cyan */
   --vf-purple: #8b5cf6;
+  --vf-navy: #0f172a; /* カードサーフェスのベース色 */
+
+  /* --- サーフェス（カード背景・境界線） ---
+     light テーマでは下の :root[data-theme="light"] でまとめて差し替える。
+     -soft 系は FeatureCard / PricingCard、無印は ProductCard が使用（値の差は意図的に温存）。 */
+  --vf-surface-card: color-mix(in srgb, var(--vf-navy) 70%, transparent);
+  --vf-surface-card-soft: color-mix(in srgb, var(--vf-navy) 60%, transparent);
+  --vf-card-border: rgba(255, 255, 255, 0.07);
+  --vf-card-border-soft: rgba(255, 255, 255, 0.06);
+
+  /* --- 角丸 --- */
+  --vf-radius-card: 1.25rem; /* ProductCard / PricingCard */
+  --vf-radius-card-sm: 1rem; /* FeatureCard */
+  --vf-radius-control: 0.625rem; /* ボタン・アイコンタイル */
+  --vf-radius-pill: 9999px; /* バッジ類 */
+
+  /* --- ぼかし（backdrop-filter） --- */
+  --vf-blur-card: 12px; /* ProductCard / PricingCard */
+  --vf-blur-card-sm: 8px; /* FeatureCard / ガラス風ボタン */
+
+  /* --- hover 時の浮き上がり量 --- */
+  --vf-lift-card: -5px; /* ProductCard */
+  --vf-lift-card-sm: -3px; /* FeatureCard */
+  --vf-lift-button: -2px; /* CTA ボタン */
+
+  /* --- シャドウ --- */
+  --vf-shadow-cta: 0 4px 16px color-mix(in srgb, var(--vf-teal) 30%, transparent);
+  --vf-shadow-cta-hover: 0 8px 24px
+    color-mix(in srgb, var(--vf-teal) 40%, transparent);
+  --vf-shadow-hero-cta: 0 4px 20px
+    color-mix(in srgb, var(--vf-teal) 35%, transparent);
+  --vf-shadow-hero-cta-hover: 0 8px 28px
+    color-mix(in srgb, var(--vf-teal) 45%, transparent);
+
+  /* --- グラデーション用の teal 透過色 ---
+     グラデーションの色補間は color-mix() の結果（color(srgb ...) 形式）と
+     レガシー rgba() 形式で微妙に結果が変わるため、グラデーション内では
+     この rgba 固定値トークンを使う（色の変更点は :root に閉じたまま）。 */
+  --vf-teal-a04: rgba(20, 184, 166, 0.04);
+  --vf-teal-a10: rgba(20, 184, 166, 0.1);
+  --vf-teal-a14: rgba(20, 184, 166, 0.14);
+  --vf-teal-a40: rgba(20, 184, 166, 0.4);
+  --vf-teal-a60: rgba(20, 184, 166, 0.6);
+  --vf-purple-a10: rgba(139, 92, 246, 0.1);
+  --vf-cyan-a10: rgba(6, 182, 212, 0.1);
+
+  /* --- グラデーション --- */
+  --vf-gradient-cta: linear-gradient(
+    135deg,
+    var(--vf-teal),
+    var(--vf-teal-strong)
+  );
 }
 
 /* ==============================
@@ -15,8 +73,8 @@
 /* デフォルト = dark テーマ */
 :root {
   --sl-color-accent-low: #0d3d38;
-  --sl-color-accent: #14b8a6;
-  --sl-color-accent-high: #5eead4;
+  --sl-color-accent: var(--vf-teal);
+  --sl-color-accent-high: var(--vf-teal-soft);
 
   /* 補助テキスト用カスタム変数（dark mode: gray-3 = 56% lightness = 読みやすい） */
   --vp-text-muted: hsl(224, 6%, 60%);
@@ -25,11 +83,18 @@
 /* light テーマ上書き */
 :root[data-theme="light"] {
   --sl-color-accent-low: #ccfbf1;
-  --sl-color-accent: #0d9488;
+  --sl-color-accent: var(--vf-teal-strong);
   --sl-color-accent-high: #134e4a;
 
   /* 補助テキスト用（light mode: 中暗のグレー） */
   --vp-text-muted: hsl(224, 8%, 38%);
+
+  /* カードサーフェスの light 補正をトークン側に一元化
+     （以前は custom.css と各コンポーネントの :global() に分散していた） */
+  --vf-surface-card: var(--sl-color-bg-nav);
+  --vf-surface-card-soft: var(--sl-color-bg-nav);
+  --vf-card-border: var(--sl-color-hairline-light);
+  --vf-card-border-soft: var(--sl-color-hairline-light);
 }
 
 /* ==============================
@@ -87,17 +152,17 @@ header.header {
   background:
     radial-gradient(
       ellipse 70% 50% at 15% 50%,
-      rgba(20, 184, 166, 0.14) 0%,
+      var(--vf-teal-a14) 0%,
       transparent 55%
     ),
     radial-gradient(
       ellipse 55% 40% at 85% 20%,
-      rgba(139, 92, 246, 0.1) 0%,
+      var(--vf-purple-a10) 0%,
       transparent 55%
     ),
     radial-gradient(
       ellipse 65% 55% at 50% 85%,
-      rgba(6, 182, 212, 0.1) 0%,
+      var(--vf-cyan-a10) 0%,
       transparent 55%
     );
   z-index: -1;
@@ -109,8 +174,8 @@ header.header {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(20, 184, 166, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 184, 166, 0.04) 1px, transparent 1px);
+    linear-gradient(var(--vf-teal-a04) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vf-teal-a04) 1px, transparent 1px);
   background-size: 48px 48px;
   z-index: -1;
   pointer-events: none;
@@ -125,32 +190,37 @@ header.header {
   background: linear-gradient(
     135deg,
     var(--sl-color-white) 20%,
-    #14b8a6 65%,
-    #06b6d4 100%
+    var(--vf-teal) 65%,
+    var(--vf-cyan) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ヒーロー CTA ボタン */
-[data-has-hero] .hero .action.primary {
-  background: linear-gradient(135deg, #14b8a6, #0d9488) !important;
-  border-color: transparent !important;
-  color: white !important;
-  font-weight: 600 !important;
-  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
-  transition: all 0.25s ease !important;
+/* ヒーロー CTA ボタン
+   Starlight の <LinkButton> は `.sl-link-button.primary` / `.sl-link-button.minimal`
+   を出力する。以前は `.action.primary` を指定していたため一切適用されていなかった（dead CSS）。
+   Starlight 側のボタンスタイルはスコープ付き（低詳細度）なので !important は不要。 */
+[data-has-hero] .hero .sl-link-button.primary {
+  background: var(--vf-gradient-cta);
+  border-color: transparent;
+  /* teal グラデーション上に載るため、テーマに依らず白固定 */
+  color: #fff;
+  font-weight: 600;
+  box-shadow: var(--vf-shadow-hero-cta);
+  transition: all 0.25s ease;
 }
 
-[data-has-hero] .hero .action.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(20, 184, 166, 0.45) !important;
+[data-has-hero] .hero .sl-link-button.primary:hover {
+  color: #fff;
+  transform: translateY(var(--vf-lift-button));
+  box-shadow: var(--vf-shadow-hero-cta-hover);
 }
 
-[data-has-hero] .hero .action.minimal {
-  backdrop-filter: blur(8px);
-  transition: all 0.2s ease !important;
+[data-has-hero] .hero .sl-link-button.minimal {
+  backdrop-filter: blur(var(--vf-blur-card-sm));
+  transition: all 0.2s ease;
 }
 
 /* ==============================
@@ -245,12 +315,29 @@ header.header {
 
 /* ==============================
    light モード用カード背景補正
+   サーフェス自体はトークン（--vf-surface-card* / --vf-card-border*）で
+   light 対応済みだが、この一括ルールは詳細度 (0,3,0) でコンポーネント側の
+   `.card:hover` (0,2,0) に勝つため、「light では hover 時もボーダー色が
+   変わらない」という既存挙動を生んでいる。
+   本 Issue はリファクタ（見た目を変えない）が方針のため、その挙動を温存する。
+   ※ hover を light でも効かせたい場合はこのブロックを削除すればよい（PM 判断）。
    ============================== */
 :root[data-theme="light"] .product-card,
 :root[data-theme="light"] .feature-card,
-:root[data-theme="light"] .article-card {
+:root[data-theme="light"] .article-card,
+:root[data-theme="light"] .pricing-card {
   background: var(--sl-color-bg-nav);
   border-color: var(--sl-color-hairline-light);
+}
+
+/* PricingCard の premium 強調カード — light では teal を薄く敷く */
+:root[data-theme="light"] .pricing-card--premium {
+  background: color-mix(
+    in srgb,
+    var(--sl-color-accent) 5%,
+    var(--sl-color-bg-nav)
+  );
+  border-color: color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
 }
 
 /* ==============================
