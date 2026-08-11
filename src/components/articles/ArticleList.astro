@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  product?: string;
+  limit?: number;
+}
+
+const { product, limit } = Astro.props;
+
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+
+// 翻訳辞書
+const t = {
+  ja: { empty: '記事はまだありません。' },
+  en: { empty: 'No articles yet.' },
+}[locale] ?? { empty: '記事はまだありません。' };
+
+const allDocs = await getCollection('docs');
+
+const articles = allDocs
+  .filter((doc) => {
+    if (doc.data.publishedAt == null) return false;
+    // root locale(ja): id が 'en/' で始まらないもの
+    // en locale: id が 'en/' で始まるもの
+    if (locale === 'en') return doc.id.startsWith('en/');
+    return !doc.id.startsWith('en/');
+  })
+  .map((doc) => ({
+    title: doc.data.title,
+    description: doc.data.description ?? '',
+    href: `/${doc.id}/`,
+    publishedAt: doc.data.publishedAt as Date,
+    products: doc.data.products ?? [],
+  }))
+  .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+const filtered = product
+  ? articles.filter((a) => a.products.includes(product))
+  : articles;
+
+const displayed = limit ? filtered.slice(0, limit) : filtered;
+---
+
+{displayed.length > 0 ? (
+  <div class="article-list">
+    {displayed.map((article) => (
+      <ArticleCard
+        title={article.title}
+        description={article.description}
+        href={article.href}
+        publishedAt={article.publishedAt}
+        products={article.products}
+      />
+    ))}
+  </div>
+) : (
+  <p class="article-list-empty">{t.empty}</p>
+)}
+
+<style>
+  .article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .article-list-empty {
+    color: var(--vp-text-muted);
+    font-size: 0.875rem;
+    padding: 2rem 0;
+    text-align: center;
+  }
+</style>

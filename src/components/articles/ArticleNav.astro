@@ -1,0 +1,151 @@
+---
+// 記事末尾の前後ナビゲーション — publishedAt 降順で前後を判定
+import { getCollection } from 'astro:content';
+
+interface Props {
+  /** 現在の記事の publishedAt（Date） */
+  currentDate: Date;
+}
+
+const { currentDate } = Astro.props;
+
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+
+// 翻訳辞書
+const t = {
+  ja: { olderArticle: '前の記事', newerArticle: '次の記事', navLabel: '前後の記事' },
+  en: { olderArticle: 'Older', newerArticle: 'Newer', navLabel: 'Article navigation' },
+}[locale] ?? { olderArticle: '前の記事', newerArticle: '次の記事', navLabel: '前後の記事' };
+
+// 全記事を publishedAt 降順で取得（現在のロケールの記事のみ）
+const allDocs = await getCollection('docs');
+const articles = allDocs
+  .filter((doc) => {
+    if (doc.data.publishedAt == null) return false;
+    // root locale(ja): id が 'en/' で始まらないもの
+    // en locale: id が 'en/' で始まるもの
+    if (locale === 'en') return doc.id.startsWith('en/');
+    return !doc.id.startsWith('en/');
+  })
+  .map((doc) => ({
+    title: doc.data.title,
+    href: `/${doc.id}/`,
+    publishedAt: doc.data.publishedAt as Date,
+  }))
+  .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+// 現在の記事のインデックスを特定
+const currentIndex = articles.findIndex(
+  (a) => a.publishedAt.getTime() === currentDate.getTime(),
+);
+
+// 降順リストなので index-1 = より新しい記事、index+1 = より古い記事
+const newerArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
+const olderArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
+---
+
+{(olderArticle || newerArticle) && (
+  <nav class="article-nav" aria-label={t.navLabel}>
+    <div class="article-nav-inner">
+      {olderArticle ? (
+        <a href={olderArticle.href} class="article-nav-link article-nav-prev">
+          <span class="article-nav-dir">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {t.olderArticle}
+          </span>
+          <span class="article-nav-title">{olderArticle.title}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+
+      {newerArticle ? (
+        <a href={newerArticle.href} class="article-nav-link article-nav-next">
+          <span class="article-nav-dir">
+            {t.newerArticle}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="article-nav-title">{newerArticle.title}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+    </div>
+  </nav>
+)}
+
+<style>
+  .article-nav {
+    max-width: 42rem;
+    margin: 2.5rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .article-nav-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+  }
+
+  @media (max-width: 480px) {
+    .article-nav-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .article-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: var(--sl-color-text);
+    background: var(--sl-color-bg-nav);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .article-nav-link:hover {
+    border-color: var(--sl-color-accent);
+    transform: translateY(-1px);
+    color: var(--sl-color-text);
+  }
+
+  .article-nav-next {
+    text-align: right;
+  }
+
+  .article-nav-dir {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .article-nav-next .article-nav-dir {
+    justify-content: flex-end;
+  }
+
+  .article-nav-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

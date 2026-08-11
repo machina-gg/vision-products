@@ -1,0 +1,35 @@
+---
+title: Vision Products
+description: Apps and tools built for focus, productivity, and digital wellbeing.
+template: splash
+prev: false
+next: false
+hero:
+  tagline: Tools to protect your focus and boost productivity
+  text: Block distracting websites and stay in the zone with timers. Reclaim your deep work time.
+  actions:
+    - text: Explore VisionFocus
+      link: /en/vision-focus/
+      icon: right-arrow
+      variant: primary
+    - text: Read Docs
+      link: /en/docs/vision-focus/getting-started/
+      icon: open-book
+      variant: minimal
+---
+
+import ProductCard from "../../../components/hub/ProductCard.astro";
+
+<div class="hub-section">
+  <p class="hub-section-title">Products</p>
+  <div class="hub-products-center">
+    <ProductCard
+      name="VisionFocus"
+      description="A Chrome extension that boosts focus and protects your eyes. Block websites, set timers, and write daily vision statements to maximize your daily productivity."
+      href="/en/vision-focus/"
+      iconName="vision-focus"
+      badge="Chrome Extension"
+      ctaLabel="Explore"
+    />
+  </div>
+</div>

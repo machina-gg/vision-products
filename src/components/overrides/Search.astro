@@ -1,0 +1,473 @@
+---
+const pathname = Astro.url.pathname;
+
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+const isEn = locale === 'en';
+const prefix = isEn ? '/en' : '';
+
+const isVisionFocusLP =
+  pathname === '/vision-focus/' ||
+  pathname === '/vision-focus' ||
+  pathname === '/en/vision-focus/' ||
+  pathname === '/en/vision-focus';
+
+const isArticlesSection = pathname.startsWith('/articles') || pathname.startsWith('/en/articles');
+const isDocsSection = pathname.startsWith('/docs/') || pathname.startsWith('/en/docs/');
+
+/* 翻訳辞書 */
+const t = {
+  ja: {
+    menuOpen: 'メニューを開く',
+    menuClose: 'メニューを閉じる',
+    navMenu: 'ナビゲーションメニュー',
+    navLabelLP: 'VisionFocus navigation',
+    navLabelSite: 'Site navigation',
+    articles: 'Articles',
+    docs: 'Docs',
+    features: 'Features',
+    pricing: 'Pricing',
+    installFree: 'Install Free',
+    chromeStoreTitle: 'Chrome Web Store（外部サイト）',
+  },
+  en: {
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    navMenu: 'Navigation menu',
+    navLabelLP: 'VisionFocus navigation',
+    navLabelSite: 'Site navigation',
+    articles: 'Articles',
+    docs: 'Docs',
+    features: 'Features',
+    pricing: 'Pricing',
+    installFree: 'Install Free',
+    chromeStoreTitle: 'Chrome Web Store (external site)',
+  },
+}[locale] ?? {
+  menuOpen: 'メニューを開く',
+  menuClose: 'メニューを閉じる',
+  navMenu: 'ナビゲーションメニュー',
+  navLabelLP: 'VisionFocus navigation',
+  navLabelSite: 'Site navigation',
+  articles: 'Articles',
+  docs: 'Docs',
+  features: 'Features',
+  pricing: 'Pricing',
+  installFree: 'Install Free',
+  chromeStoreTitle: 'Chrome Web Store（外部サイト）',
+};
+
+/* ページ種別ごとのナビリンク定義 */
+const lpLinks = [
+  { label: t.features, href: `${prefix}/vision-focus/#features` },
+  { label: t.pricing, href: `${prefix}/vision-focus/#pricing` },
+  { label: t.docs, href: `${prefix}/docs/vision-focus/getting-started/` },
+];
+
+const siteLinks = [
+  { label: t.articles, href: `${prefix}/articles/`, isActive: isArticlesSection },
+  { label: t.docs, href: `${prefix}/docs/vision-focus/getting-started/`, isActive: isDocsSection },
+];
+
+const navLinks = isVisionFocusLP ? lpLinks : siteLinks;
+const navLabel = isVisionFocusLP ? t.navLabelLP : t.navLabelSite;
+---
+
+<!-- デスクトップ用インラインナビ -->
+<nav class="header-nav" aria-label={navLabel}>
+  {navLinks.map((link) => (
+    <a
+      href={link.href}
+      class:list={["header-nav-link", { "header-nav-link--active": 'isActive' in link && link.isActive }]}
+    >
+      {link.label}
+    </a>
+  ))}
+  <a
+    href="https://chrome.google.com/webstore"
+    class="header-nav-cta"
+    target="_blank"
+    rel="noopener noreferrer"
+    title={t.chromeStoreTitle}
+  >
+    {t.installFree}
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+      <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</nav>
+
+<!-- モバイル用ハンバーガーメニュー -->
+<mobile-menu data-label-open={t.menuOpen} data-label-close={t.menuClose}>
+  <button
+    class="hamburger-btn"
+    type="button"
+    aria-expanded="false"
+    aria-label={t.menuOpen}
+    aria-controls="mobile-menu-panel"
+  >
+    <!-- ハンバーガーアイコン（3本線） -->
+    <svg class="hamburger-icon hamburger-icon--open" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <!-- 閉じるアイコン（X） -->
+    <svg class="hamburger-icon hamburger-icon--close" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div id="mobile-menu-panel" class="mobile-menu-panel" role="dialog" aria-label={t.navMenu}>
+    <nav class="mobile-menu-nav" aria-label={navLabel}>
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={["mobile-menu-link", { "mobile-menu-link--active": 'isActive' in link && link.isActive }]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://chrome.google.com/webstore"
+        class="mobile-menu-link mobile-menu-link--cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Install Free
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </nav>
+
+    <!-- テーマ切替 -->
+    <div class="mobile-menu-theme">
+      <span class="mobile-menu-theme-label">Theme</span>
+      <div class="mobile-menu-theme-buttons">
+        <button class="theme-btn" type="button" data-theme-value="light" aria-label="Light theme">
+          <!-- Sun icon -->
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 1.5v1M8 13.5v1M1.5 8h1M13.5 8h1M3.4 3.4l.7.7M11.9 11.9l.7.7M3.4 12.6l.7-.7M11.9 4.1l.7-.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Light
+        </button>
+        <button class="theme-btn" type="button" data-theme-value="dark" aria-label="Dark theme">
+          <!-- Moon icon -->
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13.5 8.5a5.5 5.5 0 0 1-6-6 5.5 5.5 0 1 0 6 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          Dark
+        </button>
+      </div>
+    </div>
+  </div>
+</mobile-menu>
+
+<script>
+  class MobileMenu extends HTMLElement {
+    private btn: HTMLButtonElement;
+    private panel: HTMLElement;
+    private isOpen = false;
+
+    constructor() {
+      super();
+      this.btn = this.querySelector('.hamburger-btn')!;
+      this.panel = this.querySelector('.mobile-menu-panel')!;
+
+      this.btn.addEventListener('click', () => this.toggle());
+
+      /* メニュー外クリックで閉じる */
+      document.addEventListener('click', (e) => {
+        if (this.isOpen && !this.contains(e.target as Node)) {
+          this.close();
+        }
+      });
+
+      /* Escape キーで閉じる */
+      document.addEventListener('keydown', (e) => {
+        if (this.isOpen && e.key === 'Escape') {
+          this.close();
+          this.btn.focus();
+        }
+      });
+
+      /* テーマ切替ボタン */
+      this.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const value = btn.dataset.themeValue as 'light' | 'dark';
+          this.setTheme(value);
+        });
+      });
+
+      /* 現在のテーマを反映 */
+      this.syncThemeButtons();
+    }
+
+    private toggle(): void {
+      this.isOpen ? this.close() : this.open();
+    }
+
+    private open(): void {
+      this.isOpen = true;
+      this.btn.setAttribute('aria-expanded', 'true');
+      /* data 属性からロケール別ラベルを取得 */
+      this.btn.setAttribute('aria-label', this.dataset.labelClose ?? 'Close menu');
+      this.panel.classList.add('is-open');
+      this.syncThemeButtons();
+    }
+
+    private close(): void {
+      this.isOpen = false;
+      this.btn.setAttribute('aria-expanded', 'false');
+      /* data 属性からロケール別ラベルを取得 */
+      this.btn.setAttribute('aria-label', this.dataset.labelOpen ?? 'Open menu');
+      this.panel.classList.remove('is-open');
+    }
+
+    /** Starlight のテーマ機構を利用してテーマを切り替える */
+    private setTheme(theme: 'light' | 'dark'): void {
+      document.documentElement.dataset.theme = theme;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('starlight-theme', theme);
+      }
+      /* Starlight の ThemeSelect がある場合、ピッカーも同期する */
+      if (typeof (globalThis as Record<string, unknown>).StarlightThemeProvider !== 'undefined') {
+        (globalThis as Record<string, { updatePickers: (t?: string) => void }>).StarlightThemeProvider.updatePickers(theme);
+      }
+      this.syncThemeButtons();
+    }
+
+    /** テーマボタンの active 状態を同期する */
+    private syncThemeButtons(): void {
+      const current = document.documentElement.dataset.theme || 'dark';
+      this.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((btn) => {
+        const isActive = btn.dataset.themeValue === current;
+        btn.classList.toggle('theme-btn--active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
+    }
+  }
+
+  customElements.define('mobile-menu', MobileMenu);
+</script>
+
+<style>
+  /* === デスクトップナビ（既存スタイル維持） === */
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .header-nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--sl-color-text);
+    text-decoration: none;
+    transition: color 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .header-nav-link:hover {
+    color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+  }
+
+  .header-nav-link--active {
+    color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  }
+
+  .header-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-left: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: var(--sl-color-accent);
+    color: #fff;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .header-nav-cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    color: #fff;
+  }
+
+  /* === モバイルメニュー: デフォルト非表示 === */
+  mobile-menu {
+    display: none;
+    position: relative;
+  }
+
+  /* === レスポンシブ切り替え === */
+  @media (max-width: 640px) {
+    /* デスクトップナビを隠す */
+    .header-nav {
+      display: none;
+    }
+
+    /* ハンバーガーボタンを表示 */
+    mobile-menu {
+      display: block;
+    }
+  }
+
+  /* === ハンバーガーボタン === */
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+    color: var(--sl-color-text);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .hamburger-btn:hover {
+    background: color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border-color: color-mix(in srgb, var(--sl-color-accent) 40%, transparent);
+  }
+
+  /* アイコン切り替え: デフォルトは開くアイコン表示 */
+  .hamburger-icon--close {
+    display: none;
+  }
+
+  .hamburger-btn[aria-expanded='true'] .hamburger-icon--open {
+    display: none;
+  }
+
+  .hamburger-btn[aria-expanded='true'] .hamburger-icon--close {
+    display: block;
+  }
+
+  /* === モバイルメニューパネル === */
+  .mobile-menu-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 200px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem;
+    z-index: 100;
+  }
+
+  .mobile-menu-panel.is-open {
+    display: block;
+  }
+
+  /* === メニュー内リンク === */
+  .mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .mobile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--sl-color-text);
+    text-decoration: none;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .mobile-menu-link:hover {
+    color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+  }
+
+  .mobile-menu-link--active {
+    color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  }
+
+  .mobile-menu-link--cta {
+    margin-top: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--sl-color-accent);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 0.5rem;
+  }
+
+  .mobile-menu-link--cta:hover {
+    opacity: 0.9;
+    color: #fff;
+    background: var(--sl-color-accent);
+  }
+
+  /* === テーマ切替セクション === */
+  .mobile-menu-theme {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--sl-color-hairline) 60%, transparent);
+  }
+
+  .mobile-menu-theme-label {
+    display: block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .mobile-menu-theme-buttons {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+  }
+
+  .theme-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--sl-color-text);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .theme-btn:hover {
+    background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+  }
+
+  .theme-btn--active {
+    background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+    border-color: color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
+    color: var(--sl-color-accent);
+  }
+</style>

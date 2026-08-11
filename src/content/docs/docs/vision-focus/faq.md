@@ -1,173 +1,175 @@
 ---
-title: FAQ
-description: Frequently asked questions about VisionFocus Chrome Extension
+title: よくある質問
+description: VisionFocus Chrome 拡張機能についてよくある質問と回答
 ---
 
-# Frequently Asked Questions
+# よくある質問
 
-Find answers to common questions about VisionFocus.
+VisionFocus についてよくある質問をまとめました。
 
-## Installation & Setup
+## インストール・セットアップ
 
-### How do I install VisionFocus?
+### VisionFocus をインストールするには？
 
-1. Visit the Chrome Web Store (link coming soon)
-2. Click "Add to Chrome"
-3. Grant the necessary permissions
-4. The VisionFocus icon will appear in your Chrome toolbar
+1. Chrome ウェブストアにアクセス（近日公開予定）
+2. 「Chrome に追加」をクリック
+3. 必要な権限を許可
+4. Chrome ツールバーに VisionFocus アイコンが表示されます
 
-### What permissions does VisionFocus need?
+### VisionFocus に必要な権限は？
 
-VisionFocus requires permissions to:
-- Access and block websites based on your settings
-- Store your blocklist, timer settings, and vision statements locally
-- Display notifications for timer alerts
+VisionFocus には以下の権限が必要です：
 
-All data is stored locally on your device. We do not collect or transmit your personal data.
+- 設定に基づいてウェブサイトへのアクセスをブロック
+- ブロックリスト・タイマー設定・ビジョンステートメントをローカルに保存
+- タイマー終了時の通知を表示
 
-### Can I use VisionFocus on other browsers?
+すべてのデータはデバイス上にローカル保存されます。個人データの収集・送信は一切行いません。
 
-Currently, VisionFocus is only available for Chrome. Support for other Chromium-based browsers (Edge, Brave) may work but is not officially supported.
+### 他のブラウザでも使えますか？
 
-## Website Blocking
+現在、VisionFocus は Chrome 専用です。Edge や Brave などの Chromium ベースのブラウザでも動作する可能性がありますが、公式にはサポートしていません。
 
-### How do I block a website?
+## ウェブサイトブロック
 
-1. Click the VisionFocus icon in your toolbar
-2. Navigate to the "Block" tab
-3. Enter a website URL (e.g., `youtube.com` or `twitter.com`)
-4. Click "Add to Blocklist"
+### サイトをブロックするには？
 
-The website will be immediately blocked.
+1. ツールバーの VisionFocus アイコンをクリック
+2. 「ブロック」タブを開く
+3. URL を入力（例：`youtube.com` や `twitter.com`）
+4. 「ブロックリストに追加」をクリック
 
-### Can I set time limits instead of blocking completely?
+すぐにブロックが有効になります。
 
-Yes! VisionFocus supports daily time limits:
-- 5 minutes
-- 15 minutes
-- 30 minutes
-- 60 minutes
+### 完全ブロックではなく時間制限できますか？
 
-Once you exceed the daily limit, the site will be blocked for the rest of the day.
+はい！1日あたりの利用時間制限を設定できます：
 
-### Does the YouTube-specific blocker work on embedded videos?
+- 5分
+- 15分
+- 30分
+- 60分
 
-The YouTube blocker blocks access to youtube.com and all its subdomains. It does not block embedded YouTube videos on other websites.
+上限を超えると、その日の残り時間はブロックされます。
 
-If you need to prevent access to YouTube content entirely, you may need to block specific sites that host embedded videos as well.
+### YouTube の埋め込み動画もブロックされますか？
 
-### Can I temporarily disable blocking?
+YouTube ブロッカーは youtube.com とすべてのサブドメインをブロックしますが、他のサイトに埋め込まれた YouTube 動画はブロック対象外です。
 
-Yes, you can unblock websites when needed. On the block page, click the "Unblock" button and confirm in the dialog. However, every unblock is tracked and counted to help you stay accountable. VisionFocus shows you how many times you've unblocked each site.
+YouTube コンテンツを完全に遮断したい場合は、埋め込みをホストする個別サイトも追加でブロックする必要があります。
 
-### How many websites can I block?
+### 一時的にブロックを解除できますか？
 
-- **Free**: Up to 10 websites
-- **Premium**: Unlimited websites
+はい。ブロックページの「ブロック解除」ボタンをクリックしてダイアログで確認すると解除できます。ただし、解除はすべて記録・カウントされ、自己管理に役立てることができます。各サイトの解除回数が表示されます。
 
-## Focus Timer
+### 何サイトまでブロックできますか？
 
-### How does the Pomodoro timer work?
+- **無料**：最大 10 サイト
+- **プレミアム**：無制限
 
-The Focus Timer supports the Pomodoro Technique:
-1. Set your focus duration (default: 25 minutes)
-2. Click "Start Timer"
-3. Work until the timer alerts you
-4. Take a short break (5 minutes)
-5. Repeat
+## 集中タイマー
 
-You can customize timer durations in the Timer settings.
+### ポモドーロタイマーはどう使いますか？
 
-### Can I pause the timer?
+集中タイマーはポモドーロテクニックに対応しています：
 
-Yes, you can pause and resume the timer at any time. Your progress will be saved.
+1. 集中時間を設定（デフォルト：25分）
+2. 「タイマー開始」をクリック
+3. アラートが鳴るまで作業
+4. 短い休憩を取る（5分）
+5. 繰り返す
 
-### Will I get notifications when the timer ends?
+タイマー設定でセッション時間をカスタマイズできます。
 
-Yes, VisionFocus will send a browser notification when your timer ends, even if the popup is closed.
+### タイマーを一時停止できますか？
 
-## Daily Vision
+はい。いつでも一時停止・再開できます。進行状況は保持されます。
 
-### What is a Daily Vision?
+### タイマー終了時に通知が届きますか？
 
-A Daily Vision is a motivational statement or goal that appears on blocked pages. It reminds you why you're blocking distractions and keeps you focused on what matters.
+はい。ポップアップが閉じていても、タイマーが終わるとブラウザ通知が届きます。
 
-### How many vision statements can I create?
+## デイリービジョン
 
-- **Free**: One daily vision statement
-- **Premium**: Multiple vision statements (rotate daily or manually)
+### デイリービジョンとは何ですか？
 
-### Can I use images in my vision statement?
+ブロックページに表示されるモチベーションメッセージや目標文のことです。なぜ誘惑を断ち切っているのかを思い出させ、大切なことに集中し続ける助けになります。
 
-Not in the current version. Vision statements are text-only for now.
+### ビジョンステートメントは何件作れますか？
 
-## Premium Features
+- **無料**：1件のデイリービジョンステートメント
+- **プレミアム**：複数件（毎日ローテーションまたは手動切り替え）
 
-### What's included in Premium?
+### ビジョンに画像を使えますか？
 
-Premium ($1.99/month or $24/year - 33% off) includes:
-- **Unlimited** website blocking (Free: 10 websites)
-- Advanced timer options
-- Multiple vision statements
-- Custom themes for blocked pages
-- Priority email support
+現在のバージョンではテキストのみです。
 
-### How do I upgrade to Premium?
+## プレミアム機能
 
-Click "Upgrade to Premium" in the VisionFocus popup and follow the payment instructions.
+### プレミアムに含まれるものは？
 
-### Can I cancel anytime?
+プレミアム（$1.99/月 または $24/年、33% OFF）には以下が含まれます：
 
-Yes, you can cancel your Premium subscription at any time. You'll retain Premium features until the end of your billing period.
+- **無制限**のウェブサイトブロック（無料版：10サイト）
+- 高度なタイマーオプション
+- 複数のビジョンステートメント
+- ブロックページのカスタムテーマ
+- 優先メールサポート
 
-### Is there a free trial?
+### プレミアムへのアップグレード方法は？
 
-Not currently, but we may offer trials in the future. The Free version is fully functional for basic use.
+VisionFocus ポップアップの「プレミアムにアップグレード」をクリックし、案内に従って決済してください。
 
-## Analytics & Data
+### いつでもキャンセルできますか？
 
-### What data does the Analytics dashboard show?
+はい。プレミアムサブスクリプションはいつでもキャンセルできます。請求期間終了まではプレミアム機能をご利用いただけます。
 
-The Analytics dashboard shows:
-- Total time saved (blocked distractions)
-- Number of blocks triggered
-- Most frequently blocked sites
-- Focus timer statistics
+### 無料トライアルはありますか？
 
-All data is stored locally on your device.
+現時点ではありませんが、今後提供予定です。無料版でも基本機能は十分にご利用いただけます。
 
-### Can I export my settings and data?
+## 統計・データ
 
-Yes! Go to Settings → Export/Import and click "Export Settings". This saves your blocklist, timers, and vision statements as a JSON file.
+### 統計ダッシュボードには何が表示されますか？
 
-### How do I import settings on another device?
+- 節約した時間の合計（ブロックした誘惑）
+- ブロック発動回数
+- 最も頻繁にブロックされたサイト
+- 集中タイマーの統計
 
-1. Export settings from your original device
-2. Install VisionFocus on the new device
-3. Go to Settings → Export/Import
-4. Click "Import Settings" and select your exported JSON file
+すべてのデータはデバイス上にローカル保存されます。
 
-## Troubleshooting
+### 設定やデータをエクスポートできますか？
 
-### A blocked site is still loading. What should I do?
+はい！設定 → エクスポート/インポート → 「設定をエクスポート」をクリックすると、ブロックリスト・タイマー・ビジョンステートメントを JSON ファイルとして保存できます。
 
-1. Refresh the page
-2. Check that the URL is correctly added to your blocklist (e.g., `youtube.com` not `https://youtube.com`)
-3. Try restarting Chrome
-4. If the issue persists, report it on [GitHub](https://github.com/machina-gg/vision-focus/issues)
+### 別のデバイスに設定を移すには？
 
-### The timer notification isn't appearing. How do I fix this?
+1. 元のデバイスで設定をエクスポート
+2. 新しいデバイスに VisionFocus をインストール
+3. 設定 → エクスポート/インポートを開く
+4. 「設定をインポート」でエクスポートした JSON ファイルを選択
 
-1. Check that Chrome notifications are enabled for VisionFocus
-2. Go to Chrome Settings → Privacy and Security → Site Settings → Notifications
-3. Ensure VisionFocus is allowed to send notifications
+## トラブルシューティング
 
-### I lost my settings after reinstalling. Can I recover them?
+### ブロックしたサイトがまだ開く場合
 
-If you exported your settings before reinstalling, you can import them. Otherwise, settings are stored locally and cannot be recovered after uninstallation. We recommend exporting your settings regularly.
+1. ページを更新する
+2. URL の形式を確認（`youtube.com` と入力し、`https://youtube.com` は不要）
+3. Chrome を再起動する
+4. 解決しない場合は [GitHub](https://github.com/machina-gg/vision-focus/issues) で報告
 
-## Still Have Questions?
+### タイマーの通知が届かない場合
 
-If you didn't find your answer here:
-- Report issues or ask questions on [GitHub](https://github.com/machina-gg/vision-focus/issues)
-- Check our [documentation](/docs/vision-focus/getting-started/) for detailed guides
+1. VisionFocus の Chrome 通知が有効か確認
+2. Chrome 設定 → プライバシーとセキュリティ → サイトの設定 → 通知 を開く
+3. VisionFocus が通知を許可されているか確認
+
+### 再インストール後に設定が消えた場合
+
+インストール前に設定をエクスポートしていれば復元できます。そうでない場合、ローカルデータは復元できません。定期的なエクスポートをおすすめします。
+
+## まだ疑問がありますか？
+
+- [GitHub](https://github.com/machina-gg/vision-focus/issues) で質問や問題を報告する
+- [ドキュメント](/docs/vision-focus/getting-started/)で詳しいガイドを確認する

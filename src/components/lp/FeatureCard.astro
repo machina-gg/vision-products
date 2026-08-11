@@ -1,0 +1,117 @@
+---
+type IconName = 'block' | 'timer' | 'vision' | 'privacy';
+
+interface Props {
+  title: string;
+  description: string;
+  icon?: IconName | string;
+  href?: string;
+}
+
+const { title, description, icon, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+
+const ICON_PATHS: Record<IconName, string> = {
+  block: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M10 2L17 5.5V10c0 4.1-3.1 7.3-7 8.5C6.1 17.3 3 14.1 3 10V5.5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M7 9.5L9 11.5 13 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+  timer: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M1.5 10S5 3.5 10 3.5 18.5 10 18.5 10 15 16.5 10 16.5 1.5 10 1.5 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+  </svg>`,
+  vision: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M10 2l2.09 5.26L18 7.27l-4.55 3.48L14.9 17 10 13.72 5.1 17l1.45-6.25L2 7.27l5.91-.01L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>`,
+  privacy: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <rect x="4" y="9" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M7 9V6.5C7 4.57 8.34 3 10 3s3 1.57 3 3.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>`,
+};
+
+const isNamedIcon = icon && icon in ICON_PATHS;
+const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
+---
+
+<Tag class="feature-card" {...(href ? { href } : {})}>
+  {icon && (
+    <div class="feature-card-icon">
+      {iconSvg
+        ? <Fragment set:html={iconSvg} />
+        : <span aria-hidden="true">{icon}</span>
+      }
+    </div>
+  )}
+  <h3 class="feature-card-title">{title}</h3>
+  <p class="feature-card-description">{description}</p>
+</Tag>
+
+<style>
+  .feature-card {
+    display: block;
+    /* padding / radius / blur / lift は ProductCard と値が異なる（統一是非は Issue #74 で PM 判断） */
+    padding: 1.5rem;
+    background: var(--vf-surface-card-soft);
+    backdrop-filter: blur(var(--vf-blur-card-sm));
+    -webkit-backdrop-filter: blur(var(--vf-blur-card-sm));
+    border: 1px solid var(--vf-card-border-soft);
+    border-radius: var(--vf-radius-card-sm);
+    transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--vf-teal-a40), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .feature-card:hover {
+    border-color: color-mix(in srgb, var(--vf-teal) 20%, transparent);
+    transform: translateY(var(--vf-lift-card-sm));
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px color-mix(in srgb, var(--vf-teal) 6%, transparent);
+  }
+
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+
+  .feature-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: color-mix(in srgb, var(--vf-teal) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 15%, transparent);
+    border-radius: var(--vf-radius-control);
+    margin-bottom: 1rem;
+    color: var(--sl-color-accent);
+    flex-shrink: 0;
+  }
+
+  .feature-card-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .feature-card-description {
+    font-size: 0.875rem;
+    color: var(--vp-text-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+</style>

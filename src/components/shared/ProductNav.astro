@@ -1,0 +1,136 @@
+---
+interface NavLink {
+  label: string;
+  href: string;
+  isExternal?: boolean;
+  isPrimary?: boolean;
+}
+
+interface Props {
+  productName: string;
+  links: NavLink[];
+}
+
+const { productName, links } = Astro.props;
+---
+
+<nav class="product-nav" aria-label={`${productName} navigation`}>
+  <div class="product-nav-inner">
+    <span class="product-nav-brand">{productName}</span>
+    <ul class="product-nav-links" role="list">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`product-nav-link${link.isPrimary ? ' product-nav-link--primary' : ''}`}
+            {...(link.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  /* ページ内アンカーリンクのスムーズスクロール */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  .product-nav {
+    position: sticky;
+    top: var(--sl-nav-height, 3.5rem);
+    z-index: 10;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background: rgba(10, 15, 28, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid color-mix(in srgb, var(--vf-teal) 12%, transparent);
+    margin-bottom: 3rem;
+  }
+
+  .product-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    height: 3rem;
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .product-nav-brand {
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--vf-teal), var(--vf-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .product-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .product-nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.625rem;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .product-nav-link:hover {
+    color: var(--sl-color-white);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .product-nav-link--primary {
+    margin-left: auto;
+    padding: 0.375rem 0.875rem;
+    background: color-mix(in srgb, var(--vf-teal) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 30%, transparent);
+    color: var(--vf-teal);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .product-nav-link--primary:hover {
+    background: color-mix(in srgb, var(--vf-teal) 20%, transparent);
+    color: #5eead4;
+  }
+
+  @media (max-width: 480px) {
+    .product-nav-brand {
+      display: none;
+    }
+
+    .product-nav-inner {
+      padding: 0 1rem;
+    }
+  }
+</style>

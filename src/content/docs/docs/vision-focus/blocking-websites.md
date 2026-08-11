@@ -1,102 +1,99 @@
 ---
-title: Blocking Websites
-description: Learn how to block distracting websites and set time limits with VisionFocus
+title: ウェブサイトブロック
+description: VisionFocus で気が散るサイトをブロックし、集中できる環境を作る方法
 ---
 
-# Blocking Websites
+# ウェブサイトブロック
 
-VisionFocus helps you stay focused by blocking distracting websites. You can add websites to your blocklist, set daily time limits, and configure YouTube-specific blocking.
+VisionFocus は、気が散るサイトをブロックして集中力を守ります。ブロックリストへの追加、利用時間制限、YouTube 専用ブロックなどを設定できます。
 
-## Adding Websites to Blocklist
+## サイトをブロックリストに追加する
 
-1. Click the VisionFocus icon in your Chrome toolbar
-2. Navigate to the "Block" tab
-3. Enter the website URL in the input field (e.g., `youtube.com`, `twitter.com`)
-4. Click "Add to Blocklist"
+1. Chrome ツールバーの VisionFocus アイコンをクリック
+2. 「ブロック」タブを開く
+3. URL 入力欄にサイトを入力（例：`youtube.com`、`twitter.com`）
+4. 「ブロックリストに追加」をクリック
 
-The website will be immediately blocked. When you try to visit it, you'll see a block page with your vision statement.
+すぐにブロックが有効になります。ブロックされたサイトにアクセスしようとすると、あなたのビジョンステートメントが表示されるブロックページが現れます。
 
-## Removing Websites from Blocklist
+## ブロックリストからサイトを削除する
 
-1. Open VisionFocus
-2. Go to the "Block" tab
-3. Find the website in your blocklist
-4. Click the "Remove" button next to the website
+1. VisionFocus を開く
+2. 「ブロック」タブを開く
+3. ブロックリストで対象サイトを探す
+4. サイト横の「削除」ボタンをクリック
 
-## Setting Daily Time Limits
+## 利用時間制限を設定する
 
-VisionFocus allows you to set a daily time limit for accessing blocked websites instead of blocking them completely.
+完全ブロックではなく、1日あたりの利用時間を制限することもできます。
 
-1. Add a website to your blocklist (see above)
-2. Click on the time limit dropdown next to the website
-3. Choose from the available options:
-   - 5 minutes
-   - 15 minutes
-   - 30 minutes
-   - 60 minutes
+1. サイトをブロックリストに追加（上記参照）
+2. サイト横の時間制限ドロップダウンをクリック
+3. 以下から選択：
+   - 5分
+   - 15分
+   - 30分
+   - 60分
 
-Once you exceed your daily limit, the website will be blocked for the rest of the day.
+1日の上限を超えると、その日の残り時間はそのサイトがブロックされます。
 
-## YouTube-Specific Blocking
+## YouTube 専用ブロック
 
-VisionFocus includes a dedicated YouTube blocking feature:
+1. VisionFocus を開く
+2. 「ブロック」タブを開く
+3. `youtube.com` をブロックリストに追加
 
-1. Open VisionFocus
-2. Navigate to the "Block" tab
-3. Add `youtube.com` to your blocklist
-4. VisionFocus will block access to the YouTube website
+YouTube 本体およびすべてのサブドメインをブロックします。なお、他のサイトに埋め込まれた YouTube 動画はブロック対象外です。
 
-This feature blocks youtube.com and all its subdomains. Note that it blocks the YouTube website itself, not embedded videos on other sites.
+## ブロックページについて
 
-## The Block Page
+ブロックされたサイトにアクセスすると、以下が表示されます：
 
-When you visit a blocked website, you'll see a block page that displays:
+- あなたのデイリービジョンステートメント（設定済みの場合）
+- ブロックされた URL
+- 利用時間制限の残り時間（設定済みの場合）
+- 本日そのサイトをブロック解除した回数
 
-- Your daily vision statement (if you've set one)
-- The blocked website URL
-- Time remaining in your daily limit (if configured)
-- Number of times you've unblocked this site today
+このページは目標を思い出させ、自分への約束を守る助けになります。
 
-This page serves as a reminder of your goals and helps you stay accountable.
+## 一時的にブロックを解除する
 
-## Unblocking Websites
+どうしてもアクセスが必要な場合：
 
-If you need to temporarily access a blocked website:
-
-1. Visit the blocked website
-2. On the block page, click the "Unblock" button
-3. Confirm that you want to unblock the site in the dialog
+1. ブロックされたサイトにアクセス
+2. ブロックページの「ブロック解除」ボタンをクリック
+3. ダイアログで解除を確認
 
 :::caution
-While you can unblock websites when needed, every unblock is tracked and counted. VisionFocus shows you how many times you've unblocked each site to help you stay accountable. Frequent unblocking may indicate you need to adjust your blocklist or time limits.
+ブロック解除はすべて記録されます。VisionFocus は各サイトのブロック解除回数を表示し、自己管理をサポートします。頻繁に解除している場合は、ブロックリストや時間制限の見直しを検討してください。
 :::
 
-## Tips for Effective Blocking
+## 効果的なブロックのコツ
 
-- **Start small**: Begin with 1-2 most distracting websites
-- **Use time limits**: Complete blocking may be too strict for some sites
-- **Block domains, not pages**: Block `youtube.com` instead of specific video URLs
-- **Review regularly**: Check your blocking statistics weekly and adjust as needed
-- **Combine with timers**: Use focus timers alongside website blocking for maximum productivity
+- **少数から始める**：最も気が散る 1〜2 サイトからスタートする
+- **時間制限を使う**：完全ブロックが厳しすぎるサイトには時間制限が有効
+- **ページではなくドメインをブロック**：特定の動画 URL ではなく `youtube.com` をブロックする
+- **定期的に見直す**：週次でブロック統計を確認し、必要に応じて調整する
+- **タイマーと組み合わせる**：サイトブロックと集中タイマーを組み合わせて最大限の生産性を発揮
 
-## Common Blocking Patterns
+## よくブロックされるサイト
 
-- **Social media**: `twitter.com`, `facebook.com`, `instagram.com`
-- **Video platforms**: `youtube.com`, `netflix.com`, `twitch.tv`
-- **News sites**: `reddit.com`, `news.ycombinator.com`
-- **Gaming**: `steam.com`, `twitch.tv`
+- **SNS**：`twitter.com`、`facebook.com`、`instagram.com`
+- **動画プラットフォーム**：`youtube.com`、`netflix.com`、`twitch.tv`
+- **ニュース・掲示板**：`reddit.com`、`news.ycombinator.com`
+- **ゲーム**：`steam.com`、`twitch.tv`
 
-## Wasted Time Tracking
+## 浪費時間のトラッキング
 
-VisionFocus automatically tracks:
+VisionFocus は自動的に以下を記録します：
 
-- How many times you tried to access blocked sites
-- How many times you unblocked sites
-- Total time spent on time-limited sites
+- ブロックされたサイトへのアクセス試行回数
+- ブロック解除した回数
+- 時間制限付きサイトの利用時間
 
-Review these statistics in the "Stats" tab to understand your browsing patterns.
+「統計」タブで自分のブラウジングパターンを確認しましょう。
 
-## Need Help?
+## お困りですか？
 
-- Check our [FAQ](/docs/vision-focus/faq/)
-- Report issues on [GitHub](https://github.com/machina-gg/vision-focus/issues)
+- [FAQ](/docs/vision-focus/faq/) を確認する
+- [GitHub](https://github.com/machina-gg/vision-focus/issues) で問題を報告する

@@ -1,0 +1,59 @@
+---
+import ProductNav from '../shared/ProductNav.astro';
+
+const pathname = Astro.url.pathname;
+
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+const prefix = locale === 'en' ? '/en' : '';
+
+const isVisionFocus = pathname.includes('/vision-focus');
+
+// LP ページ（docs/ legal/ changelog/ 以外の /vision-focus ページ）
+const isProductLP =
+  isVisionFocus &&
+  !pathname.includes('/docs/') &&
+  !pathname.includes('/legal/') &&
+  !pathname.includes('/changelog');
+
+// 個別記事ページ（/articles/ 以下、ただし index は除く）
+const isIndividualArticle =
+  (pathname.startsWith('/articles/') || pathname.startsWith('/en/articles/')) &&
+  pathname !== '/articles/' &&
+  pathname !== '/articles' &&
+  pathname !== '/en/articles/' &&
+  pathname !== '/en/articles';
+
+/* 翻訳辞書 */
+const t = {
+  ja: { overview: 'Overview', docs: 'Docs', privacy: 'Privacy', install: 'Install' },
+  en: { overview: 'Overview', docs: 'Docs', privacy: 'Privacy', install: 'Install' },
+}[locale] ?? { overview: 'Overview', docs: 'Docs', privacy: 'Privacy', install: 'Install' };
+
+const visionFocusLinks = [
+  { label: t.overview, href: `${prefix}/vision-focus/` },
+  { label: t.docs,     href: `${prefix}/docs/vision-focus/getting-started/` },
+  { label: t.privacy,  href: `${prefix}/legal/privacy/` },
+  { label: t.install,  href: 'https://chrome.google.com/webstore', isExternal: true, isPrimary: true },
+];
+---
+
+{(isProductLP || isIndividualArticle) ? (
+  <span id="_top" class="skip-anchor" aria-hidden="true"></span>
+) : isVisionFocus ? (
+  <Fragment>
+    <h1 id="_top"><slot /></h1>
+    <ProductNav productName="VisionFocus" links={visionFocusLinks} />
+  </Fragment>
+) : (
+  <h1 id="_top"><slot /></h1>
+)}
+
+<style>
+  .skip-anchor {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+</style>

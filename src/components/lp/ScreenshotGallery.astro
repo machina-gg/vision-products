@@ -1,0 +1,41 @@
+---
+interface Screenshot {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: Screenshot[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="screenshot-gallery">
+  {images.map((image) => (
+    <div class="screenshot-gallery-item">
+      <img src={image.src} alt={image.alt} loading="lazy" />
+    </div>
+  ))}
+</div>
+
+<style>
+  .screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0 2rem;
+  }
+
+  .screenshot-gallery-item img {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .screenshot-gallery-item img:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+</style>

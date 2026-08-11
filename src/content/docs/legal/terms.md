@@ -1,193 +1,193 @@
 ---
-title: Terms of Service
-description: Terms of Service for VisionFocus Chrome Extension
+title: 利用規約
+description: VisionFocus Chrome 拡張機能の利用規約
 ---
 
-# Terms of Service
+# 利用規約
 
-**Last Updated: February 15, 2026**
+**最終更新日：2026年2月15日**
 
-Please read these Terms of Service ("Terms") carefully before using the VisionFocus Chrome extension ("Service", "Extension") operated by machina.gg ("we", "us", or "our").
+VisionFocus Chrome 拡張機能（「本サービス」、「本拡張機能」）をご利用いただく前に、この利用規約（「本規約」）をよくお読みください。本拡張機能は machina.gg（「当社」）が運営しています。
 
-## Acceptance of Terms
+## 規約への同意
 
-By installing, accessing, or using VisionFocus, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the Service.
+VisionFocus をインストール、アクセス、または使用することにより、本規約に同意したものとみなします。同意いただけない場合は、本サービスをご利用いただけません。
 
-## Description of Service
+## サービスの内容
 
-VisionFocus is a Chrome extension that provides:
+VisionFocus は以下の機能を提供する Chrome 拡張機能です：
 
-- Website blocking functionality
-- Focus timer features
-- Daily vision statement display
-- Premium features available through paid subscription
+- ウェブサイトブロック機能
+- 集中タイマー機能
+- デイリービジョンステートメントの表示
+- 有料サブスクリプションによるプレミアム機能
 
-## License
+## ライセンス
 
-We grant you a limited, non-exclusive, non-transferable, revocable license to use VisionFocus for your personal use, subject to these Terms.
+当社は、本規約に従い、個人的な使用を目的として VisionFocus を利用するための、限定的・非排他的・譲渡不能・取消可能なライセンスをお客様に付与します。
 
-You may not:
+以下の行為は禁止されています：
 
-- Modify, reverse engineer, or decompile the Extension
-- Distribute, sublicense, or sell the Extension
-- Use the Extension for any illegal purpose
-- Attempt to bypass or circumvent any security features
-- Remove or alter any proprietary notices
+- 本拡張機能の改変・リバースエンジニアリング・逆コンパイル
+- 本拡張機能の配布・サブライセンス・販売
+- 違法な目的での使用
+- セキュリティ機能の回避・迂回
+- 権利表示の削除または改変
 
-## User Accounts and Subscriptions
+## ユーザーアカウントとサブスクリプション
 
-### Free Version
+### 無料版
 
-The free version of VisionFocus is available without registration.
+VisionFocus の無料版はユーザー登録なしでご利用いただけます。
 
-### Premium Subscription
+### プレミアムサブスクリプション
 
-- Premium features require a paid subscription ($5/month)
-- Payments are processed securely through Stripe via ExtensionPay
-- Subscriptions automatically renew unless cancelled
-- You may cancel your subscription at any time through the extension settings
-- Refunds are handled according to our refund policy (see below)
+- プレミアム機能には有料サブスクリプション（**$1.99/月**）が必要です
+- 決済は ExtensionPay を通じて Stripe が安全に処理します
+- サブスクリプションはキャンセルしない限り自動更新されます
+- 拡張機能の設定からいつでもキャンセルできます
+- 返金は以下の返金ポリシーに従います
 
-### Refund Policy
+### 返金ポリシー
 
-- Full refund available within 7 days of initial purchase
-- No refunds for subsequent renewal periods once started
-- To request a refund, contact us through GitHub Issues or email
+- 初回購入から 7 日以内であれば全額返金いたします
+- 更新後の期間に対する返金はいたしかねます
+- 返金のご依頼は GitHub Issues またはメールでお問い合わせください
 
-## User Responsibilities
+## ユーザーの責任
 
-You are responsible for:
+お客様は以下について責任を負います：
 
-- Maintaining the security of your Chrome browser profile
-- All activity that occurs through your installation of the Extension
-- Ensuring your use complies with applicable laws
-- Backing up any data you wish to preserve (all data is stored locally)
+- Chrome ブラウザプロファイルのセキュリティ管理
+- ご自身のインストールを通じて行われるすべての行為
+- 適用法令の遵守
+- 保持したいデータのバックアップ（すべてのデータはローカル保存）
 
-## Privacy
+## プライバシー
 
-Your use of VisionFocus is also governed by our [Privacy Policy](/legal/privacy/). Please review it to understand how we handle your information.
+VisionFocus のご利用には、当社の[プライバシーポリシー](/legal/privacy/)も適用されます。お客様の情報がどのように取り扱われるかをご確認ください。
 
-## Data and Content
+## データとコンテンツ
 
-### Your Data
+### お客様のデータ
 
-- All blocked websites, timers, and vision statements are stored locally on your device
-- You retain all rights to your data
-- We do not claim ownership of any content you create using the Extension
-- Uninstalling the Extension will delete all local data
+- ブロックサイト・タイマー・ビジョンステートメントはすべてお使いのデバイス上に保存されます
+- お客様はご自身のデータに対するすべての権利を保持します
+- 当社は、本拡張機能を使用して作成したコンテンツの所有権を主張しません
+- 拡張機能のアンインストールにより、すべてのローカルデータが削除されます
 
-### Backup Responsibility
+### バックアップについて
 
-Since all data is stored locally, you are responsible for backing up any important information. We are not liable for any data loss.
+すべてのデータはローカルに保存されるため、重要な情報のバックアップはお客様の責任で行ってください。当社はデータ損失について責任を負いません。
 
-## Modifications to the Service
+## サービスの変更
 
-We reserve the right to:
+当社は以下の権限を留保します：
 
-- Modify or discontinue the Service (or any part thereof) at any time
-- Change pricing for Premium subscriptions with 30 days notice
-- Update features and functionality
-- Enforce these Terms at our discretion
+- サービス（またはその一部）をいつでも変更または終了する権利
+- プレミアムサブスクリプションの料金を 30 日前の通知をもって変更する権利
+- 機能のアップデートや改善を行う権利
+- 裁量により本規約を執行する権利
 
-We will make reasonable efforts to notify users of significant changes through:
+重要な変更については以下の方法でお知らせします：
 
-- Extension update notifications
-- Email notifications (for Premium subscribers)
-- Updates to this page
+- 拡張機能の更新通知
+- メール通知（プレミアム会員のみ）
+- このページの更新
 
-## Disclaimer of Warranties
+## 保証の否認
 
-VisionFocus is provided "AS IS" and "AS AVAILABLE" without warranties of any kind, either express or implied, including but not limited to:
+VisionFocus は「現状のまま（AS IS）」および「利用可能な状態（AS AVAILABLE）」で提供され、明示・黙示を問わず一切の保証を行いません：
 
-- Warranties of merchantability
-- Fitness for a particular purpose
-- Non-infringement
-- Uninterrupted or error-free operation
+- 商品性の保証
+- 特定目的への適合性
+- 非侵害性
+- 中断なし・エラーなしの動作
 
-We do not guarantee that:
+以下については保証いたしません：
 
-- The Extension will meet your requirements
-- The Extension will be available at all times
-- All errors will be corrected
-- The Extension will be compatible with future Chrome versions
+- 本拡張機能がお客様の要件を満たすこと
+- 常時利用可能であること
+- すべてのエラーが修正されること
+- 将来の Chrome バージョンとの互換性
 
-## Limitation of Liability
+## 責任の制限
 
-To the maximum extent permitted by law, machina.gg and its affiliates, officers, employees, agents, and licensors shall not be liable for:
+適用法令の許容する最大限の範囲において、machina.gg およびその関係会社は以下について責任を負いません：
 
-- Any indirect, incidental, special, consequential, or punitive damages
-- Loss of profits, revenue, data, or use
-- Damages resulting from use or inability to use the Service
-- Any claim related to website blocking failures or timer accuracy
+- 間接的・付随的・特別・結果的または懲罰的損害
+- 利益・収益・データ・利用機会の損失
+- 本サービスの使用または使用不能に起因する損害
+- ウェブサイトブロックの失敗やタイマーの精度に関するいかなる請求
 
-Our total liability shall not exceed the amount you paid for the Service in the 12 months preceding the claim (maximum $60 for Premium subscribers, $0 for free users).
+当社の総責任額は、請求の 12 ヶ月前にお客様が本サービスに対して支払った金額（最大 $23.88、無料ユーザーの場合は $0）を超えません。
 
-## Indemnification
+## 補償
 
-You agree to indemnify and hold harmless machina.gg from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
+お客様は、以下から生じるいかなる請求・損害・損失・費用（法的費用を含む）からも machina.gg を免責・無害に保つことに同意します：
 
-- Your use of the Extension
-- Your violation of these Terms
-- Your violation of any rights of another party
-- Any content you submit through the Extension
+- 本拡張機能のご利用
+- 本規約への違反
+- 第三者の権利への侵害
+- 本拡張機能を通じて送信するコンテンツ
 
-## Termination
+## 解除
 
-We may terminate or suspend your access to VisionFocus immediately, without prior notice or liability, for any reason, including:
+当社は、以下を含むいかなる理由においても、事前通知または責任なしに VisionFocus へのアクセスを即座に停止または終了できます：
 
-- Violation of these Terms
-- Fraudulent or illegal activity
-- Request by law enforcement
+- 本規約への違反
+- 不正または違法な行為
+- 法執行機関からの要請
 
-Upon termination:
+解除時：
 
-- Your license to use the Extension terminates immediately
-- You must uninstall the Extension
-- Premium subscriptions will be cancelled (refunds subject to our refund policy)
+- 本拡張機能の使用ライセンスは即座に失効します
+- 本拡張機能をアンインストールする必要があります
+- プレミアムサブスクリプションはキャンセルされます（返金は返金ポリシーに従います）
 
-## Governing Law
+## 準拠法
 
-These Terms shall be governed by and construed in accordance with the laws of Japan, without regard to its conflict of law provisions.
+本規約は、法の抵触に関する規定にかかわらず、日本国の法律に従って解釈されます。
 
-## Dispute Resolution
+## 紛争解決
 
-Any disputes arising from these Terms or the Service shall be resolved through:
+本規約またはサービスに関する紛争は以下の手順で解決します：
 
-1. Good faith negotiation
-2. Binding arbitration if negotiation fails
-3. Small claims court (if eligible)
+1. 誠実な交渉
+2. 交渉が不成立の場合は拘束力のある仲裁
+3. 少額訴訟（該当する場合）
 
-## Intellectual Property
+## 知的財産
 
-VisionFocus and all related trademarks, logos, and content are the property of machina.gg. All rights reserved.
+VisionFocus および関連するすべての商標・ロゴ・コンテンツは machina.gg の所有物です。すべての権利を留保します。
 
-You may not use our trademarks or branding without prior written permission.
+事前の書面による許可なく、当社の商標やブランドを使用することはできません。
 
-## Severability
+## 可分性
 
-If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+本規約のいずれかの条項が無効または執行不能と判断された場合、残りの条項は引き続き完全に有効とします。
 
-## Entire Agreement
+## 合意の全体性
 
-These Terms, together with our Privacy Policy, constitute the entire agreement between you and machina.gg regarding the use of VisionFocus.
+本規約は、プライバシーポリシーと併せて、VisionFocus の利用に関するお客様と machina.gg との完全な合意を構成します。
 
-## Changes to These Terms
+## 本規約の変更
 
-We reserve the right to modify these Terms at any time. We will notify users of material changes by:
+当社は本規約をいつでも変更する権利を留保します。重要な変更がある場合は以下の方法でお知らせします：
 
-- Updating the "Last Updated" date
-- Displaying a notice in the Extension
-- Email notification (for Premium subscribers)
+- 「最終更新日」の更新
+- 拡張機能内での通知表示
+- メール通知（プレミアム会員のみ）
 
-Continued use of the Extension after changes constitutes acceptance of the modified Terms.
+変更後も本拡張機能を引き続き使用することにより、変更された規約に同意したものとみなします。
 
-## Contact Us
+## お問い合わせ
 
-If you have questions about these Terms:
+本規約についてのご質問は：
 
-- GitHub Issues: [https://github.com/machina-gg/vision-focus/issues](https://github.com/machina-gg/vision-focus/issues)
-- Email: legal@machina.gg
+- GitHub Issues：[https://github.com/machina-gg/vision-focus/issues](https://github.com/machina-gg/vision-focus/issues)
+- メール：legal@machina.gg
 
-## Summary
+## まとめ
 
-**In short**: Use VisionFocus responsibly and legally. We provide the service "as is" and may change or discontinue it at any time. Premium subscriptions are $5/month with a 7-day refund policy. Your data is stored locally and is your responsibility to back up. We are not liable for service interruptions or data loss.
+VisionFocus を適法かつ適切にご利用ください。当社は本サービスを「現状のまま」提供し、いつでも変更または終了する場合があります。プレミアムサブスクリプションは $1.99/月で、7 日間の返金ポリシーが適用されます。データはローカルに保存され、バックアップはお客様の責任で行ってください。

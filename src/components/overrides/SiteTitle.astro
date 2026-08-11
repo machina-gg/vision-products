@@ -1,0 +1,41 @@
+---
+const pathname = Astro.url.pathname;
+const isVisionFocus = pathname.includes('/vision-focus');
+
+// ロケール判定: 英語は /en/ プレフィックスを付与
+const locale = Astro.currentLocale ?? 'ja';
+const prefix = locale === 'en' ? '/en' : '';
+---
+
+{isVisionFocus ? (
+  <a href={`${prefix}/vision-focus/`} class="site-title site-title--product">
+    VisionFocus
+  </a>
+) : (
+  <a href={`${prefix}/`} class="site-title site-title--hub">
+    Vision Products
+  </a>
+)}
+
+<style>
+  .site-title {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .site-title--product {
+    background: linear-gradient(135deg, var(--vf-teal) 0%, var(--vf-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .site-title--hub {
+    color: var(--sl-color-white);
+  }
+</style>

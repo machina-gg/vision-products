@@ -1,0 +1,104 @@
+---
+// 記事末尾の CTA バナー — VisionFocus への誘導
+
+// ロケール判定と翻訳辞書
+const locale = Astro.currentLocale ?? 'ja';
+const prefix = locale === 'en' ? '/en' : '';
+
+const t = {
+  ja: {
+    ariaLabel: 'VisionFocus を試す',
+    heading: '集中力を高める Chrome 拡張機能',
+    description: 'ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。',
+    button: 'VisionFocus を試してみる',
+  },
+  en: {
+    ariaLabel: 'Try VisionFocus',
+    heading: 'The Chrome Extension for Deep Focus',
+    description: 'Block distracting websites, use focus timers, and set vision statements to achieve deep focus.',
+    button: 'Try VisionFocus',
+  },
+}[locale] ?? {
+  ariaLabel: 'VisionFocus を試す',
+  heading: '集中力を高める Chrome 拡張機能',
+  description: 'ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。',
+  button: 'VisionFocus を試してみる',
+};
+---
+
+<aside class="article-cta" aria-label={t.ariaLabel}>
+  <div class="article-cta-inner">
+    <p class="article-cta-label">VisionFocus</p>
+    <p class="article-cta-heading">{t.heading}</p>
+    <p class="article-cta-description">
+      {t.description}
+    </p>
+    <a href={`${prefix}/vision-focus/`} class="article-cta-button">{t.button}</a>
+  </div>
+</aside>
+
+<style>
+  .article-cta {
+    max-width: 42rem;
+    margin: 3rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .article-cta-inner {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--sl-color-accent) 8%, transparent),
+        color-mix(in srgb, var(--vf-purple, #8B5CF6) 6%, transparent)
+      );
+  }
+
+  .article-cta-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .article-cta-heading {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--sl-color-white);
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .article-cta-description {
+    font-size: 0.875rem;
+    color: var(--vp-text-muted);
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+    max-width: 36ch;
+    margin-inline: auto;
+  }
+
+  .article-cta-button {
+    display: inline-block;
+    padding: 0.625rem 1.5rem;
+    background: var(--vf-gradient-cta);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    box-shadow: var(--vf-shadow-hero-cta);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .article-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--vf-shadow-hero-cta-hover);
+    color: white;
+  }
+</style>

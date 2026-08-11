@@ -1,0 +1,189 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+  icon?: string;
+  iconName?: string;
+  badge?: string;
+  /** CTA ラベル（省略時は「詳しく見る」） */
+  ctaLabel?: string;
+}
+
+const { name, description, href, icon, iconName, badge, ctaLabel = "詳しく見る" } = Astro.props;
+
+type IconName = 'vision-focus';
+
+const NAMED_ICONS: Record<IconName, string> = {
+  'vision-focus': `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+    <path d="M3.5 18C3.5 18 9 9 18 9C27 9 32.5 18 32.5 18C32.5 18 27 27 18 27C9 27 3.5 18 3.5 18Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+    <circle cx="18" cy="18" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18" cy="18" r="2.5" class="product-card-icon-pupil"/>
+  </svg>`,
+};
+
+const resolvedIconSvg = iconName && iconName in NAMED_ICONS
+  ? NAMED_ICONS[iconName as IconName]
+  : null;
+---
+
+<a href={href} class="product-card">
+  <div class="product-card-glow" aria-hidden="true"></div>
+  {badge && <span class="product-card-badge">{badge}</span>}
+  <div class="product-card-icon">
+    {resolvedIconSvg
+      ? <Fragment set:html={resolvedIconSvg} />
+      : icon
+        ? <img src={icon} alt={`${name} icon`} width="44" height="44" />
+        : (
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10h6M10 7v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        )
+    }
+  </div>
+  <div class="product-card-body">
+    <h3 class="product-card-name">{name}</h3>
+    <p class="product-card-description">{description}</p>
+  </div>
+  <span class="product-card-cta">
+    {ctaLabel}
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</a>
+
+<style>
+  .product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* padding / radius / blur / lift は FeatureCard と値が異なる（統一是非は Issue #74 で PM 判断） */
+    padding: 1.75rem;
+    background: var(--vf-surface-card);
+    backdrop-filter: blur(var(--vf-blur-card));
+    -webkit-backdrop-filter: blur(var(--vf-blur-card));
+    border: 1px solid var(--vf-card-border);
+    border-radius: var(--vf-radius-card);
+    color: var(--sl-color-text);
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  }
+
+  /* Ambient glow that tracks hover */
+  .product-card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--vf-teal-a10), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+  }
+
+  /* Top highlight line */
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--vf-teal-a60), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(var(--vf-lift-card));
+    border-color: color-mix(in srgb, var(--vf-teal) 30%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--vf-teal) 10%, transparent) inset,
+      0 20px 50px rgba(0, 0, 0, 0.5),
+      0 0 50px color-mix(in srgb, var(--vf-teal) 7%, transparent);
+    color: var(--sl-color-text);
+  }
+
+  .product-card:hover .product-card-glow {
+    opacity: 1;
+  }
+
+  .product-card:hover::before {
+    opacity: 1;
+  }
+
+  .product-card-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    padding: 0.2rem 0.625rem;
+    background: color-mix(in srgb, var(--vf-teal) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 30%, transparent);
+    border-radius: var(--vf-radius-pill);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--vf-teal);
+    letter-spacing: 0.03em;
+  }
+
+  .product-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--vf-teal) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 12%, transparent);
+    flex-shrink: 0;
+    /* アイコンの stroke は currentColor 参照
+       （FeatureCard / DownloadButtons と同じ方式） */
+    color: var(--vf-teal);
+  }
+
+  /* 瞳だけ teal ではなく cyan のため、クラス経由でトークンを参照する。
+     set:html で挿入した SVG にはスコープ属性が付かないので :global() が必要。 */
+  .product-card-icon :global(.product-card-icon-pupil) {
+    fill: var(--vf-cyan);
+  }
+
+  .product-card-icon img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+
+  .product-card-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+    color: var(--sl-color-white);
+  }
+
+  .product-card-description {
+    font-size: 0.875rem;
+    color: var(--vp-text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .product-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    margin-top: auto;
+    transition: gap 0.2s ease;
+  }
+
+  .product-card:hover .product-card-cta {
+    gap: 0.625rem;
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+title: VisionFocus
+description: A Chrome extension that boosts focus and protects your eyes. Block websites, set timers, and write daily vision statements to boost productivity.
+template: splash
+prev: false
+next: false
+---
+
+import ProductNav from "../../../components/shared/ProductNav.astro";
+import HeroSection from "../../../components/lp/HeroSection.astro";
+import FeatureGrid from "../../../components/lp/FeatureGrid.astro";
+import FeatureCard from "../../../components/lp/FeatureCard.astro";
+import DownloadButtons from "../../../components/lp/DownloadButtons.astro";
+import VisionFocusPricing from "../../../components/lp/VisionFocusPricing.astro";
+
+<ProductNav
+  productName="VisionFocus"
+  links={[
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Docs", href: "/en/docs/vision-focus/getting-started/" },
+    {
+      label: "Install",
+      href: "https://chrome.google.com/webstore",
+      isExternal: true,
+      isPrimary: true,
+    },
+  ]}
+/>
+
+<HeroSection
+  title="Focus, freely."
+  subtitle="VisionFocus is a Chrome extension combining website blocking, timers, and daily vision statements. Your companion for protecting focus, caring for your eyes, and achieving your daily goals."
+  eyebrow="Chrome Extension"
+>
+  <DownloadButtons
+    links={[
+      {
+        label: "Chrome Web Store",
+        href: "https://chrome.google.com/webstore",
+        type: "chrome",
+      },
+      {
+        label: "Read Docs",
+        href: "/en/docs/vision-focus/getting-started/",
+        type: "direct",
+      },
+    ]}
+  />
+</HeroSection>
+
+<section id="features" class="lp-section">
+  <p class="lp-section-heading">Features</p>
+  <h2 class="lp-section-title">4 features to protect your focus</h2>
+
+  <FeatureGrid>
+    <FeatureCard
+      title="Website Blocking"
+      description="Block distracting sites with one click. Build your personal focus environment with custom lists."
+      icon="block"
+      href="/en/docs/vision-focus/blocking-websites/"
+    />
+    <FeatureCard
+      title="20-20-20 Timer"
+      description="Reduce eye strain with regular break reminders. Scientifically control your screen time."
+      icon="timer"
+      href="/en/docs/vision-focus/timers/"
+    />
+    <FeatureCard
+      title="Daily Vision"
+      description="Write down today's goals and see them while browsing. Stay motivated and keep moving toward your goals."
+      icon="vision"
+      href="/en/docs/vision-focus/vision-statements/"
+    />
+    <FeatureCard
+      title="Privacy First"
+      description="All data stored locally. Zero data sent to external servers. Use with peace of mind."
+      icon="privacy"
+      href="/en/docs/vision-focus/faq/"
+    />
+  </FeatureGrid>
+</section>
+
+<VisionFocusPricing />

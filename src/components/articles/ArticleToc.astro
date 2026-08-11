@@ -1,0 +1,106 @@
+---
+// 記事ページの目次コンポーネント（Starlight の「On this page」相当）
+// article-body 内の h2/h3 見出しからクライアントサイドで自動生成する
+---
+
+<nav class="article-toc" aria-label="目次" data-article-toc>
+  <div class="article-toc-inner">
+    <p class="article-toc-title">目次</p>
+    <ul class="article-toc-list" data-toc-list></ul>
+  </div>
+</nav>
+
+<script>
+  // article-body 内の h2/h3 から目次を生成
+  function buildToc() {
+    const toc = document.querySelector('[data-article-toc]');
+    const list = document.querySelector('[data-toc-list]');
+    const body = document.querySelector('.article-body');
+    if (!toc || !list || !body) return;
+
+    const headings = body.querySelectorAll('h2, h3');
+    if (headings.length === 0) {
+      // 見出しがなければ目次自体を非表示
+      (toc as HTMLElement).style.display = 'none';
+      return;
+    }
+
+    headings.forEach((heading) => {
+      // id がなければ生成
+      if (!heading.id) {
+        heading.id = heading.textContent
+          ?.trim()
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w\u3000-\u9FFF\u4E00-\u9FFF\uF900-\uFAFF-]/g, '') ?? '';
+      }
+
+      const li = document.createElement('li');
+      li.className =
+        heading.tagName === 'H3'
+          ? 'article-toc-item article-toc-item--nested'
+          : 'article-toc-item';
+
+      const a = document.createElement('a');
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent?.trim() ?? '';
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+
+  buildToc();
+</script>
+
+<style>
+  .article-toc {
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .article-toc-inner {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border-radius: 0.75rem;
+    background: var(--sl-color-bg-nav);
+  }
+
+  .article-toc-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.75rem;
+  }
+
+  .article-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .article-toc-item :global(a) {
+    font-size: 0.8125rem;
+    color: var(--vp-text-muted);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color 0.15s ease;
+  }
+
+  .article-toc-item :global(a:hover) {
+    color: var(--sl-color-accent);
+  }
+
+  .article-toc-item--nested {
+    padding-left: 1rem;
+  }
+
+  .article-toc-item--nested :global(a) {
+    font-size: 0.75rem;
+  }
+</style>

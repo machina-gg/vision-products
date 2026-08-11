@@ -1,0 +1,110 @@
+---
+import TagBadge from './TagBadge.astro';
+
+interface Props {
+  title: string;
+  publishedAt: Date;
+  products?: string[];
+}
+
+const { title, publishedAt, products = [] } = Astro.props;
+
+const PRODUCT_LABELS: Record<string, string> = {
+  'vision-focus': 'VisionFocus',
+};
+
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+const prefix = locale === 'en' ? '/en' : '';
+
+// 翻訳辞書
+const t = {
+  ja: { backToArticles: '記事一覧へ' },
+  en: { backToArticles: 'Back to Articles' },
+}[locale] ?? { backToArticles: '記事一覧へ' };
+
+// 日付フォーマットをロケールに応じて切替
+const dateLocale = locale === 'en' ? 'en-US' : 'ja-JP';
+const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<header class="article-header">
+  <a href={`${prefix}/articles/`} class="article-back-link">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    {t.backToArticles}
+  </a>
+
+  <h1 class="article-title">{title}</h1>
+
+  <div class="article-meta">
+    <time class="article-date" datetime={publishedAt.toISOString().split('T')[0]}>
+      {formattedDate}
+    </time>
+    {products.length > 0 && (
+      <div class="article-tags">
+        {products.map((p) => (
+          <TagBadge product={p} label={PRODUCT_LABELS[p] ?? p} href={`/${p}/articles/`} />
+        ))}
+      </div>
+    )}
+  </div>
+</header>
+
+<style>
+  .article-header {
+    max-width: 42rem;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .article-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--sl-color-accent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: gap 0.15s ease;
+  }
+
+  .article-back-link:hover {
+    gap: 0.125rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 800;
+    color: var(--sl-color-white);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+  }
+
+  .article-date {
+    font-size: 0.8125rem;
+    color: var(--vp-text-muted);
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+</style>

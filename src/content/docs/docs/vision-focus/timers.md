@@ -1,129 +1,127 @@
 ---
-title: Using Timers
-description: Master the timer feature to boost your focus and productivity with VisionFocus
+title: タイマー機能
+description: VisionFocus のタイマーを使いこなして集中力と生産性を高める方法
 ---
 
-# Using Timers
+# タイマー機能
 
-VisionFocus includes a powerful timer feature designed to help you maintain focus and manage your time effectively. Whether you're using the Pomodoro Technique or setting custom focus sessions, timers can significantly enhance your productivity.
+VisionFocus には、集中力を維持し時間を効果的に管理するための強力なタイマー機能が搭載されています。ポモドーロテクニックにも、カスタムの集中セッションにも対応しています。
 
-## Setting Up a Focus Timer
+## 集中タイマーをセットする
 
-### Basic Timer Setup
+### 基本的なセットアップ
 
-1. Click the VisionFocus icon in your Chrome toolbar
-2. Navigate to the "Timer" tab
-3. Set your desired focus duration (e.g., 25 minutes)
-4. Click "Start Timer"
+1. Chrome ツールバーの VisionFocus アイコンをクリック
+2. 「タイマー」タブを開く
+3. 集中したい時間を設定（例：25分）
+4. 「タイマー開始」をクリック
 
-Once started, the timer will count down and notify you when your focus session is complete.
+タイマーがカウントダウンを始め、セッション終了時に通知が届きます。
 
-### Customizing Timer Duration
+### 時間のカスタマイズ
 
-- **Short sessions**: 15-20 minutes for quick tasks
-- **Standard sessions**: 25 minutes (classic Pomodoro)
-- **Deep work**: 45-90 minutes for complex tasks
+- **短時間セッション**：15〜20分（小さなタスク向け）
+- **標準セッション**：25分（ポモドーロの定番）
+- **ディープワーク**：45〜90分（複雑な作業向け）
 
-Choose a duration that matches your task complexity and personal focus capacity.
+タスクの難易度と自分の集中力に合わせて選びましょう。
 
-## Using VisionFocus with the Pomodoro Technique
+## ポモドーロテクニックと組み合わせる
 
-The Pomodoro Technique is a time management method that breaks work into focused intervals. You can use VisionFocus's timer to practice this technique.
+ポモドーロテクニックは、作業を集中インターバルに分割する時間管理術です。VisionFocus のタイマーでこのテクニックを実践できます。
 
-### Classic Pomodoro Cycle
+### ポモドーロの基本サイクル
 
-1. **Work Phase**: Set a 25-minute timer for focused work
-2. **Short Break**: Take a 5-minute break when the timer ends
-3. **Repeat**: Complete 4 work phases
-4. **Long Break**: Take a 15-30 minute break after 4 cycles
+1. **作業フェーズ**：25分間の集中タイマーをセット
+2. **短い休憩**：タイマー終了後に5分休む
+3. **繰り返し**：4セッション完了する
+4. **長い休憩**：4サイクル後に15〜30分しっかり休む
 
-### Implementing Pomodoro with VisionFocus
+### VisionFocus でのポモドーロ実践
 
-1. Set your timer to 25 minutes
-2. Click "Start Timer" and focus on your task
-3. When the notification appears, manually start a 5-minute break timer
-4. After your break, reset the timer for your next work session
-5. Track your completed cycles manually
+1. タイマーを25分にセット
+2. 「タイマー開始」をクリックしてタスクに集中
+3. 通知が来たら5分の休憩タイマーを手動でスタート
+4. 休憩後、次のセッションのためにリセット
+5. 完了セッション数を手動でカウント
 
-**Pro Tip**: Combine VisionFocus's blocking feature during work phases to eliminate distractions. You can adjust your blocklist during breaks if needed.
+**Pro Tip**：作業フェーズ中はブロック機能を組み合わせて、誘惑サイトを完全シャットアウトしましょう。
 
-## Timer Notifications
+## タイマー通知
 
-VisionFocus keeps you informed about your focus sessions through notifications.
+VisionFocus は集中セッションの進捗をリアルタイムでお知らせします。
 
-### Notification Types
+### 通知の種類
 
-- **Timer Start**: Confirmation when your focus session begins
-- **Timer End**: Alert when your session is complete
-- **Break Reminder**: Notification to take your scheduled break
+- **タイマー開始**：集中セッション開始の確認通知
+- **タイマー終了**：セッション完了のアラート
+- **休憩リマインダー**：次の休憩を促す通知
 
-### Managing Notifications
+### 通知の管理
 
-1. Open VisionFocus settings
-2. Navigate to "Notifications"
-3. Toggle notification types on/off
+1. VisionFocus の設定を開く
+2. 「通知」に移動
+3. 通知の種類ごとにオン/オフを切り替え
 
-**Note**: Make sure browser notifications are enabled for VisionFocus in your Chrome settings.
+**注意**：Chrome の通知設定で VisionFocus の通知が許可されていることを確認してください。
 
-## Timers and Focus Tracking
+## タイマーと集中度のトラッキング
 
-VisionFocus tracks your browsing activity during timer sessions, giving you insights into your focus quality.
+VisionFocus はタイマー中のブラウジング行動を記録し、集中の質を可視化します。
 
-### What Gets Tracked
+### トラッキングされる内容
 
-- **Time on task**: Total time spent in your focus session
-- **Sites visited**: Websites accessed during the timer
-- **Distraction count**: Number of times you visited blocked sites
+- **タスク時間**：集中セッション中の合計時間
+- **訪問サイト**：タイマー中にアクセスしたサイト
+- **妨害回数**：ブロックサイトへのアクセス試行数
 
-### Viewing Your Stats
+### 統計の確認
 
-1. Complete a timer session
-2. Go to the "Stats" tab
-3. Review your focus metrics
-4. Identify patterns and improvement areas
+1. タイマーセッションを完了する
+2. 「統計」タブを開く
+3. 集中度の指標を確認する
+4. パターンを把握して改善点を見つける
 
-This data helps you understand your focus habits and make adjustments for better productivity.
+このデータが集中習慣の理解と改善につながります。
 
-## Advanced Timer Tips
+## 応用テクニック
 
-### Combining Timers with Blocking
+### ブロックとタイマーを組み合わせる
 
-For maximum effectiveness:
+最大限の効果を出すには：
 
-1. Create a blocklist of distracting sites
-2. Start your focus timer
-3. Your blocked sites remain blocked during your session
+1. 気が散るサイトのブロックリストを作成
+2. 集中タイマーをスタート
+3. セッション中はブロックが継続して適用される
 
-This creates a distraction-free environment tailored to your work sessions.
+これにより、作業内容に最適化された集中環境が生まれます。
 
-## Troubleshooting
+## トラブルシューティング
 
-### Timer Not Starting
+### タイマーが開始しない
 
-- Check that VisionFocus is enabled
-- Refresh the extension by clicking the icon
-- Try restarting Chrome
+- VisionFocus が有効になっているか確認
+- アイコンをクリックして拡張機能を再読み込み
+- Chrome を再起動してみる
 
-### Missing Notifications
+### 通知が届かない
 
-- Verify Chrome notifications are enabled
-- Check VisionFocus notification settings
-- Ensure "Do Not Disturb" mode is off
+- Chrome の通知が有効か確認
+- VisionFocus の通知設定を確認
+- 「おやすみモード」がオフになっているか確認
 
-### Timer Stops Unexpectedly
+### タイマーが予期せず停止する
 
-- Keep at least one Chrome window open
-- Check that your computer isn't going to sleep
-- Update VisionFocus to the latest version
+- Chrome ウィンドウを最低1つ開いたままにする
+- コンピューターがスリープしていないか確認
+- VisionFocus を最新バージョンにアップデートする
 
-## Next Steps
+## 次のステップ
 
-Now that you've mastered timers, explore these related features:
+- [ウェブサイトブロック](/docs/vision-focus/blocking-websites/) — 集中セッション中の誘惑をシャットアウト
+- [ビジョンステートメント](/docs/vision-focus/vision-statements/) — タイマー中のモチベーションを維持する
 
-- [Blocking Websites](/docs/vision-focus/blocking-websites/) - Create distraction-free focus sessions
-- [Vision Statements](/docs/vision-focus/vision-statements/) - Stay motivated during focus sessions
+## お困りですか？
 
-## Need Help?
-
-- Check our [FAQ](/docs/vision-focus/faq/)
-- Report issues on [GitHub](https://github.com/machina-gg/vision-focus/issues)
+- [FAQ](/docs/vision-focus/faq/) を確認する
+- [GitHub](https://github.com/machina-gg/vision-focus/issues) で問題を報告する
