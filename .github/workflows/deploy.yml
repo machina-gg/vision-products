@@ -19,10 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      # パッケージマネージャは package.json の packageManager フィールドから解決される
       - name: Build with Astro
-        uses: withastro/action@v3
+        uses: withastro/action@v6
 
   deploy:
     needs: build
@@ -33,4 +34,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -1,11 +1,21 @@
 ---
 // 記事ページの目次コンポーネント（Starlight の「On this page」相当）
 // article-body 内の h2/h3 見出しからクライアントサイドで自動生成する
+
+// ロケール判定
+const locale = Astro.currentLocale ?? 'ja';
+
+// 翻訳辞書
+const fallback = { tocTitle: '目次', tocLabel: '目次' };
+const t = {
+  ja: fallback,
+  en: { tocTitle: 'On this page', tocLabel: 'Table of contents' },
+}[locale] ?? fallback;
 ---
 
-<nav class="article-toc" aria-label="目次" data-article-toc>
+<nav class="article-toc" aria-label={t.tocLabel} data-article-toc>
   <div class="article-toc-inner">
-    <p class="article-toc-title">目次</p>
+    <p class="article-toc-title">{t.tocTitle}</p>
     <ul class="article-toc-list" data-toc-list></ul>
   </div>
 </nav>
