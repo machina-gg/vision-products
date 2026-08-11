@@ -6,6 +6,10 @@ on:
   push:
     branches: [develop]
 
+# 最小権限。ソースの読み取りのみで足りる
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build
