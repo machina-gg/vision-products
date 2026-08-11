@@ -87,9 +87,9 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     align-items: center;
     gap: 0.5rem;
     padding: 0.3125rem 0.875rem;
-    background: rgba(20, 184, 166, 0.08);
-    border: 1px solid rgba(20, 184, 166, 0.2);
-    border-radius: 9999px;
+    background: color-mix(in srgb, var(--vf-teal) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 20%, transparent);
+    border-radius: var(--vf-radius-pill);
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--sl-color-accent);
@@ -117,7 +117,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     letter-spacing: -0.03em;
     margin-bottom: 1.25rem;
     /* dark mode: white → teal → cyan */
-    background: linear-gradient(160deg, #ffffff 30%, #14B8A6 65%, #06B6D4 100%);
+    background: linear-gradient(160deg, #ffffff 30%, var(--vf-teal) 65%, var(--vf-cyan) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -125,7 +125,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
 
   /* light mode: dark navy → teal → cyan (白背景で白が消えないように) */
   :global(:root[data-theme='light']) .hero-title {
-    background-image: linear-gradient(160deg, #0f172a 20%, #0d9488 55%, #0891b2 100%);
+    background-image: linear-gradient(160deg, var(--vf-navy) 20%, var(--vf-teal-strong) 55%, var(--vf-cyan-strong) 100%);
   }
 
   .hero-subtitle {
@@ -156,11 +156,11 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
 
   .hero-image {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: var(--vf-radius-card-sm);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
       0 20px 50px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(20, 184, 166, 0.1) inset;
+      0 0 0 1px color-mix(in srgb, var(--vf-teal) 10%, transparent) inset;
   }
 
   /* Browser mockup */
@@ -170,7 +170,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
       0 25px 60px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(20, 184, 166, 0.08) inset;
+      0 0 0 1px color-mix(in srgb, var(--vf-teal) 8%, transparent) inset;
     background: #0d1525;
   }
 
@@ -241,7 +241,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
   .hero-mockup-logo {
     font-size: 0.875rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #14B8A6, #06B6D4);
+    background: linear-gradient(135deg, var(--vf-teal), var(--vf-cyan));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -250,11 +250,11 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
   .hero-mockup-status {
     font-size: 0.6875rem;
     font-weight: 600;
-    color: #14B8A6;
-    background: rgba(20, 184, 166, 0.1);
-    border: 1px solid rgba(20, 184, 166, 0.25);
+    color: var(--vf-teal);
+    background: color-mix(in srgb, var(--vf-teal) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 25%, transparent);
     padding: 0.125rem 0.5rem;
-    border-radius: 9999px;
+    border-radius: var(--vf-radius-pill);
   }
 
   .hero-mockup-block,
@@ -284,15 +284,15 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
   .hero-mockup-timer-value {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #14B8A6;
+    color: var(--vf-teal);
     font-variant-numeric: tabular-nums;
     font-feature-settings: 'tnum';
   }
 
   .hero-mockup-vision {
     padding: 0.75rem 1rem;
-    background: rgba(20, 184, 166, 0.05);
-    border: 1px solid rgba(20, 184, 166, 0.12);
+    background: color-mix(in srgb, var(--vf-teal) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 12%, transparent);
     border-radius: 0.625rem;
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.55);
