@@ -21,3 +21,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# setup-framework.sh（trillion-game-startup）が生成するファイル
+.claude/commands/project/
+.claude/tmp/
+CLAUDE.md
+CLAUDE_CODE_REFERENCE.md
