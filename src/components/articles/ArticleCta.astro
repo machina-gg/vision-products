@@ -86,19 +86,19 @@ const t = {
   .article-cta-button {
     display: inline-block;
     padding: 0.625rem 1.5rem;
-    background: linear-gradient(135deg, #14B8A6, #0d9488);
+    background: var(--vf-gradient-cta);
     color: white;
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
+    box-shadow: var(--vf-shadow-hero-cta);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .article-cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(20, 184, 166, 0.45);
+    box-shadow: var(--vf-shadow-hero-cta-hover);
     color: white;
   }
 </style>

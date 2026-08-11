@@ -61,7 +61,7 @@ const ICON_SVG: Record<DownloadLink['type'], string> = {
     align-items: center;
     gap: 0.5rem;
     padding: 0.6875rem 1.375rem;
-    border-radius: 0.625rem;
+    border-radius: var(--vf-radius-control);
     font-size: 0.9375rem;
     font-weight: 600;
     text-decoration: none;
@@ -72,15 +72,15 @@ const ICON_SVG: Record<DownloadLink['type'], string> = {
 
   /* Primary: filled gradient */
   .download-btn--primary {
-    background: linear-gradient(135deg, #14B8A6, #0d9488);
-    color: white;
-    box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3);
+    background: var(--vf-gradient-cta);
+    color: #fff;
+    box-shadow: var(--vf-shadow-cta);
   }
 
   .download-btn--primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(20, 184, 166, 0.4);
-    color: white;
+    transform: translateY(var(--vf-lift-button));
+    box-shadow: var(--vf-shadow-cta-hover);
+    color: #fff;
   }
 
   /* Non-primary: glass outline */
@@ -88,7 +88,7 @@ const ICON_SVG: Record<DownloadLink['type'], string> = {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--vf-blur-card-sm));
   }
 
   .download-btn:not(.download-btn--primary):hover {

@@ -49,12 +49,13 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
 <style>
   .feature-card {
     display: block;
+    /* padding / radius / blur / lift は ProductCard と値が異なる（統一是非は Issue #74 で PM 判断） */
     padding: 1.5rem;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 1rem;
+    background: var(--vf-surface-card-soft);
+    backdrop-filter: blur(var(--vf-blur-card-sm));
+    -webkit-backdrop-filter: blur(var(--vf-blur-card-sm));
+    border: 1px solid var(--vf-card-border-soft);
+    border-radius: var(--vf-radius-card-sm);
     transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
     position: relative;
     overflow: hidden;
@@ -70,15 +71,15 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, var(--vf-teal-a40), transparent);
     opacity: 0;
     transition: opacity 0.25s ease;
   }
 
   .feature-card:hover {
-    border-color: rgba(20, 184, 166, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(20, 184, 166, 0.06);
+    border-color: color-mix(in srgb, var(--vf-teal) 20%, transparent);
+    transform: translateY(var(--vf-lift-card-sm));
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px color-mix(in srgb, var(--vf-teal) 6%, transparent);
   }
 
   .feature-card:hover::before {
@@ -91,9 +92,9 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: rgba(20, 184, 166, 0.08);
-    border: 1px solid rgba(20, 184, 166, 0.15);
-    border-radius: 0.625rem;
+    background: color-mix(in srgb, var(--vf-teal) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--vf-teal) 15%, transparent);
+    border-radius: var(--vf-radius-control);
     margin-bottom: 1rem;
     color: var(--sl-color-accent);
     flex-shrink: 0;
