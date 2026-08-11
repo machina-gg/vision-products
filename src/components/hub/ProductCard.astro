@@ -16,9 +16,9 @@ type IconName = 'vision-focus';
 
 const NAMED_ICONS: Record<IconName, string> = {
   'vision-focus': `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-    <path d="M3.5 18C3.5 18 9 9 18 9C27 9 32.5 18 32.5 18C32.5 18 27 27 18 27C9 27 3.5 18 3.5 18Z" stroke="#14B8A6" stroke-width="1.75" stroke-linejoin="round"/>
-    <circle cx="18" cy="18" r="5.5" stroke="#14B8A6" stroke-width="1.5"/>
-    <circle cx="18" cy="18" r="2.5" fill="#06B6D4"/>
+    <path d="M3.5 18C3.5 18 9 9 18 9C27 9 32.5 18 32.5 18C32.5 18 27 27 18 27C9 27 3.5 18 3.5 18Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+    <circle cx="18" cy="18" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18" cy="18" r="2.5" class="product-card-icon-pupil"/>
   </svg>`,
 };
 
@@ -37,8 +37,8 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
         ? <img src={icon} alt={`${name} icon`} width="44" height="44" />
         : (
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <rect x="2" y="2" width="16" height="16" rx="3" stroke="#14B8A6" stroke-width="1.5"/>
-            <path d="M7 10h6M10 7v6" stroke="#14B8A6" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10h6M10 7v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         )
     }
@@ -130,17 +130,6 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
     letter-spacing: 0.03em;
   }
 
-  /* SVG の presentation attribute は var() 非対応のため、CSS 側でトークン色に上書きする
-     （属性の hex はトークンが効かない環境向けのフォールバック） */
-  /* set:html で挿入した SVG にはスコープ属性が付かないため :global() を使う */
-  .product-card-icon :global(svg [stroke]) {
-    stroke: var(--vf-teal);
-  }
-
-  .product-card-icon :global(svg [fill]:not([fill='none'])) {
-    fill: var(--vf-cyan);
-  }
-
   .product-card-icon {
     width: 48px;
     height: 48px;
@@ -151,6 +140,15 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
     background: color-mix(in srgb, var(--vf-teal) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--vf-teal) 12%, transparent);
     flex-shrink: 0;
+    /* アイコンの stroke は currentColor 参照
+       （FeatureCard / DownloadButtons と同じ方式） */
+    color: var(--vf-teal);
+  }
+
+  /* 瞳だけ teal ではなく cyan のため、クラス経由でトークンを参照する。
+     set:html で挿入した SVG にはスコープ属性が付かないので :global() が必要。 */
+  .product-card-icon :global(.product-card-icon-pupil) {
+    fill: var(--vf-cyan);
   }
 
   .product-card-icon img {
