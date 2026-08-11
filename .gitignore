@@ -5,6 +5,8 @@ dist/
 
 # dependencies
 node_modules/
+# パッケージマネージャは pnpm に一本化する（npm のロックファイルは追跡しない）
+package-lock.json
 
 # logs
 npm-debug.log*
