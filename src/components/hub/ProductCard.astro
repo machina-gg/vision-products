@@ -1,5 +1,5 @@
 ---
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
 interface Props {
   name: string;
@@ -12,38 +12,65 @@ interface Props {
   ctaLabel?: string;
 }
 
-const { name, description, href, icon, iconName, badge, ctaLabel = "詳しく見る" } = Astro.props;
+const {
+  name,
+  description,
+  href,
+  icon,
+  iconName,
+  badge,
+  ctaLabel = "詳しく見る",
+} = Astro.props;
 
-type IconName = 'vision-focus';
+type IconName = "vision-focus";
 
 const NAMED_ICONS: Record<IconName, string> = {
-  'vision-focus': `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+  "vision-focus": `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
     <path d="M3.5 18C3.5 18 9 9 18 9C27 9 32.5 18 32.5 18C32.5 18 27 27 18 27C9 27 3.5 18 3.5 18Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
     <circle cx="18" cy="18" r="5.5" stroke="currentColor" stroke-width="1.5"/>
     <circle cx="18" cy="18" r="2.5" class="product-card-icon-pupil"/>
   </svg>`,
 };
 
-const resolvedIconSvg = iconName && iconName in NAMED_ICONS
-  ? NAMED_ICONS[iconName as IconName]
-  : null;
+const resolvedIconSvg =
+  iconName && iconName in NAMED_ICONS
+    ? NAMED_ICONS[iconName as IconName]
+    : null;
 ---
 
 <a href={withBase(href)} class="product-card">
   <div class="product-card-glow" aria-hidden="true"></div>
   {badge && <span class="product-card-badge">{badge}</span>}
   <div class="product-card-icon">
-    {resolvedIconSvg
-      ? <Fragment set:html={resolvedIconSvg} />
-      : icon
-        ? <img src={icon} alt={`${name} icon`} width="44" height="44" />
-        : (
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7 10h6M10 7v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        )
-    }
+    {resolvedIconSvg ? (
+      <Fragment set:html={resolvedIconSvg} />
+    ) : icon ? (
+      <img src={icon} alt={`${name} icon`} width="44" height="44" />
+    ) : (
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        aria-hidden="true"
+      >
+        <rect
+          x="2"
+          y="2"
+          width="16"
+          height="16"
+          rx="3"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <path
+          d="M7 10h6M10 7v6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    )}
   </div>
   <div class="product-card-body">
     <h3 class="product-card-name">{name}</h3>
@@ -51,8 +78,20 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
   </div>
   <span class="product-card-cta">
     {ctaLabel}
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 7h8M7 3l4 4-4 4"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
   </span>
 </a>
@@ -74,14 +113,21 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
     text-decoration: none;
     overflow: hidden;
     isolation: isolate;
-    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.3s ease;
   }
 
   /* Ambient glow that tracks hover */
   .product-card-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 0%, var(--vf-teal-a10), transparent 70%);
+    background: radial-gradient(
+      circle at 50% 0%,
+      var(--vf-teal-a10),
+      transparent 70%
+    );
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
@@ -89,13 +135,18 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
 
   /* Top highlight line */
   .product-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--vf-teal-a60), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--vf-teal-a60),
+      transparent
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -142,8 +193,7 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
     background: color-mix(in srgb, var(--vf-teal) 6%, transparent);
     border: 1px solid color-mix(in srgb, var(--vf-teal) 12%, transparent);
     flex-shrink: 0;
-    /* アイコンの stroke は currentColor 参照
-       （FeatureCard / DownloadButtons と同じ方式） */
+    /* アイコンの stroke は currentColor 参照（FeatureCard / DownloadButtons と同じ方式） */
     color: var(--vf-teal);
   }
 

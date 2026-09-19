@@ -1,5 +1,5 @@
 ---
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
 interface NavLink {
   label: string;
@@ -24,8 +24,10 @@ const { productName, links } = Astro.props;
         <li>
           <a
             href={withBase(link.href)}
-            class={`product-nav-link${link.isPrimary ? ' product-nav-link--primary' : ''}`}
-            {...(link.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            class={`product-nav-link${link.isPrimary ? " product-nav-link--primary" : ""}`}
+            {...(link.isExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
           >
             {link.label}
           </a>
@@ -102,7 +104,9 @@ const { productName, links } = Astro.props;
     color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
     white-space: nowrap;
-    transition: color 0.15s ease, background 0.15s ease;
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
   }
 
   .product-nav-link:hover {

@@ -85,6 +85,8 @@
 ├── reports/
 │   └── COMPETITIVE_ANALYSIS.md     # 競合調査レポート
 ├── astro.config.mjs                # Astro configuration
+├── .prettierrc.mjs                 # Prettier configuration (loads prettier-plugin-astro)
+├── .prettierignore                 # Files excluded from formatting
 ├── package.json
 └── tsconfig.json
 ```
@@ -121,22 +123,32 @@ The site will be available at `http://localhost:4321/vision-products/`
 | `pnpm build`                                                            | Build production site to `./dist/`                                             |
 | `pnpm preview`                                                          | Preview production build locally                                               |
 | `pnpm astro ...`                                                        | Run Astro CLI commands                                                         |
+| `pnpm run format`                                                       | Format sources with Prettier（下記「フォーマット」）                           |
+| `pnpm run format:check`                                                 | Check formatting without writing（CI の `Format Check` と同じ）                |
 | `node scripts/check-dist-links.mjs --dist dist --base /vision-products` | Verify that every internal link in `./dist/` starts with the base and resolves |
 
 ### フォーマット
 
-Markdown・YAML は Prettier で整形する。CI の `Format Check` ジョブが同じ `--check` を実行し、
-違反があれば PR が落ちる。push 前に手元で通しておく。
+Markdown・YAML・JavaScript（`.mjs`）・TypeScript・Astro コンポーネント（`.astro`）は Prettier で整形する。
+CI の `Format Check` ジョブが下と同じ script を実行し、違反があれば PR が落ちる。push 前に手元で通しておく。
 
 ```bash
 # 違反しているファイルを一覧する（CI と同じ検査）
-npx prettier@3 --check "**/*.md" "**/*.yml" "**/*.yaml"
+pnpm run format:check
 
 # 一括で整形する
-npx prettier@3 --write "**/*.md" "**/*.yml" "**/*.yaml"
+pnpm run format
 ```
 
+Prettier とプラグインは `devDependencies`（`prettier` / `prettier-plugin-astro`）なので、
+先に `pnpm install` が要る。`.astro` は `prettier-plugin-astro` が無いとパーサが無く整形できない。
+
+設定は `.prettierrc.mjs`、整形対象の拡張子は `package.json` の `format` / `format:check`、
 整形対象から外すファイルは `.prettierignore` に書く（生成物の `pnpm-lock.yaml` など）。
+
+⚠ `.astro` の `<style>` 内のコメントは 1 行で書く。複数行コメントは `prettier-plugin-astro` が
+整形のたびに継続行を字下げし直すため整形結果が収束せず、`pnpm run format` の直後でも
+`format:check` が落ちる（再現: 複数行コメントを持つ `<style>` に `pnpm run format` を 2 回かけると差分が出る）。
 
 ## Deployment
 

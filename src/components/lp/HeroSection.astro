@@ -7,7 +7,7 @@ interface Props {
   imageAlt?: string;
 }
 
-const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
+const { title, subtitle, eyebrow, imageSrc, imageAlt = "" } = Astro.props;
 ---
 
 <section class="hero-section">
@@ -25,40 +25,41 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     </div>
   </div>
   <div class="hero-visual">
-    {imageSrc
-      ? <img src={imageSrc} alt={imageAlt} class="hero-image" loading="eager" />
-      : (
-        <div class="hero-mockup" aria-hidden="true">
-          <div class="hero-mockup-chrome">
-            <div class="hero-mockup-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="hero-mockup-bar">
-              <span class="hero-mockup-lock"></span>
-            </div>
+    {imageSrc ? (
+      <img src={imageSrc} alt={imageAlt} class="hero-image" loading="eager" />
+    ) : (
+      <div class="hero-mockup" aria-hidden="true">
+        <div class="hero-mockup-chrome">
+          <div class="hero-mockup-dots">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <div class="hero-mockup-body">
-            <div class="hero-mockup-ui">
-              <div class="hero-mockup-header">
-                <span class="hero-mockup-logo">VisionFocus</span>
-                <span class="hero-mockup-status">Active</span>
-              </div>
-              <div class="hero-mockup-block">
-                <span class="hero-mockup-label">Blocked today</span>
-                <span class="hero-mockup-count">12</span>
-              </div>
-              <div class="hero-mockup-timer">
-                <span class="hero-mockup-timer-label">Next break</span>
-                <span class="hero-mockup-timer-value">18:42</span>
-              </div>
-              <div class="hero-mockup-vision">
-                <span>"今日も一歩、目標へ向かう。"</span>
-              </div>
+          <div class="hero-mockup-bar">
+            <span class="hero-mockup-lock"></span>
+          </div>
+        </div>
+        <div class="hero-mockup-body">
+          <div class="hero-mockup-ui">
+            <div class="hero-mockup-header">
+              <span class="hero-mockup-logo">VisionFocus</span>
+              <span class="hero-mockup-status">Active</span>
+            </div>
+            <div class="hero-mockup-block">
+              <span class="hero-mockup-label">Blocked today</span>
+              <span class="hero-mockup-count">12</span>
+            </div>
+            <div class="hero-mockup-timer">
+              <span class="hero-mockup-timer-label">Next break</span>
+              <span class="hero-mockup-timer-value">18:42</span>
+            </div>
+            <div class="hero-mockup-vision">
+              <span>"今日も一歩、目標へ向かう。"</span>
             </div>
           </div>
         </div>
-      )
-    }
+      </div>
+    )}
   </div>
 </section>
 
@@ -106,8 +107,15 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.75); }
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(0.75);
+    }
   }
 
   .hero-title {
@@ -117,15 +125,25 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     letter-spacing: -0.03em;
     margin-bottom: 1.25rem;
     /* dark mode: white → teal → cyan */
-    background: linear-gradient(160deg, #ffffff 30%, var(--vf-teal) 65%, var(--vf-cyan) 100%);
+    background: linear-gradient(
+      160deg,
+      #ffffff 30%,
+      var(--vf-teal) 65%,
+      var(--vf-cyan) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   /* light mode: dark navy → teal → cyan (白背景で白が消えないように) */
-  :global(:root[data-theme='light']) .hero-title {
-    background-image: linear-gradient(160deg, var(--vf-navy) 20%, var(--vf-teal-strong) 55%, var(--vf-cyan-strong) 100%);
+  :global(:root[data-theme="light"]) .hero-title {
+    background-image: linear-gradient(
+      160deg,
+      var(--vf-navy) 20%,
+      var(--vf-teal-strong) 55%,
+      var(--vf-cyan-strong) 100%
+    );
   }
 
   .hero-subtitle {
@@ -195,9 +213,15 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     background: rgba(255, 255, 255, 0.12);
   }
 
-  .hero-mockup-dots span:first-child { background: #FF5F57; }
-  .hero-mockup-dots span:nth-child(2) { background: #FEBC2E; }
-  .hero-mockup-dots span:last-child { background: #28C840; }
+  .hero-mockup-dots span:first-child {
+    background: #ff5f57;
+  }
+  .hero-mockup-dots span:nth-child(2) {
+    background: #febc2e;
+  }
+  .hero-mockup-dots span:last-child {
+    background: #28c840;
+  }
 
   .hero-mockup-bar {
     flex: 1;
@@ -212,7 +236,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
   }
 
   .hero-mockup-lock::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -286,7 +310,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = '' } = Astro.props;
     font-weight: 700;
     color: var(--vf-teal);
     font-variant-numeric: tabular-nums;
-    font-feature-settings: 'tnum';
+    font-feature-settings: "tnum";
   }
 
   .hero-mockup-vision {

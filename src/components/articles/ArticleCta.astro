@@ -1,29 +1,32 @@
 ---
 // 記事末尾の CTA バナー — VisionFocus への誘導
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
 // ロケール判定と翻訳辞書
-const locale = Astro.currentLocale ?? 'ja';
-const prefix = locale === 'en' ? '/en' : '';
+const locale = Astro.currentLocale ?? "ja";
+const prefix = locale === "en" ? "/en" : "";
 
 const t = {
   ja: {
-    ariaLabel: 'VisionFocus を試す',
-    heading: '集中力を高める Chrome 拡張機能',
-    description: 'ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。',
-    button: 'VisionFocus を試してみる',
+    ariaLabel: "VisionFocus を試す",
+    heading: "集中力を高める Chrome 拡張機能",
+    description:
+      "ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。",
+    button: "VisionFocus を試してみる",
   },
   en: {
-    ariaLabel: 'Try VisionFocus',
-    heading: 'The Chrome Extension for Deep Focus',
-    description: 'Block distracting websites, use focus timers, and set vision statements to achieve deep focus.',
-    button: 'Try VisionFocus',
+    ariaLabel: "Try VisionFocus",
+    heading: "The Chrome Extension for Deep Focus",
+    description:
+      "Block distracting websites, use focus timers, and set vision statements to achieve deep focus.",
+    button: "Try VisionFocus",
   },
 }[locale] ?? {
-  ariaLabel: 'VisionFocus を試す',
-  heading: '集中力を高める Chrome 拡張機能',
-  description: 'ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。',
-  button: 'VisionFocus を試してみる',
+  ariaLabel: "VisionFocus を試す",
+  heading: "集中力を高める Chrome 拡張機能",
+  description:
+    "ウェブサイトブロック・集中タイマー・ビジョンステートメントで、深い集中を実現します。",
+  button: "VisionFocus を試してみる",
 };
 ---
 
@@ -31,10 +34,10 @@ const t = {
   <div class="article-cta-inner">
     <p class="article-cta-label">VisionFocus</p>
     <p class="article-cta-heading">{t.heading}</p>
-    <p class="article-cta-description">
-      {t.description}
-    </p>
-    <a href={withBase(`${prefix}/vision-focus/`)} class="article-cta-button">{t.button}</a>
+    <p class="article-cta-description">{t.description}</p>
+    <a href={withBase(`${prefix}/vision-focus/`)} class="article-cta-button">
+      {t.button}
+    </a>
   </div>
 </aside>
 
@@ -49,13 +52,13 @@ const t = {
     text-align: center;
     padding: 2.5rem 2rem;
     border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
-    background:
-      linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--sl-color-accent) 8%, transparent),
-        color-mix(in srgb, var(--vf-purple, #8B5CF6) 6%, transparent)
-      );
+    border: 1px solid
+      color-mix(in srgb, var(--sl-color-accent) 25%, transparent);
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--sl-color-accent) 8%, transparent),
+      color-mix(in srgb, var(--vf-purple, #8b5cf6) 6%, transparent)
+    );
   }
 
   .article-cta-label {
@@ -94,7 +97,9 @@ const t = {
     text-decoration: none;
     border-radius: 0.5rem;
     box-shadow: var(--vf-shadow-hero-cta);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .article-cta-button:hover {
