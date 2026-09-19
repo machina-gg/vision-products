@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/url';
+
 interface Props {
   name: string;
   description: string;
@@ -27,7 +29,7 @@ const resolvedIconSvg = iconName && iconName in NAMED_ICONS
   : null;
 ---
 
-<a href={href} class="product-card">
+<a href={withBase(href)} class="product-card">
   <div class="product-card-glow" aria-hidden="true"></div>
   {badge && <span class="product-card-badge">{badge}</span>}
   <div class="product-card-icon">

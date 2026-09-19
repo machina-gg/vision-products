@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/url';
+
 const pathname = Astro.url.pathname;
 const isVisionFocus = pathname.includes('/vision-focus');
 
@@ -8,11 +10,11 @@ const prefix = locale === 'en' ? '/en' : '';
 ---
 
 {isVisionFocus ? (
-  <a href={`${prefix}/vision-focus/`} class="site-title site-title--product">
+  <a href={withBase(`${prefix}/vision-focus/`)} class="site-title site-title--product">
     VisionFocus
   </a>
 ) : (
-  <a href={`${prefix}/`} class="site-title site-title--hub">
+  <a href={withBase(`${prefix}/`)} class="site-title site-title--hub">
     Vision Products
   </a>
 )}

@@ -32,8 +32,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
+      # 配信先が変わっても内部リンクが壊れないことを、実際の生成物で確かめる。
+      # サブパス配信（GitHub Pages の既定）とドメイン直下配信（カスタムドメイン移行後）の両方を見る。
+      - name: Build (base=/vision-products)
         run: pnpm build
+
+      - name: Check dist links (base=/vision-products)
+        run: node scripts/check-dist-links.mjs --dist dist --base /vision-products
+
+      - name: Build (base=/)
+        env:
+          BASE_PATH: "/"
+        run: pnpm build
+
+      - name: Check dist links (base=/)
+        run: node scripts/check-dist-links.mjs --dist dist --base /
 
   issue-check:
     name: Issue Check

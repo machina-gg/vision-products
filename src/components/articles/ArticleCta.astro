@@ -1,5 +1,6 @@
 ---
 // 記事末尾の CTA バナー — VisionFocus への誘導
+import { withBase } from '../../utils/url';
 
 // ロケール判定と翻訳辞書
 const locale = Astro.currentLocale ?? 'ja';
@@ -33,7 +34,7 @@ const t = {
     <p class="article-cta-description">
       {t.description}
     </p>
-    <a href={`${prefix}/vision-focus/`} class="article-cta-button">{t.button}</a>
+    <a href={withBase(`${prefix}/vision-focus/`)} class="article-cta-button">{t.button}</a>
   </div>
 </aside>
 

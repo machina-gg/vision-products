@@ -31,8 +31,8 @@
 
 | カテゴリ | 技術 |
 |----------|------|
-| Framework | [Astro](https://astro.build) v5 |
-| Theme | [Starlight](https://starlight.astro.build) v0.37 |
+| Framework | [Astro](https://astro.build) |
+| Theme | [Starlight](https://starlight.astro.build) |
 | Language | TypeScript |
 | Content | Astro Content Collections (Markdown/MDX) |
 | Package Manager | pnpm |
@@ -45,6 +45,7 @@
 .
 ├── .github/
 │   └── workflows/
+│       ├── ci.yml                  # Build + internal link check (both base paths)
 │       └── deploy.yml              # GitHub Pages deployment
 ├── public/                         # Static assets
 ├── src/
@@ -65,9 +66,16 @@
 │   │           ├── docs/           # Help / documentation
 │   │           ├── changelog.mdx   # Release notes
 │   │           └── legal/          # Privacy policy & terms
+│   ├── plugins/
+│   │   └── rehype-base-links.mjs   # Prefix `base` onto links in Markdown/MDX bodies
+│   ├── utils/
+│   │   ├── base-path.mjs           # Shared base-path rules (used by config & components)
+│   │   └── url.ts                  # withBase() / stripBase() for components
 │   ├── styles/
 │   │   └── custom.css              # Global styles / CSS variable overrides
 │   └── content.config.ts           # Content Collections schema
+├── scripts/
+│   └── check-dist-links.mjs        # Verify built links resolve under a given base
 ├── docs/                           # Project documentation
 │   ├── PRD.md                      # 要件定義
 │   ├── DESIGN.md                   # 設計書
@@ -85,8 +93,8 @@
 
 ### Prerequisites
 
-- Node.js 20+
-- pnpm 9+
+- Node.js — `.github/workflows/ci.yml` の `node-version` に合わせる
+- pnpm — `package.json` の `packageManager` に合わせる（`corepack enable` で自動追従）
 
 ### Setup
 
@@ -113,6 +121,7 @@ The site will be available at `http://localhost:4321/vision-products/`
 | `pnpm build` | Build production site to `./dist/` |
 | `pnpm preview` | Preview production build locally |
 | `pnpm astro ...` | Run Astro CLI commands |
+| `node scripts/check-dist-links.mjs --dist dist --base /vision-products` | Verify that every internal link in `./dist/` starts with the base and resolves |
 
 ## Deployment
 
@@ -120,9 +129,39 @@ The site automatically deploys to GitHub Pages when changes are pushed to the `m
 
 **Deployment workflow**:
 1. Push to `main` branch
-2. GitHub Actions builds the site (`pnpm build`)
-3. Deploys to GitHub Pages
-4. Site is live at [https://machina-gg.github.io/vision-products/](https://machina-gg.github.io/vision-products/)
+2. `actions/configure-pages` が Pages の実際の配信先（`origin` / `base_path`）を取得する
+3. GitHub Actions builds the site (`pnpm build`) — 配信先は環境変数で渡される
+4. `actions/upload-pages-artifact` → `actions/deploy-pages` で公開
+5. Site is live at [https://machina-gg.github.io/vision-products/](https://machina-gg.github.io/vision-products/)
+
+### 配信先（`site` / `base`）の切り替え
+
+サイトは `https://machina-gg.github.io/vision-products/` のようなサブパスで配信されるため、
+ビルド時に配信サブパス（Astro の `base`）を知っている必要がある。値は環境変数で上書きできる。
+
+| 環境変数 | 意味 | 既定値 |
+|----------|------|--------|
+| `SITE_URL` | 配信オリジン（Astro の `site`） | `https://machina-gg.github.io` |
+| `BASE_PATH` | 配信サブパス（Astro の `base`。ドメイン直下配信は `/`） | `/vision-products` |
+
+```bash
+# ドメイン直下配信の形でビルドする（カスタムドメイン移行後の確認用）
+BASE_PATH=/ pnpm build
+```
+
+**カスタムドメインへ移るとき**: GitHub Pages の設定でカスタムドメインを入れるだけでよい。
+`deploy.yml` が `actions/configure-pages` の出力をそのままビルドへ渡すので、
+次のデプロイから `base` が `/` に、`site` がそのドメインに切り替わる（コード変更は不要）。
+
+内部リンクは Astro が自動で `base` を付けないため、次の経路で前置している。
+リンクを追加するときも `/docs/...` のように `/` 始まりで書けばよい。
+
+- **Markdown / MDX 本文**: `src/plugins/rehype-base-links.mjs`（rehype プラグイン）
+- **コンポーネント**: `src/utils/url.ts` の `withBase()`（`<a href>` を出力する側で適用する）
+- **frontmatter の `hero.actions[].link`**: `src/components/overrides/Hero.astro`
+
+両方の配信形で壊れていないことは CI（`.github/workflows/ci.yml`）が
+`scripts/check-dist-links.mjs` で機械的に検査する。
 
 ## Adding a New Product
 

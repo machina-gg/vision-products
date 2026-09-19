@@ -1,5 +1,8 @@
 ---
-const pathname = Astro.url.pathname;
+import { stripBase, withBase } from '../../utils/url';
+
+// 判定は base を外したパスで行う（サブパス配信でも結果が変わらないようにする）
+const pathname = stripBase(Astro.url.pathname);
 
 // ロケール判定
 const locale = Astro.currentLocale ?? 'ja';
@@ -77,7 +80,7 @@ const navLabel = isVisionFocusLP ? t.navLabelLP : t.navLabelSite;
 <nav class="header-nav" aria-label={navLabel}>
   {navLinks.map((link) => (
     <a
-      href={link.href}
+      href={withBase(link.href)}
       class:list={["header-nav-link", { "header-nav-link--active": 'isActive' in link && link.isActive }]}
     >
       {link.label}
@@ -120,7 +123,7 @@ const navLabel = isVisionFocusLP ? t.navLabelLP : t.navLabelSite;
     <nav class="mobile-menu-nav" aria-label={navLabel}>
       {navLinks.map((link) => (
         <a
-          href={link.href}
+          href={withBase(link.href)}
           class:list={["mobile-menu-link", { "mobile-menu-link--active": 'isActive' in link && link.isActive }]}
         >
           {link.label}
