@@ -1,10 +1,10 @@
 ---
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
 interface DownloadLink {
   label: string;
   href: string;
-  type: 'appstore' | 'googleplay' | 'direct' | 'chrome';
+  type: "appstore" | "googleplay" | "direct" | "chrome";
   isPrimary?: boolean;
 }
 
@@ -14,9 +14,9 @@ interface Props {
 
 const { links } = Astro.props;
 
-const isExternal = (href: string) => href.startsWith('http');
+const isExternal = (href: string) => href.startsWith("http");
 
-const ICON_SVG: Record<DownloadLink['type'], string> = {
+const ICON_SVG: Record<DownloadLink["type"], string> = {
   chrome: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
     <circle cx="8" cy="8" r="2" fill="currentColor"/>
@@ -40,8 +40,10 @@ const ICON_SVG: Record<DownloadLink['type'], string> = {
   {links.map((link, i) => (
     <a
       href={withBase(link.href)}
-      class={`download-btn download-btn--${link.type}${(link.isPrimary || i === 0) ? ' download-btn--primary' : ''}`}
-      {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      class={`download-btn download-btn--${link.type}${link.isPrimary || i === 0 ? " download-btn--primary" : ""}`}
+      {...(isExternal(link.href)
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
     >
       <span class="download-btn-icon">
         <Fragment set:html={ICON_SVG[link.type]} />

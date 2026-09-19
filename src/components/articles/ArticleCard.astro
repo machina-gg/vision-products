@@ -1,6 +1,6 @@
 ---
-import TagBadge from './TagBadge.astro';
-import { withBase } from '../../utils/url';
+import TagBadge from "./TagBadge.astro";
+import { withBase } from "../../utils/url";
 
 interface Props {
   title: string;
@@ -13,16 +13,16 @@ interface Props {
 const { title, description, href, publishedAt, products } = Astro.props;
 
 const PRODUCT_LABELS: Record<string, string> = {
-  'vision-focus': 'VisionFocus',
+  "vision-focus": "VisionFocus",
 };
 
 // 日付フォーマットをロケールに応じて切替
-const locale = Astro.currentLocale ?? 'ja';
-const dateLocale = locale === 'en' ? 'en-US' : 'ja-JP';
+const locale = Astro.currentLocale ?? "ja";
+const dateLocale = locale === "en" ? "en-US" : "ja-JP";
 const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 ---
 
@@ -32,7 +32,11 @@ const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
     {products.length > 0 && (
       <div class="article-card-tags">
         {products.map((product) => (
-          <TagBadge product={product} label={PRODUCT_LABELS[product] ?? product} href={`/${product}/articles/`} />
+          <TagBadge
+            product={product}
+            label={PRODUCT_LABELS[product] ?? product}
+            href={`/${product}/articles/`}
+          />
         ))}
       </div>
     )}
@@ -47,12 +51,15 @@ const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
     flex-direction: column;
     gap: 0.75rem;
     padding: 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border: 1px solid
+      color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
     border-radius: 0.75rem;
     background: var(--sl-color-bg-nav);
     color: var(--sl-color-text);
     text-decoration: none;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
     min-height: 12rem;
   }
 

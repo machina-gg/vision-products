@@ -1,5 +1,5 @@
 ---
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
 interface Props {
   product: string;
@@ -10,10 +10,13 @@ interface Props {
 const { product, label, href } = Astro.props;
 ---
 
-{href
-  ? <a href={withBase(href)} class={`tag-badge tag-badge--${product}`}>{label}</a>
-  : <span class={`tag-badge tag-badge--${product}`}>{label}</span>
-}
+{href ? (
+  <a href={withBase(href)} class={`tag-badge tag-badge--${product}`}>
+    {label}
+  </a>
+) : (
+  <span class={`tag-badge tag-badge--${product}`}>{label}</span>
+)}
 
 <style>
   .tag-badge {
@@ -26,7 +29,9 @@ const { product, label, href } = Astro.props;
     font-size: 0.75rem;
     font-weight: 500;
     text-decoration: none;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
     white-space: nowrap;
   }
 

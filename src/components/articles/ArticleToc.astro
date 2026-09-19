@@ -3,14 +3,15 @@
 // article-body 内の h2/h3 見出しからクライアントサイドで自動生成する
 
 // ロケール判定
-const locale = Astro.currentLocale ?? 'ja';
+const locale = Astro.currentLocale ?? "ja";
 
 // 翻訳辞書
-const fallback = { tocTitle: '目次', tocLabel: '目次' };
-const t = {
-  ja: fallback,
-  en: { tocTitle: 'On this page', tocLabel: 'Table of contents' },
-}[locale] ?? fallback;
+const fallback = { tocTitle: "目次", tocLabel: "目次" };
+const t =
+  {
+    ja: fallback,
+    en: { tocTitle: "On this page", tocLabel: "Table of contents" },
+  }[locale] ?? fallback;
 ---
 
 <nav class="article-toc" aria-label={t.tocLabel} data-article-toc>
@@ -23,37 +24,39 @@ const t = {
 <script>
   // article-body 内の h2/h3 から目次を生成
   function buildToc() {
-    const toc = document.querySelector('[data-article-toc]');
-    const list = document.querySelector('[data-toc-list]');
-    const body = document.querySelector('.article-body');
+    const toc = document.querySelector("[data-article-toc]");
+    const list = document.querySelector("[data-toc-list]");
+    const body = document.querySelector(".article-body");
     if (!toc || !list || !body) return;
 
-    const headings = body.querySelectorAll('h2, h3');
+    const headings = body.querySelectorAll("h2, h3");
     if (headings.length === 0) {
       // 見出しがなければ目次自体を非表示
-      (toc as HTMLElement).style.display = 'none';
+      (toc as HTMLElement).style.display = "none";
       return;
     }
 
     headings.forEach((heading) => {
       // id がなければ生成
       if (!heading.id) {
-        heading.id = heading.textContent
-          ?.trim()
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .replace(/[^\w\u3000-\u9FFF\u4E00-\u9FFF\uF900-\uFAFF-]/g, '') ?? '';
+        heading.id =
+          heading.textContent
+            ?.trim()
+            .toLowerCase()
+            .replace(/\s+/g, "-")
+            .replace(/[^\w\u3000-\u9FFF\u4E00-\u9FFF\uF900-\uFAFF-]/g, "") ??
+          "";
       }
 
-      const li = document.createElement('li');
+      const li = document.createElement("li");
       li.className =
-        heading.tagName === 'H3'
-          ? 'article-toc-item article-toc-item--nested'
-          : 'article-toc-item';
+        heading.tagName === "H3"
+          ? "article-toc-item article-toc-item--nested"
+          : "article-toc-item";
 
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = `#${heading.id}`;
-      a.textContent = heading.textContent?.trim() ?? '';
+      a.textContent = heading.textContent?.trim() ?? "";
       li.appendChild(a);
       list.appendChild(li);
     });
@@ -71,7 +74,8 @@ const t = {
 
   .article-toc-inner {
     padding: 1.25rem 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border: 1px solid
+      color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
     border-radius: 0.75rem;
     background: var(--sl-color-bg-nav);
   }
