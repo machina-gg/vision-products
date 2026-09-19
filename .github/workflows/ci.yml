@@ -56,10 +56,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      # このジョブは依存をインストールしないため pnpm をセットアップしない。
+      # setup-node v5 の package-manager-cache は既定で true で、package.json の
+      # packageManager から pnpm を検出してキャッシュしようとし、pnpm が PATH に
+      # 無いこのジョブでは step ごと失敗する。キャッシュする対象が無いので false にする。
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: "24"
+          package-manager-cache: false
 
       # prettier は npx で取得する（devDependencies には入れていないため
       # pnpm install を待たずに済み、ビルドとは独立に走る）。
