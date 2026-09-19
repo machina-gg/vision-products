@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/url';
+
 interface DownloadLink {
   label: string;
   href: string;
@@ -37,7 +39,7 @@ const ICON_SVG: Record<DownloadLink['type'], string> = {
 <div class="download-buttons">
   {links.map((link, i) => (
     <a
-      href={link.href}
+      href={withBase(link.href)}
       class={`download-btn download-btn--${link.type}${(link.isPrimary || i === 0) ? ' download-btn--primary' : ''}`}
       {...(isExternal(link.href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >

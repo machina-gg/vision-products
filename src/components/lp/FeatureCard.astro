@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/url';
+
 type IconName = 'block' | 'timer' | 'vision' | 'privacy';
 
 interface Props {
@@ -33,7 +35,7 @@ const isNamedIcon = icon && icon in ICON_PATHS;
 const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
 ---
 
-<Tag class="feature-card" {...(href ? { href } : {})}>
+<Tag class="feature-card" {...(href ? { href: withBase(href) } : {})}>
   {icon && (
     <div class="feature-card-icon">
       {iconSvg

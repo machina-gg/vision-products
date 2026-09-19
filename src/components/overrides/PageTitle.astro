@@ -1,7 +1,9 @@
 ---
 import ProductNav from '../shared/ProductNav.astro';
+import { stripBase } from '../../utils/url';
 
-const pathname = Astro.url.pathname;
+// 判定は base を外したパスで行う（サブパス配信でも結果が変わらないようにする）
+const pathname = stripBase(Astro.url.pathname);
 
 // ロケール判定
 const locale = Astro.currentLocale ?? 'ja';

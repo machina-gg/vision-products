@@ -4,18 +4,18 @@
 
 ## 1. コンポーネント一覧
 
-| コンポーネント名 | カテゴリ | 説明 |
-|----------------|----------|------|
-| `ProductCard` | hub | ハブトップのプロダクトカード |
-| `HeroSection` | lp | LP ヒーローセクション |
-| `FeatureGrid` | lp | 機能紹介グリッドラッパー |
-| `FeatureCard` | lp | 機能カード1枚（FeatureGrid 内） |
-| `ScreenshotGallery` | lp | スクリーンショットギャラリー |
-| `DownloadButtons` | lp | App Store / ダウンロードリンクボタン群 |
-| `ArticleCard` | articles | 記事カード1枚 |
-| `ArticleList` | articles | 記事一覧（product タグでフィルタリング） |
-| `TagBadge` | articles | プロダクトタグバッジ |
-| `ChangelogEntry` | changelog | リリースノート1エントリ |
+| コンポーネント名    | カテゴリ  | 説明                                     |
+| ------------------- | --------- | ---------------------------------------- |
+| `ProductCard`       | hub       | ハブトップのプロダクトカード             |
+| `HeroSection`       | lp        | LP ヒーローセクション                    |
+| `FeatureGrid`       | lp        | 機能紹介グリッドラッパー                 |
+| `FeatureCard`       | lp        | 機能カード1枚（FeatureGrid 内）          |
+| `ScreenshotGallery` | lp        | スクリーンショットギャラリー             |
+| `DownloadButtons`   | lp        | App Store / ダウンロードリンクボタン群   |
+| `ArticleCard`       | articles  | 記事カード1枚                            |
+| `ArticleList`       | articles  | 記事一覧（product タグでフィルタリング） |
+| `TagBadge`          | articles  | プロダクトタグバッジ                     |
+| `ChangelogEntry`    | changelog | リリースノート1エントリ                  |
 
 ---
 
@@ -174,10 +174,11 @@ graph TD
 ---
 title: VisionFocus
 ---
-import { HeroSection } from '@/components/lp/HeroSection.astro';
-import { FeatureGrid } from '@/components/lp/FeatureGrid.astro';
-import { FeatureCard } from '@/components/lp/FeatureCard.astro';
-import { DownloadButtons } from '@/components/lp/DownloadButtons.astro';
+
+import { HeroSection } from "@/components/lp/HeroSection.astro";
+import { FeatureGrid } from "@/components/lp/FeatureGrid.astro";
+import { FeatureCard } from "@/components/lp/FeatureCard.astro";
+import { DownloadButtons } from "@/components/lp/DownloadButtons.astro";
 
 <HeroSection
   title="集中力を、もっと自由に。"
@@ -185,9 +186,15 @@ import { DownloadButtons } from '@/components/lp/DownloadButtons.astro';
   imageSrc="/vision-products/assets/vision-focus-hero.png"
   imageAlt="VisionFocus スクリーンショット"
 >
-  <DownloadButtons links={[
-    { label: 'App Store', href: 'https://apps.apple.com/...', type: 'appstore' }
-  ]} />
+  <DownloadButtons
+    links={[
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/...",
+        type: "appstore",
+      },
+    ]}
+  />
 </HeroSection>
 
 <FeatureGrid>

@@ -22,11 +22,11 @@ For a full walkthrough, see [Getting Started](/en/docs/vision-focus/getting-star
 
 VisionFocus requests the following permissions:
 
-| Permission | Reason |
-|---|---|
-| Access to website URLs | Required to intercept and block sites on your blocklist |
-| Local storage | Used to save your blocklist, timer settings, and vision statements on your device |
-| Notifications | Used to alert you when a timer session ends |
+| Permission             | Reason                                                                            |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| Access to website URLs | Required to intercept and block sites on your blocklist                           |
+| Local storage          | Used to save your blocklist, timer settings, and vision statements on your device |
+| Notifications          | Used to alert you when a timer session ends                                       |
 
 All data stays on your device. VisionFocus does not collect, transmit, or sell any personal data.
 

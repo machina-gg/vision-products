@@ -22,11 +22,11 @@ The countdown begins immediately. When the session ends, you'll receive a browse
 
 Different types of work call for different session lengths:
 
-| Session Type | Duration | Best For |
-|---|---|---|
-| Short burst | 15–20 minutes | Small tasks, email triage, quick reviews |
-| Standard Pomodoro | 25 minutes | Most focused work tasks |
-| Deep work | 45–90 minutes | Complex problems, writing, coding |
+| Session Type      | Duration      | Best For                                 |
+| ----------------- | ------------- | ---------------------------------------- |
+| Short burst       | 15–20 minutes | Small tasks, email triage, quick reviews |
+| Standard Pomodoro | 25 minutes    | Most focused work tasks                  |
+| Deep work         | 45–90 minutes | Complex problems, writing, coding        |
 
 Start with 25 minutes if you're new to structured focus. You can always increase as your concentration builds.
 
@@ -75,10 +75,10 @@ VisionFocus records your browsing behavior during timer sessions, giving you dat
 
 ### What Gets Tracked
 
-| Metric | Description |
-|---|---|
-| Session time | Total time spent in active focus sessions |
-| Sites visited | Which sites you navigated to during the timer |
+| Metric               | Description                                       |
+| -------------------- | ------------------------------------------------- |
+| Session time         | Total time spent in active focus sessions         |
+| Sites visited        | Which sites you navigated to during the timer     |
 | Distraction attempts | Number of times you tried to visit a blocked site |
 
 ### Reviewing Your Stats
@@ -122,6 +122,7 @@ This combination removes the willpower required to resist distractions. Instead 
 ### Timer stops unexpectedly in the background
 
 This is a known Chrome limitation related to how extensions handle background timers. To work around it:
+
 - Keep at least one Chrome window open during a session
 - Make sure your computer doesn't go to sleep while the timer is running
 - Update VisionFocus to the latest version, as background timer handling improves with each release

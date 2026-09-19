@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/url';
+
 const currentYear = new Date().getFullYear();
 
 // ロケール判定とテキスト翻訳辞書
@@ -37,7 +39,7 @@ const t = {
     <div class="site-footer-top">
       <!-- Brand -->
       <div class="site-footer-brand">
-        <a href={`${prefix}/`} class="site-footer-logo">Vision Products</a>
+        <a href={withBase(`${prefix}/`)} class="site-footer-logo">Vision Products</a>
         <p class="site-footer-tagline">
           {t.tagline}
         </p>
@@ -61,25 +63,25 @@ const t = {
         <div class="site-footer-col">
           <h3 class="site-footer-col-title">Products</h3>
           <ul class="site-footer-col-links">
-            <li><a href={`${prefix}/vision-focus/`}>VisionFocus</a></li>
+            <li><a href={withBase(`${prefix}/vision-focus/`)}>VisionFocus</a></li>
           </ul>
         </div>
 
         <div class="site-footer-col">
           <h3 class="site-footer-col-title">VisionFocus</h3>
           <ul class="site-footer-col-links">
-            <li><a href={`${prefix}/docs/vision-focus/getting-started/`}>{t.gettingStarted}</a></li>
-            <li><a href={`${prefix}/docs/vision-focus/blocking-websites/`}>{t.blockingWebsites}</a></li>
-            <li><a href={`${prefix}/docs/vision-focus/timers/`}>{t.timers}</a></li>
-            <li><a href={`${prefix}/docs/vision-focus/faq/`}>FAQ</a></li>
+            <li><a href={withBase(`${prefix}/docs/vision-focus/getting-started/`)}>{t.gettingStarted}</a></li>
+            <li><a href={withBase(`${prefix}/docs/vision-focus/blocking-websites/`)}>{t.blockingWebsites}</a></li>
+            <li><a href={withBase(`${prefix}/docs/vision-focus/timers/`)}>{t.timers}</a></li>
+            <li><a href={withBase(`${prefix}/docs/vision-focus/faq/`)}>FAQ</a></li>
           </ul>
         </div>
 
         <div class="site-footer-col">
           <h3 class="site-footer-col-title">Legal</h3>
           <ul class="site-footer-col-links">
-            <li><a href={`${prefix}/legal/privacy/`}>{t.privacy}</a></li>
-            <li><a href={`${prefix}/legal/terms/`}>{t.terms}</a></li>
+            <li><a href={withBase(`${prefix}/legal/privacy/`)}>{t.privacy}</a></li>
+            <li><a href={withBase(`${prefix}/legal/terms/`)}>{t.terms}</a></li>
           </ul>
         </div>
       </div>
