@@ -56,24 +56,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      # このジョブは依存をインストールしないため pnpm をセットアップしない。
-      # setup-node v5 の package-manager-cache は既定で true で、package.json の
-      # packageManager から pnpm を検出してキャッシュしようとし、pnpm が PATH に
-      # 無いこのジョブでは step ごと失敗する。キャッシュする対象が無いので false にする。
+      # pnpm のバージョンは package.json の packageManager から解決される
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: "24"
-          package-manager-cache: false
+          cache: "pnpm"
 
-      # prettier は npx で取得する（devDependencies には入れていないため
-      # pnpm install を待たずに済み、ビルドとは独立に走る）。
-      # 対象拡張子は README「フォーマット」の検査コマンドと同じものを使うこと
-      # （片方だけ広げると、手元で通る／CI で落ちるの食い違いになる）。
+      # .astro の整形には prettier-plugin-astro が要る。npx の都度取得では
+      # プラグインを解決できないため、devDependencies を入れてから検査する。
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 検査対象の拡張子は package.json の format:check が持つ。CI も README も
+      # 手元も同じ script を呼ぶことで、片方だけ広げた食い違いが起きないようにする。
       - name: Check formatting
         run: |
-          if ! npx prettier@3 --check "**/*.md" "**/*.yml" "**/*.yaml"; then
-            echo "::error title=Format Check::Prettier の整形に違反があります。README「フォーマット」の --write コマンドを実行して差分をコミットしてください。"
+          if ! pnpm run format:check; then
+            echo "::error title=Format Check::Prettier の整形に違反があります。README「フォーマット」の pnpm run format を実行して差分をコミットしてください。"
             exit 1
           fi
           echo "=== Format Check OK ==="

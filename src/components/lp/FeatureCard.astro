@@ -1,7 +1,7 @@
 ---
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
-type IconName = 'block' | 'timer' | 'vision' | 'privacy';
+type IconName = "block" | "timer" | "vision" | "privacy";
 
 interface Props {
   title: string;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, description, icon, href } = Astro.props;
-const Tag = href ? 'a' : 'div';
+const Tag = href ? "a" : "div";
 
 const ICON_PATHS: Record<IconName, string> = {
   block: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -38,10 +38,11 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
 <Tag class="feature-card" {...(href ? { href: withBase(href) } : {})}>
   {icon && (
     <div class="feature-card-icon">
-      {iconSvg
-        ? <Fragment set:html={iconSvg} />
-        : <span aria-hidden="true">{icon}</span>
-      }
+      {iconSvg ? (
+        <Fragment set:html={iconSvg} />
+      ) : (
+        <span aria-hidden="true">{icon}</span>
+      )}
     </div>
   )}
   <h3 class="feature-card-title">{title}</h3>
@@ -58,7 +59,10 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
     -webkit-backdrop-filter: blur(var(--vf-blur-card-sm));
     border: 1px solid var(--vf-card-border-soft);
     border-radius: var(--vf-radius-card-sm);
-    transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.25s ease;
     position: relative;
     overflow: hidden;
     text-decoration: none;
@@ -67,13 +71,18 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
   }
 
   .feature-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--vf-teal-a40), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--vf-teal-a40),
+      transparent
+    );
     opacity: 0;
     transition: opacity 0.25s ease;
   }
@@ -81,7 +90,9 @@ const iconSvg = isNamedIcon ? ICON_PATHS[icon as IconName] : null;
   .feature-card:hover {
     border-color: color-mix(in srgb, var(--vf-teal) 20%, transparent);
     transform: translateY(var(--vf-lift-card-sm));
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px color-mix(in srgb, var(--vf-teal) 6%, transparent);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.4),
+      0 0 24px color-mix(in srgb, var(--vf-teal) 6%, transparent);
   }
 
   .feature-card:hover::before {

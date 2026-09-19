@@ -1,6 +1,6 @@
 ---
-import TagBadge from './TagBadge.astro';
-import { withBase } from '../../utils/url';
+import TagBadge from "./TagBadge.astro";
+import { withBase } from "../../utils/url";
 
 interface Props {
   title: string;
@@ -11,32 +11,44 @@ interface Props {
 const { title, publishedAt, products = [] } = Astro.props;
 
 const PRODUCT_LABELS: Record<string, string> = {
-  'vision-focus': 'VisionFocus',
+  "vision-focus": "VisionFocus",
 };
 
 // ロケール判定
-const locale = Astro.currentLocale ?? 'ja';
-const prefix = locale === 'en' ? '/en' : '';
+const locale = Astro.currentLocale ?? "ja";
+const prefix = locale === "en" ? "/en" : "";
 
 // 翻訳辞書
 const t = {
-  ja: { backToArticles: '記事一覧へ' },
-  en: { backToArticles: 'Back to Articles' },
-}[locale] ?? { backToArticles: '記事一覧へ' };
+  ja: { backToArticles: "記事一覧へ" },
+  en: { backToArticles: "Back to Articles" },
+}[locale] ?? { backToArticles: "記事一覧へ" };
 
 // 日付フォーマットをロケールに応じて切替
-const dateLocale = locale === 'en' ? 'en-US' : 'ja-JP';
+const dateLocale = locale === "en" ? "en-US" : "ja-JP";
 const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 ---
 
 <header class="article-header">
   <a href={withBase(`${prefix}/articles/`)} class="article-back-link">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M10 12L6 8l4-4"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
     {t.backToArticles}
   </a>
@@ -44,13 +56,20 @@ const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
   <h1 class="article-title">{title}</h1>
 
   <div class="article-meta">
-    <time class="article-date" datetime={publishedAt.toISOString().split('T')[0]}>
+    <time
+      class="article-date"
+      datetime={publishedAt.toISOString().split("T")[0]}
+    >
       {formattedDate}
     </time>
     {products.length > 0 && (
       <div class="article-tags">
         {products.map((p) => (
-          <TagBadge product={p} label={PRODUCT_LABELS[p] ?? p} href={`/${p}/articles/`} />
+          <TagBadge
+            product={p}
+            label={PRODUCT_LABELS[p] ?? p}
+            href={`/${p}/articles/`}
+          />
         ))}
       </div>
     )}
@@ -95,7 +114,8 @@ const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
     gap: 1rem;
     flex-wrap: wrap;
     padding-bottom: 2rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
   }
 
   .article-date {

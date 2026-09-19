@@ -1,16 +1,19 @@
 ---
-import { withBase } from '../../utils/url';
+import { withBase } from "../../utils/url";
 
 const pathname = Astro.url.pathname;
-const isVisionFocus = pathname.includes('/vision-focus');
+const isVisionFocus = pathname.includes("/vision-focus");
 
 // ロケール判定: 英語は /en/ プレフィックスを付与
-const locale = Astro.currentLocale ?? 'ja';
-const prefix = locale === 'en' ? '/en' : '';
+const locale = Astro.currentLocale ?? "ja";
+const prefix = locale === "en" ? "/en" : "";
 ---
 
 {isVisionFocus ? (
-  <a href={withBase(`${prefix}/vision-focus/`)} class="site-title site-title--product">
+  <a
+    href={withBase(`${prefix}/vision-focus/`)}
+    class="site-title site-title--product"
+  >
     VisionFocus
   </a>
 ) : (

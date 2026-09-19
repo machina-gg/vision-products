@@ -1,6 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
-import ArticleCard from './ArticleCard.astro';
+import { getCollection } from "astro:content";
+import ArticleCard from "./ArticleCard.astro";
 
 interface Props {
   product?: string;
@@ -10,27 +10,27 @@ interface Props {
 const { product, limit } = Astro.props;
 
 // ロケール判定
-const locale = Astro.currentLocale ?? 'ja';
+const locale = Astro.currentLocale ?? "ja";
 
 // 翻訳辞書
 const t = {
-  ja: { empty: '記事はまだありません。' },
-  en: { empty: 'No articles yet.' },
-}[locale] ?? { empty: '記事はまだありません。' };
+  ja: { empty: "記事はまだありません。" },
+  en: { empty: "No articles yet." },
+}[locale] ?? { empty: "記事はまだありません。" };
 
-const allDocs = await getCollection('docs');
+const allDocs = await getCollection("docs");
 
 const articles = allDocs
   .filter((doc) => {
     if (doc.data.publishedAt == null) return false;
     // root locale(ja): id が 'en/' で始まらないもの
     // en locale: id が 'en/' で始まるもの
-    if (locale === 'en') return doc.id.startsWith('en/');
-    return !doc.id.startsWith('en/');
+    if (locale === "en") return doc.id.startsWith("en/");
+    return !doc.id.startsWith("en/");
   })
   .map((doc) => ({
     title: doc.data.title,
-    description: doc.data.description ?? '',
+    description: doc.data.description ?? "",
     href: `/${doc.id}/`,
     publishedAt: doc.data.publishedAt as Date,
     products: doc.data.products ?? [],
