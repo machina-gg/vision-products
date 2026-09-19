@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import sitemap from "@astrojs/sitemap";
 import rehypeBaseLinks from "./src/plugins/rehype-base-links.mjs";
@@ -26,10 +27,11 @@ export default defineConfig({
   base,
   markdown: {
     // 本文の「/ 始まりリンク」に base を前置する（Astro は自動では付けない）。
-    // ⚠ `rehypePlugins` は非推奨で、Astro は起動時に警告を出す。後継の
-    //   `markdown.processor: unified({...})` は `@astrojs/markdown-remark` の import が要るが、
-    //   同パッケージは直接依存ではない（依存追加＝ lockfile 変更になる）ため今は使わない。
-    rehypePlugins: [[rehypeBaseLinks, { base }]],
+    // ⚠ Astro の既定の Markdown プロセッサは Sätteri で、rehype プラグインを受け付けない。
+    //   `markdown.processor` に unified を明示して初めてプラグインが走る（#105）。
+    processor: unified({
+      rehypePlugins: [[rehypeBaseLinks, { base }]],
+    }),
   },
   integrations: [
     starlight({
