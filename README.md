@@ -29,15 +29,15 @@
 
 ## Tech Stack
 
-| カテゴリ | 技術 |
-|----------|------|
-| Framework | [Astro](https://astro.build) |
-| Theme | [Starlight](https://starlight.astro.build) |
-| Language | TypeScript |
-| Content | Astro Content Collections (Markdown/MDX) |
-| Package Manager | pnpm |
-| Hosting | GitHub Pages |
-| CI/CD | GitHub Actions |
+| カテゴリ        | 技術                                       |
+| --------------- | ------------------------------------------ |
+| Framework       | [Astro](https://astro.build)               |
+| Theme           | [Starlight](https://starlight.astro.build) |
+| Language        | TypeScript                                 |
+| Content         | Astro Content Collections (Markdown/MDX)   |
+| Package Manager | pnpm                                       |
+| Hosting         | GitHub Pages                               |
+| CI/CD           | GitHub Actions                             |
 
 ## Project Structure
 
@@ -45,7 +45,7 @@
 .
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml                  # Build + internal link check (both base paths)
+│       ├── ci.yml                  # Build + internal link check (both base paths) + format check
 │       └── deploy.yml              # GitHub Pages deployment
 ├── public/                         # Static assets
 ├── src/
@@ -114,20 +114,36 @@ The site will be available at `http://localhost:4321/vision-products/`
 
 ### Commands
 
-| Command | Action |
-|---------|--------|
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Start local dev server at `localhost:4321` |
-| `pnpm build` | Build production site to `./dist/` |
-| `pnpm preview` | Preview production build locally |
-| `pnpm astro ...` | Run Astro CLI commands |
+| Command                                                                 | Action                                                                         |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `pnpm install`                                                          | Install dependencies                                                           |
+| `pnpm dev`                                                              | Start local dev server at `localhost:4321`                                     |
+| `pnpm build`                                                            | Build production site to `./dist/`                                             |
+| `pnpm preview`                                                          | Preview production build locally                                               |
+| `pnpm astro ...`                                                        | Run Astro CLI commands                                                         |
 | `node scripts/check-dist-links.mjs --dist dist --base /vision-products` | Verify that every internal link in `./dist/` starts with the base and resolves |
+
+### フォーマット
+
+Markdown・YAML は Prettier で整形する。CI の `Format Check` ジョブが同じ `--check` を実行し、
+違反があれば PR が落ちる。push 前に手元で通しておく。
+
+```bash
+# 違反しているファイルを一覧する（CI と同じ検査）
+npx prettier@3 --check "**/*.md" "**/*.yml" "**/*.yaml"
+
+# 一括で整形する
+npx prettier@3 --write "**/*.md" "**/*.yml" "**/*.yaml"
+```
+
+整形対象から外すファイルは `.prettierignore` に書く（生成物の `pnpm-lock.yaml` など）。
 
 ## Deployment
 
 The site automatically deploys to GitHub Pages when changes are pushed to the `main` branch.
 
 **Deployment workflow**:
+
 1. Push to `main` branch
 2. `actions/configure-pages` が Pages の実際の配信先（`origin` / `base_path`）を取得する
 3. GitHub Actions builds the site (`pnpm build`) — 配信先は環境変数で渡される
@@ -139,10 +155,10 @@ The site automatically deploys to GitHub Pages when changes are pushed to the `m
 サイトは `https://machina-gg.github.io/vision-products/` のようなサブパスで配信されるため、
 ビルド時に配信サブパス（Astro の `base`）を知っている必要がある。値は環境変数で上書きできる。
 
-| 環境変数 | 意味 | 既定値 |
-|----------|------|--------|
-| `SITE_URL` | 配信オリジン（Astro の `site`） | `https://machina-gg.github.io` |
-| `BASE_PATH` | 配信サブパス（Astro の `base`。ドメイン直下配信は `/`） | `/vision-products` |
+| 環境変数    | 意味                                                    | 既定値                         |
+| ----------- | ------------------------------------------------------- | ------------------------------ |
+| `SITE_URL`  | 配信オリジン（Astro の `site`）                         | `https://machina-gg.github.io` |
+| `BASE_PATH` | 配信サブパス（Astro の `base`。ドメイン直下配信は `/`） | `/vision-products`             |
 
 ```bash
 # ドメイン直下配信の形でビルドする（カスタムドメイン移行後の確認用）
@@ -175,13 +191,13 @@ BASE_PATH=/ pnpm build
 
 ## Documents
 
-| ドキュメント | 内容 |
-|-------------|------|
-| [docs/PRD.md](./docs/PRD.md) | 要件定義 |
-| [docs/DESIGN.md](./docs/DESIGN.md) | 技術スタック・ディレクトリ構成・設計方針 |
-| [docs/SCREEN.md](./docs/SCREEN.md) | 画面一覧・画面遷移図 |
-| [docs/COMPONENT.md](./docs/COMPONENT.md) | コンポーネント一覧・Props定義 |
-| [reports/COMPETITIVE_ANALYSIS.md](./reports/COMPETITIVE_ANALYSIS.md) | 競合調査レポート |
+| ドキュメント                                                         | 内容                                     |
+| -------------------------------------------------------------------- | ---------------------------------------- |
+| [docs/PRD.md](./docs/PRD.md)                                         | 要件定義                                 |
+| [docs/DESIGN.md](./docs/DESIGN.md)                                   | 技術スタック・ディレクトリ構成・設計方針 |
+| [docs/SCREEN.md](./docs/SCREEN.md)                                   | 画面一覧・画面遷移図                     |
+| [docs/COMPONENT.md](./docs/COMPONENT.md)                             | コンポーネント一覧・Props定義            |
+| [reports/COMPETITIVE_ANALYSIS.md](./reports/COMPETITIVE_ANALYSIS.md) | 競合調査レポート                         |
 
 ## Links
 

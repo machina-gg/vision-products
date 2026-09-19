@@ -85,12 +85,12 @@ Every bypass is recorded. VisionFocus tracks how many times you've bypassed each
 
 Here are some sites that users frequently add to their blocklists:
 
-| Category | Examples |
-|---|---|
-| Social media | `twitter.com`, `facebook.com`, `instagram.com`, `tiktok.com` |
-| Video | `youtube.com`, `netflix.com`, `twitch.tv` |
-| News & discussion | `reddit.com`, `news.ycombinator.com` |
-| Gaming | `steam.com` |
+| Category          | Examples                                                     |
+| ----------------- | ------------------------------------------------------------ |
+| Social media      | `twitter.com`, `facebook.com`, `instagram.com`, `tiktok.com` |
+| Video             | `youtube.com`, `netflix.com`, `twitch.tv`                    |
+| News & discussion | `reddit.com`, `news.ycombinator.com`                         |
+| Gaming            | `steam.com`                                                  |
 
 ## Tracking Your Progress
 
