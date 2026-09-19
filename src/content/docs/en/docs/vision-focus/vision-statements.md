@@ -107,12 +107,12 @@ Access preset management and scheduling from the **Vision** tab.
 
 ### Example presets
 
-| Preset | Statement |
-|---|---|
-| Work | "I'm doing my best work today and delivering real value." |
-| Study | "Every hour I invest in learning compounds into expertise." |
+| Preset   | Statement                                                                     |
+| -------- | ----------------------------------------------------------------------------- |
+| Work     | "I'm doing my best work today and delivering real value."                     |
+| Study    | "Every hour I invest in learning compounds into expertise."                   |
 | Personal | "I'm investing in my health and relationships — the things that matter most." |
-| Evening | "I'm winding down well so tomorrow I can do it all again." |
+| Evening  | "I'm winding down well so tomorrow I can do it all again."                    |
 
 ## Tips for Getting the Most Out of Vision Statements
 

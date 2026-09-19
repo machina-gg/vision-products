@@ -48,6 +48,36 @@ jobs:
       - name: Check dist links (base=/)
         run: node scripts/check-dist-links.mjs --dist dist --base /
 
+  format-check:
+    name: Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # このジョブは依存をインストールしないため pnpm をセットアップしない。
+      # setup-node v5 の package-manager-cache は既定で true で、package.json の
+      # packageManager から pnpm を検出してキャッシュしようとし、pnpm が PATH に
+      # 無いこのジョブでは step ごと失敗する。キャッシュする対象が無いので false にする。
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      # prettier は npx で取得する（devDependencies には入れていないため
+      # pnpm install を待たずに済み、ビルドとは独立に走る）。
+      # 対象拡張子は README「フォーマット」の検査コマンドと同じものを使うこと
+      # （片方だけ広げると、手元で通る／CI で落ちるの食い違いになる）。
+      - name: Check formatting
+        run: |
+          if ! npx prettier@3 --check "**/*.md" "**/*.yml" "**/*.yaml"; then
+            echo "::error title=Format Check::Prettier の整形に違反があります。README「フォーマット」の --write コマンドを実行して差分をコミットしてください。"
+            exit 1
+          fi
+          echo "=== Format Check OK ==="
+
   issue-check:
     name: Issue Check
     # push では PR 本文が存在しないため PR のときだけ実行する
