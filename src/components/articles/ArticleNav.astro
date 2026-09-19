@@ -1,6 +1,7 @@
 ---
 // 記事末尾の前後ナビゲーション — publishedAt 降順で前後を判定
 import { getCollection } from 'astro:content';
+import { withBase } from '../../utils/url';
 
 interface Props {
   /** 現在の記事の publishedAt（Date） */
@@ -49,7 +50,7 @@ const olderArticle = currentIndex < articles.length - 1 ? articles[currentIndex 
   <nav class="article-nav" aria-label={t.navLabel}>
     <div class="article-nav-inner">
       {olderArticle ? (
-        <a href={olderArticle.href} class="article-nav-link article-nav-prev">
+        <a href={withBase(olderArticle.href)} class="article-nav-link article-nav-prev">
           <span class="article-nav-dir">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -63,7 +64,7 @@ const olderArticle = currentIndex < articles.length - 1 ? articles[currentIndex 
       )}
 
       {newerArticle ? (
-        <a href={newerArticle.href} class="article-nav-link article-nav-next">
+        <a href={withBase(newerArticle.href)} class="article-nav-link article-nav-next">
           <span class="article-nav-dir">
             {t.newerArticle}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">

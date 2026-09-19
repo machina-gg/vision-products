@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/url';
+
 interface NavLink {
   label: string;
   href: string;
@@ -21,7 +23,7 @@ const { productName, links } = Astro.props;
       {links.map((link) => (
         <li>
           <a
-            href={link.href}
+            href={withBase(link.href)}
             class={`product-nav-link${link.isPrimary ? ' product-nav-link--primary' : ''}`}
             {...(link.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >

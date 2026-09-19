@@ -1,5 +1,6 @@
 ---
 import TagBadge from './TagBadge.astro';
+import { withBase } from '../../utils/url';
 
 interface Props {
   title: string;
@@ -33,7 +34,7 @@ const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
 ---
 
 <header class="article-header">
-  <a href={`${prefix}/articles/`} class="article-back-link">
+  <a href={withBase(`${prefix}/articles/`)} class="article-back-link">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>

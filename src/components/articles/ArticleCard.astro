@@ -1,5 +1,6 @@
 ---
 import TagBadge from './TagBadge.astro';
+import { withBase } from '../../utils/url';
 
 interface Props {
   title: string;
@@ -25,7 +26,7 @@ const formattedDate = publishedAt.toLocaleDateString(dateLocale, {
 });
 ---
 
-<a href={href} class="article-card">
+<a href={withBase(href)} class="article-card">
   <div class="article-card-meta">
     <time datetime={publishedAt.toISOString()}>{formattedDate}</time>
     {products.length > 0 && (

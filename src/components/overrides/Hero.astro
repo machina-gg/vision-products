@@ -1,0 +1,31 @@
+---
+// Starlight の Hero は frontmatter の hero.actions[].link をそのまま href に渡すため、
+// サブパス配信では CTA ボタンのリンクだけが base 無しのまま壊れる。
+// base を前置してから既定の Hero に委ねる。
+//
+// ⚠ ルートデータは Content Collections のデータストアと共有されるため破壊的に書き換えず、
+//   前置済みの複製に差し替える（同じエントリが複数回描画されても二重前置にならない）。
+import Default from "@astrojs/starlight/components/Hero.astro";
+import { withBase } from "../../utils/url";
+
+const route = Astro.locals.starlightRoute;
+const hero = route.entry.data.hero;
+
+if (hero?.actions?.length) {
+  route.entry = {
+    ...route.entry,
+    data: {
+      ...route.entry.data,
+      hero: {
+        ...hero,
+        actions: hero.actions.map((action) => ({
+          ...action,
+          link: withBase(action.link),
+        })),
+      },
+    },
+  };
+}
+---
+
+<Default><slot /></Default>
