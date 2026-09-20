@@ -104,7 +104,7 @@ jobs:
       #   ラベルは JSON 配列で渡す（action 側が要素の完全一致で判定するため、カンマ連結は不可）。
       - name: Check issue linking
         id: issue-link-check
-        uses: machina-gg/agent-review/.github/actions/issue-link-check@main
+        uses: machina-gg/trillion-game-actions/.github/actions/issue-link-check@main
         with:
           pr-body: ${{ github.event.pull_request.body }}
           labels-json: ${{ toJSON(github.event.pull_request.labels.*.name) }}
