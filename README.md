@@ -45,7 +45,7 @@
 .
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml                  # Build + internal link check (both base paths) + format check + type check + issue check
+│       ├── ci.yml                  # Build + internal link check (both base paths) + format check + issue check + type check
 │       └── deploy.yml              # GitHub Pages deployment
 ├── public/                         # Static assets
 ├── src/

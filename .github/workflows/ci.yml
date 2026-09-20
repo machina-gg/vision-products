@@ -124,3 +124,35 @@ jobs:
           echo "Issue がない場合は先に Issue を作成してください。"
           echo "やむを得ない場合は PR に 'override:no-issue' ラベルを付けてください。"
           exit 1
+
+  type-check:
+    name: Type Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # pnpm のバージョンは package.json の packageManager から解決される
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      # astro check は @astrojs/check と typescript を使う。どちらも devDependencies。
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 検査の設定は tsconfig.json が持つ。CI も README も手元も同じ script を
+      # 呼ぶことで、片方だけ広げた食い違いが起きないようにする。
+      - name: Check types
+        run: |
+          if ! pnpm run type-check; then
+            echo "::error title=Type Check::型エラーがあります。README「型チェック」の pnpm run type-check を手元で実行して解消してください。"
+            exit 1
+          fi
+          echo "=== Type Check OK ==="
