@@ -92,8 +92,10 @@ jobs:
 
   issue-check:
     name: Issue Check
-    # push では PR 本文が存在しないため PR のときだけ実行する
-    if: github.event_name == 'pull_request'
+    # push では PR 本文が存在しないため PR のときだけ実行する。
+    # base が main の PR はリリース PR（develop → main）で、開発の PR と違い
+    # もともと Issue に紐づかない種類の PR なので、この検査の対象から外す。
+    if: github.event_name == 'pull_request' && github.base_ref != 'main'
     runs-on: ubuntu-latest
 
     steps:
