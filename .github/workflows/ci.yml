@@ -10,6 +10,15 @@ on:
 permissions:
   contents: read
 
+# 同一 PR に連続 push したとき、古い run を取り消す。
+# group は pull_request なら refs/pull/<N>/merge、push なら refs/heads/develop になるので
+# PR の run と develop の run は別グループになり、互いを取り消すことはない。
+# cancel-in-progress を pull_request に限るのは、マージ直後の develop の検証を
+# 途中で消さないため（group の切り方だけに頼らず、条件でも二重に守る）。
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: Build
@@ -99,8 +108,11 @@ jobs:
             exit 0
           fi
 
-          # override:no-issue ラベルがあればスキップ
-          if echo "$PR_LABELS" | grep -q "override:no-issue"; then
+          # override:no-issue ラベルがあればスキップ。
+          # PR_LABELS はラベル名をカンマで連結したもの。両端にカンマを足してから
+          # ",override:no-issue," を固定文字列で探すことで、ラベル名の完全一致だけを通す
+          # （override:no-issue-foo や foo-override:no-issue では一致しない）。
+          if printf '%s' ",$PR_LABELS," | grep -qF ",override:no-issue,"; then
             echo ""
             echo "::notice::override:no-issue ラベルにより Issue 紐づけチェックをスキップ"
             exit 0
