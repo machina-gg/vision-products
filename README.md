@@ -45,7 +45,7 @@
 .
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml                  # Build + internal link check (both base paths) + format check
+│       ├── ci.yml                  # Build + internal link check (both base paths) + format check + type check + issue check
 │       └── deploy.yml              # GitHub Pages deployment
 ├── public/                         # Static assets
 ├── src/
@@ -123,9 +123,28 @@ The site will be available at `http://localhost:4321/vision-products/`
 | `pnpm build`                                                            | Build production site to `./dist/`                                             |
 | `pnpm preview`                                                          | Preview production build locally                                               |
 | `pnpm astro ...`                                                        | Run Astro CLI commands                                                         |
+| `pnpm run type-check`                                                   | Type-check with `astro check`（CI の `Type Check` と同じ。下記「型チェック」） |
 | `pnpm run format`                                                       | Format sources with Prettier（下記「フォーマット」）                           |
 | `pnpm run format:check`                                                 | Check formatting without writing（CI の `Format Check` と同じ）                |
 | `node scripts/check-dist-links.mjs --dist dist --base /vision-products` | Verify that every internal link in `./dist/` starts with the base and resolves |
+
+### 型チェック
+
+`.astro` / `.ts` の型は `astro check` で検査する。
+CI の `Type Check` ジョブが下と同じ script を実行し、エラーがあれば PR が落ちる。push 前に手元で通しておく。
+
+```bash
+# CI と同じ検査
+pnpm run type-check
+```
+
+`astro check` は `devDependencies` の `@astrojs/check` / `typescript` を使うので、先に `pnpm install` が要る。
+検査の設定（`strict` など）は `tsconfig.json` に書く。
+
+⚠ `typescript` は 6 系に固定する。7 系はネイティブコンパイラで、`@astrojs/check` が使う API を
+公開していないため `astro check` が起動時に止まる（`@astrojs/check` の `peerDependencies` も
+`^5.0.0 || ^6.0.0`）。依存更新で 7 系へ上がると型チェックだけが壊れるので、上げるときは
+`@astrojs/check` 側が 7 系に対応したことを確認してからにする。
 
 ### フォーマット
 
