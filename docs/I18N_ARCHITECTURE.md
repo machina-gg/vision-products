@@ -25,6 +25,7 @@ vision-products サイト（Astro + Starlight）に日本語（デフォルト�
 **検証方法**: ソースコード全ファイルを調査
 
 **結果**: 以下のコンポーネントにハードコードされた日本語文字列がある:
+
 - `Footer.astro` — フッターのタグライン、リンクラベル
 - `Search.astro`（SiteTitle 兼ナビ）— ナビリンクラベル、aria-label、テーマラベル
 - `PageTitle.astro` — ProductNav リンクラベル
@@ -50,24 +51,24 @@ vision-products サイト（Astro + Starlight）に日本語（デフォルト�
 
 ### ハイブリッドアプローチ
 
-| カテゴリ | 方式 | 理由 |
-|---------|------|------|
-| Starlight 設定 | 組み込み i18n（root locale） | 公式サポート。URL 構造・言語切替 UI が自動 |
-| UI コンポーネント | `Astro.currentLocale` で条件分岐 | カスタムコンポーネントは Starlight の翻訳キーを使えないため |
-| ドキュメント（docs） | `src/content/docs/en/docs/` に英語版配置 | Starlight の標準 i18n フロー |
-| 記事（articles） | `src/content/docs/en/articles/` に独立ファイル | 1:1 対訳不要。各言語で独立した記事セット |
-| LP ページ | `src/content/docs/en/vision-focus.mdx` に英語版 | props で英語テキストを渡す |
+| カテゴリ             | 方式                                            | 理由                                                        |
+| -------------------- | ----------------------------------------------- | ----------------------------------------------------------- |
+| Starlight 設定       | 組み込み i18n（root locale）                    | 公式サポート。URL 構造・言語切替 UI が自動                  |
+| UI コンポーネント    | `Astro.currentLocale` で条件分岐                | カスタムコンポーネントは Starlight の翻訳キーを使えないため |
+| ドキュメント（docs） | `src/content/docs/en/docs/` に英語版配置        | Starlight の標準 i18n フロー                                |
+| 記事（articles）     | `src/content/docs/en/articles/` に独立ファイル  | 1:1 対訳不要。各言語で独立した記事セット                    |
+| LP ページ            | `src/content/docs/en/vision-focus.mdx` に英語版 | props で英語テキストを渡す                                  |
 
 ### URL 構造
 
-| ページ | 日本語 | 英語 |
-|--------|--------|------|
-| トップ | `/` | `/en/` |
-| VisionFocus LP | `/vision-focus/` | `/en/vision-focus/` |
-| ドキュメント | `/docs/vision-focus/getting-started/` | `/en/docs/vision-focus/getting-started/` |
-| 記事一覧 | `/articles/` | `/en/articles/` |
-| 個別記事 | `/articles/deep-work-introduction/` | `/en/articles/focus-techniques-guide/`（独立） |
-| Legal | `/legal/privacy/` | `/en/legal/privacy/` |
+| ページ         | 日本語                                | 英語                                           |
+| -------------- | ------------------------------------- | ---------------------------------------------- |
+| トップ         | `/`                                   | `/en/`                                         |
+| VisionFocus LP | `/vision-focus/`                      | `/en/vision-focus/`                            |
+| ドキュメント   | `/docs/vision-focus/getting-started/` | `/en/docs/vision-focus/getting-started/`       |
+| 記事一覧       | `/articles/`                          | `/en/articles/`                                |
+| 個別記事       | `/articles/deep-work-introduction/`   | `/en/articles/focus-techniques-guide/`（独立） |
+| Legal          | `/legal/privacy/`                     | `/en/legal/privacy/`                           |
 
 ### ディレクトリ構造（変更後）
 
@@ -130,17 +131,17 @@ const t = {
 
 ### 影響コンポーネント一覧
 
-| コンポーネント | 変更内容 |
-|---------------|---------|
-| `Footer.astro` | タグライン・リンクラベルを翻訳辞書化。`href` にロケールプレフィックス追加 |
-| `Search.astro` | ナビリンクラベル・aria-label・テーマラベルを翻訳辞書化 |
-| `PageTitle.astro` | ProductNav リンクラベルを翻訳辞書化 |
+| コンポーネント        | 変更内容                                                                                |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| `Footer.astro`        | タグライン・リンクラベルを翻訳辞書化。`href` にロケールプレフィックス追加               |
+| `Search.astro`        | ナビリンクラベル・aria-label・テーマラベルを翻訳辞書化                                  |
+| `PageTitle.astro`     | ProductNav リンクラベルを翻訳辞書化                                                     |
 | `ArticleHeader.astro` | 「記事一覧へ」翻訳。日付フォーマットのロケール切替。`/articles/` リンクにプレフィックス |
-| `ArticleNav.astro` | 「前の記事」「次の記事」翻訳。ロケール別記事フィルタ |
-| `ArticleCta.astro` | CTA テキスト全体を翻訳辞書化 |
-| `ArticleList.astro` | ロケール別に記事をフィルタリング |
-| `SiteTitle.astro` | ロケールに応じた `href` プレフィックス |
-| `ArticleCard.astro` | 日付フォーマットのロケール切替 |
+| `ArticleNav.astro`    | 「前の記事」「次の記事」翻訳。ロケール別記事フィルタ                                    |
+| `ArticleCta.astro`    | CTA テキスト全体を翻訳辞書化                                                            |
+| `ArticleList.astro`   | ロケール別に記事をフィルタリング                                                        |
+| `SiteTitle.astro`     | ロケールに応じた `href` プレフィックス                                                  |
+| `ArticleCard.astro`   | 日付フォーマットのロケール切替                                                          |
 
 ## 検討した代替案
 
@@ -175,10 +176,10 @@ Issue 5: 英語記事作成（Issue 1, 2 に依存）
 
 ## リスク
 
-| リスク | 影響度 | 対策 |
-|--------|--------|------|
-| Starlight v0.37 の i18n に未知のバグ | 中 | ビルド確認を各 Issue の PR で実施 |
-| カスタムコンポーネントで `Astro.currentLocale` が undefined | 低 | フォールバックを `'ja'` に設定 |
-| サイドバーのロケール別ラベルが正しく表示されない | 低 | 公式ドキュメント通りの設定で回避可能 |
-| 既存の日本語 URL が変わってしまう | 高 | root locale を使うことで既存 URL は不変 |
-| 記事のロケールフィルタリングが正しく動作しない | 中 | `doc.id` プレフィックスで判定。ビルド時テストで確認 |
+| リスク                                                      | 影響度 | 対策                                                |
+| ----------------------------------------------------------- | ------ | --------------------------------------------------- |
+| Starlight v0.37 の i18n に未知のバグ                        | 中     | ビルド確認を各 Issue の PR で実施                   |
+| カスタムコンポーネントで `Astro.currentLocale` が undefined | 低     | フォールバックを `'ja'` に設定                      |
+| サイドバーのロケール別ラベルが正しく表示されない            | 低     | 公式ドキュメント通りの設定で回避可能                |
+| 既存の日本語 URL が変わってしまう                           | 高     | root locale を使うことで既存 URL は不変             |
+| 記事のロケールフィルタリングが正しく動作しない              | 中     | `doc.id` プレフィックスで判定。ビルド時テストで確認 |
