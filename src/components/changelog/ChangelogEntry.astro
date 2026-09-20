@@ -6,7 +6,10 @@ interface Props {
 
 const { version, date } = Astro.props;
 
-const formattedDate = date.toLocaleDateString("ja-JP", {
+// 日付フォーマットをロケールに応じて切替
+const locale = Astro.currentLocale ?? "ja";
+const dateLocale = locale === "en" ? "en-US" : "ja-JP";
+const formattedDate = date.toLocaleDateString(dateLocale, {
   year: "numeric",
   month: "long",
   day: "numeric",

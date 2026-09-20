@@ -8,6 +8,17 @@ interface Props {
 }
 
 const { title, subtitle, eyebrow, imageSrc, imageAlt = "" } = Astro.props;
+
+// ロケール判定
+const locale = Astro.currentLocale ?? "ja";
+
+// 翻訳辞書（imageSrc 省略時に表示するブラウザモックの文言）
+const fallback = { mockupVision: "今日も一歩、目標へ向かう。" };
+const t =
+  {
+    ja: fallback,
+    en: { mockupVision: "One step closer to my goal today." },
+  }[locale] ?? fallback;
 ---
 
 <section class="hero-section">
@@ -54,7 +65,7 @@ const { title, subtitle, eyebrow, imageSrc, imageAlt = "" } = Astro.props;
               <span class="hero-mockup-timer-value">18:42</span>
             </div>
             <div class="hero-mockup-vision">
-              <span>"今日も一歩、目標へ向かう。"</span>
+              <span>"{t.mockupVision}"</span>
             </div>
           </div>
         </div>
