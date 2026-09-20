@@ -9,6 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "type-check": "astro check",
     "format": "prettier --write \"**/*.{md,mjs,ts,yml,yaml,astro}\"",
     "format:check": "prettier --check \"**/*.{md,mjs,ts,yml,yaml,astro}\""
   },
@@ -20,7 +21,9 @@
     "sharp": "^0.35.4"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "prettier": "^3.9.8",
-    "prettier-plugin-astro": "^1.0.1"
+    "prettier-plugin-astro": "^1.0.1",
+    "typescript": "^6.0.3"
   }
 }

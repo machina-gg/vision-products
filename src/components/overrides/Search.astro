@@ -346,14 +346,14 @@ const navLabel = isVisionFocusLP ? t.navLabelLP : t.navLabelSite;
       if (typeof localStorage !== "undefined") {
         localStorage.setItem("starlight-theme", theme);
       }
-      /* Starlight の ThemeSelect がある場合、ピッカーも同期する */
-      if (
-        typeof (globalThis as Record<string, unknown>)
-          .StarlightThemeProvider !== "undefined"
-      ) {
-        (
-          globalThis as Record<string, { updatePickers: (t?: string) => void }>
-        ).StarlightThemeProvider.updatePickers(theme);
+      /*
+       * Starlight の ThemeSelect がある場合、ピッカーも同期する。
+       * 型は Starlight が global.d.ts で宣言しているのでキャストは要らない。
+       * 型の上では常に存在するが、ThemeSelect が描画されないページでは
+       * 実行時に未定義になるため typeof の判定は残す。
+       */
+      if (typeof globalThis.StarlightThemeProvider !== "undefined") {
+        globalThis.StarlightThemeProvider.updatePickers(theme);
       }
       this.syncThemeButtons();
     }
